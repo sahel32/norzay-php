@@ -16,6 +16,15 @@
         <link href="<?php echo asset_url('css/custom.css'); ?>" rel="stylesheet" type="text/css">
      <!-- GOOGLE FONTS-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+
+
+        <script src="<?php echo asset_url('js/jquery-1.10.2.js'); ?>" ></script>
+      <!-- BOOTSTRAP SCRIPTS -->
+
+    <script src="<?php echo asset_url('js/bootstrap.min.js'); ?>" ></script>
+    <!-- METISMENU SCRIPTS -->
+
+    <script src="<?php echo asset_url('js/jquery.metisMenu.js'); ?>" ></script>
 </head>
 <body>
     <div id="wrapper">

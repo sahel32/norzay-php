@@ -24,9 +24,9 @@ class Accounts extends CI_Controller {
 		 $this->load->template("Accounts/index", $data);
 	}
 
-	public function list()
+	public function lists()
 	{
 		 $data['title']="dashboard";
-		 $this->load->template("Accounts/list", $data);
+		 $this->load->template("Accounts/lists", $data);
 	}
 }
