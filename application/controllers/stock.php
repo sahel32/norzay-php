@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Accounts extends CI_Controller {
+class stock extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -18,19 +18,19 @@ class Accounts extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+
 	public function index()
 	{
 		 $data['title']="dashboard";
-		 $this->load->template("Accounts/index", $data);
-	}
-
-	public function lists()
-	{
-		 $data['title']="dashboard";
-		 $this->load->template("Accounts/lists", $data);
+		 $this->load->template("stock/index", $data);
 	}
 
 	public function add(){
+
+
+				$data['main_title']="add stock";
+		$data['sub_title']="add stock form ";
+		$data['desc']="add stock decription";
 
         $this->form_validation->set_rules('name' , null, 'alpha_numeric_spaces|required',
             array(
@@ -38,7 +38,7 @@ class Accounts extends CI_Controller {
                 'alpha_numeric_spaces'         =>'please insert just alghabatic charecters'
         )
             );
-       $this->form_validation->set_rules('lname' , null, 'alpha_numeric_spaces|required',
+       $this->form_validation->set_rules('province' , null, 'alpha_numeric_spaces|required',
             array(
                 'required'      => 'You have not provided name in name field',
                 'alpha_numeric_spaces'         =>'please insert just alghabatic charecters'
@@ -55,19 +55,21 @@ class Accounts extends CI_Controller {
         if($this->form_validation->run()==false){
 
         $data['signup_form']="active";
-        $this->load->template('accounts/add',$data);
+        $this->load->template('stock/add',$data);
         }else{
 
         $cantact_info=array(
             'name'=>$this->db->escape_str($this->input->post('name')),
-            'lname'=>$this->db->escape_str($this->input->post('lname')),
-            'phone'=>$this->db->escape_str($this->input->post('phone'))
+            'province'=>$this->db->escape_str($this->input->post('province')),
+            'phone'=>$this->db->escape_str($this->input->post('phone')),
+            'address'=>$this->db->escape_str($this->input->post('address')),
+            'desc'=>$this->db->escape_str($this->input->post('desc'))
             );
 
-       $id=$this->account->insert($cantact_info);
+       $id=$this->stock_model->insert($cantact_info);
 
         $data['fu_page_title']="Login Form";
-        redirect('accounts/profile/'.$id);
+        redirect('stock/profile/'.$id);
       // $this->profile($id); 
         }
 
@@ -76,9 +78,21 @@ class Accounts extends CI_Controller {
 
     public function profile($id=0){
     	  $data['fu_page_title']="Login Form";
-          $data['account_rows']=$this->account->get_where(array('id' => $id));
-          $data['balance_rows']=$this->account->get_where(array('id' => $id ,'type' => 'account'));
+          $data['stock_rows']=$this->stock_model->get_where(array('id' => $id));
+          		$data['main_title']="stock profile";
+		$data['sub_title']="stock details";
+		$data['desc']="stick descipttion";
 
-       	$this->load->template('accounts/profile',$data); 
+       	$this->load->template('stock/profile',$data); 
     }
+
+	public function lists()
+	{
+		$data['main_title']="stock profile";
+		$data['sub_title']="stock details";
+		$data['desc']="stick descipttion";
+		 $data['stock_rows']=$this->stock_model->get();
+		 $this->load->template("stock/lists", $data);
+	}
+
 }
