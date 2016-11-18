@@ -57,27 +57,33 @@ class oil extends CI_Controller {
 			);
 			//mines from stock pre
 			$data['stock_rows'] = $this->stock_model->get_where(array('type' => 'pre'));
-			$data['account_rows'] = $this->account->get_where(array('type' => 'customer'));
+			//$data['account_rows'] = $this->account->get_where(array('type' => 'customer'));
+			$data['account_rows'] = $this->account->get();
 
 
 			$data['main_title'] = "add stock";
 			$data['sub_title'] = "add stock form ";
 			$data['desc'] = "add stock decription";
 
-			$this->form_validation->set_rules('name', null, 'alpha_numeric_spaces|required',
+			$this->form_validation->set_rules('f_date', null, 'required',
 				array(
-					'required' => 'You have not provided name in name field',
-					'alpha_numeric_spaces' => 'please insert just alghabatic charecters'
+					'required' => 'You have not provided name in name field'
 				)
 			);
-			$this->form_validation->set_rules('province', null, 'alpha_numeric_spaces|required',
+			$this->form_validation->set_rules('s_date', null, 'required',
 				array(
-					'required' => 'You have not provided name in name field',
-					'alpha_numeric_spaces' => 'please insert just alghabatic charecters'
+					'required' => 'You have not provided name in name field'
 				)
 			);
 
-			$this->form_validation->set_rules('phone', null, 'is_natural|required|regex_match[/^[0-9]{10}$/]',
+			$this->form_validation->set_rules('amount', null, 'is_natural|required',
+				array(
+					'required' => 'You have not provided name in name field',
+					'is_natural' => 'Please Use Just numberic charecters'
+				)
+			);
+
+			$this->form_validation->set_rules('unit_price', null, 'is_natural|required',
 				array(
 					'required' => 'You have not provided name in name field',
 					'is_natural' => 'Please Use Just numberic charecters'
@@ -90,18 +96,37 @@ class oil extends CI_Controller {
 				$this->load->template("oil/pre_transaction_form", $data);
 			} else {
 
-				$cantact_info = array(
+				$stock_tramsaction = array(
+					'f_date' => $this->db->escape_str($this->input->post('f_data')),
+					's_date' => $this->db->escape_str($this->input->post('s_data')),
+					'type' => $this->db->escape_str($this->input->post('type')),
+					'account_id' => $this->db->escape_str($this->input->post('account_id')),
 					'name' => $this->db->escape_str($this->input->post('name')),
-					'province' => $this->db->escape_str($this->input->post('province')),
-					'phone' => $this->db->escape_str($this->input->post('phone')),
-					'address' => $this->db->escape_str($this->input->post('address')),
-					'desc' => $this->db->escape_str($this->input->post('desc'))
+					'unit_price' => $this->db->escape_str($this->input->post('unit_price')),
+					//'car_count' => $this->db->escape_str($this->input->post('car_count')),
+					//'money_type' => $this->db->escape_str($this->input->post('money_type')),
+					'buy_sell' => "sell",
+					'desc' => $this->db->escape_str($this->input->post('desc')),
+					'amount' => $this->db->escape_str($this->input->post('amount')),
+					'unit' => $this->db->escape_str($this->input->post('unit'))
 				);
 
-				$id = $this->stock_model->insert($cantact_info);
+	
+				$id = $this->oil_model->insert($stock_tramsaction); //reterive the inserted id
 
+				$cash= $this->db->escape_str($this->input->post('unit_price')) *
+					$this->db->escape_str($this->input->post('amount')) *
+					$this->db->escape_str($this->input->post('car_count'));
+				$cash_information = array(
+					'st_id' => $id,
+					'cash' =>$cash,
+					'type' => $this->db->escape_str($this->input->post('money_type'))
+				);
+
+				$cash_id = $this->cash_model->insert($cash_information);
 				$data['fu_page_title'] = "Login Form";
-				redirect('oil/list/');
+				echo $cash_id;
+				//redirect('oil/presell/');
 				// $this->profile($id); 
 			}
 		}

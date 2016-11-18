@@ -1,38 +1,26 @@
 <?php
-class oil_model extends CI_Model{
+class cash_model extends CI_Model{
 
     public $table;
     public $id;
-    public $name;
-    public $province;
+    public $cash;
+    public $date;
     public $type;
-    public $f_date;
-    public $s_date;
     public $desc;
-    public $amount;
-    public $unit_price;
-    public $transit;
-    public $buy_sell;
-    public $parent_id;
-    public $unit;
+    public $st_id;
+
 
     public function __construct()
     {
         parent::__construct();
-        $this->table="stock_transaction";
+        $this->table="cash";
         $this->id="id";
-        $this->amount="amount";
-        $this->unit_price="unit_price";
+        $this->cash="cash";
+        $this->date="date";
         $this->type="type"; //pre or fact
-        $this->f_date="f_date";
+        $this->st_id="st_id";
         $this->desc="desc";
-        $this->transit="transit";
-        $this->provnice="province";
-        $this->name="name";
-        $this->s_date="s_date";
-        $this->buy_sell="buy_sell"; //buy or sell
-        $this->parent_id="parent_id";
-        $this->unit="unit";
+
 
     }
 
