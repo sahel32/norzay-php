@@ -29,7 +29,7 @@
                                         </thead>
                                         <tbody>
                                          <?php 
-                                        
+                                       
                                         foreach ($stock_rows as $key => $value) {?>
                                             
                                             
@@ -37,13 +37,13 @@
                                                 <td><?php echo $value->id;?></td>
                                                 <td><?php echo $value->name;?></td>
                                                 <td><?php echo $value->province;?></td>
-                                                <td class="center">4</td>
-                                                <td class="center">X</td>
-                                                <td class="center">4</td>
+                                                <td class="center"><?php echo $value->date;?></td>
+                                                <td class="center"><?php echo $value->type;?></td>
+                                                <td class="center"><?php echo $value->desc;?></td>
                                                 <td class="center">
                                                     <a href="#"><span class="glyphicon glyphicon-trash"></span></a>
                                                     <a href="#"><span class="glyphicon glyphicon-edit"></span></a>
-                                                    <a href="blank.html"><span class="glyphicon glyphicon-asterisk"></span></a>
+                                                    <a href="<?php echo site_url('stock/profile/'.$value->id); ?>"><span class="glyphicon glyphicon-asterisk"></span></a>
                                                 </td>
                                             </tr>
                                             <?php }?>
@@ -58,3 +58,13 @@
                  <!-- /. ROW -->
             </div>
              <!-- /. PAGE INNER  -->
+
+                    <script src="<?php echo asset_url('js/dataTables/jquery.dataTables.js'); ?>"></script>
+    <script src="<?php echo asset_url('js/dataTables/dataTables.bootstrap.js'); ?>"></script>
+
+            <script>
+            $(document).ready(function () {
+                $('#dataTables-example').dataTable();
+            });
+    </script>
+      <!-- CUSTOM SCRIPTS -->
