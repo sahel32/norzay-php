@@ -12,6 +12,13 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                              لیست پیش فروش ها
+                            <div class="btn-group pull-left">
+                                <select id="filter2">
+                                    <option value="debit">debit</option>
+                                    <option value="credit">credit</option>
+                                </select>
+                                <i class="fa fa-comments fa-filter" aria-hidden="true"> فیلتر </i>
+                            </div>
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
@@ -37,12 +44,16 @@
                                             <td><?php echo $value->id;?></td>
                                             <td><?php echo $value->f_date;?></td>
                                             <td><?php echo $value->s_date;?></td>
-                                            <td class="center"><?php echo $value->account_id;?></td>
+                                            <td class="center"><?php echo $value->buyer_seller_id;?></td>
                                             <td class="center"><?php echo $value->name;?></td>
                                             <td class="center"><?php echo $value->amount;?></td>
                                             <td class="center"><?php echo $value->car_count;?></td>
                                             <td class="center"><?php echo $value->unit_price;?></td>
-                                            <td class="center">X</td>
+                                            <td class="center">
+                                                <a href="<?php echo site_url('account/delete/'.$value->id) ?>"><span class="glyphicon glyphicon-trash"></span></a>
+                                                <a href="<?php echo site_url('account/edit/'.$value->id) ?>"><span class="glyphicon glyphicon-edit"></span></a>
+                                                <a href="<?php echo site_url('account/profile/'.$value->id); ?>"><span class="glyphicon glyphicon-asterisk"></span></a>
+                                            </td>
                                         </tr>
 
                                     <?php  }?>

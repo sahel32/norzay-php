@@ -7,7 +7,9 @@ class cash_model extends CI_Model{
     public $date;
     public $type;
     public $desc;
-    public $st_id;
+    public $st_parent_id;
+    public $account_id;
+    public $transaction_type;
 
 
     public function __construct()
@@ -18,8 +20,10 @@ class cash_model extends CI_Model{
         $this->cash="cash";
         $this->date="date";
         $this->type="type"; //pre or fact
-        $this->st_id="st_id";
+        $this->st_parent_id="st_parent_id";
+        $this->account_id="account_id";
         $this->desc="desc";
+        $this->transaction_type="transaction_type";
 
 
     }
@@ -32,7 +36,20 @@ class cash_model extends CI_Model{
     }
 
 
+    //get data from table by condition or array of condition
+    function sum_where($wheres){
+        //$query = $this->db->get_where('mytable', array('id' => $id), $limit, $offset);
+        $this->db->select_sum('cash');
+        $query=$this->db->get_where($this->table, $wheres);
+        $value= $query->row();
+        return $value->cash;
+    }
 
+    function get_balance($id){
+        $debit=$this->sum_where(array('account_id'=>$id,'transaction_type'=>'debit'));
+        $credit=$this->sum_where(array('account_id'=>$id,'transaction_type'=>'credit'));
+        return $balance= $debit -$credit;
+    }
     //get data from table by condition or array of condition
     function get_where($wheres){
         //$query = $this->db->get_where('mytable', array('id' => $id), $limit, $offset);

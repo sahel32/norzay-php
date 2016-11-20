@@ -24,10 +24,10 @@ class account extends CI_Controller {
 		 $this->load->template("Accounts/index", $data);
 	}
 
-	public function lists()
+	public function lists($type)
 	{
 		 $data['title']="dashboard";
-		$data['account_rows'] = $this->account_model->get();
+		$data['account_rows'] = $this->account_model->get_where(array('type'=>$type));
 		 $this->load->template("Accounts/lists", $data);
 	}
 
@@ -52,7 +52,7 @@ class account extends CI_Controller {
                 'is_natural'         =>'Please Use Just numberic charecters'
         )
             );
-
+		//$data['account_type_rows']=$data['account_rows']=$this->account_model->get();
         if($this->form_validation->run()==false){
 
         $data['signup_form']="active";
@@ -62,13 +62,14 @@ class account extends CI_Controller {
         $cantact_info=array(
             'name'=>$this->db->escape_str($this->input->post('name')),
             'lname'=>$this->db->escape_str($this->input->post('lname')),
+			'type'=>$this->db->escape_str($this->input->post('type')),
             'phone'=>$this->db->escape_str($this->input->post('phone'))
             );
 
-       $id=$this->account->insert($cantact_info);
+       $id=$this->account_model->insert($cantact_info);
 
         $data['fu_page_title']="Login Form";
-        redirect('accounts/profile/'.$id);
+        redirect('account/profile/'.$id);
       // $this->profile($id); 
         }
 
@@ -79,9 +80,12 @@ class account extends CI_Controller {
     	  $data['fu_page_title']="Login Form";
           $data['account_rows']=$this->account_model->get_where(array('id' => $id));
           $data['balance_rows']=$this->account_model->get_where(array('id' => $id ,'type' => 'account'));
-		$data['buy_rows']=$this->oil_model->get_where(array('account_id' => $id ,'buy_sell' => 'buy', 'type'=> 'pre'));
-		$data['sell_rows']=$this->oil_model->get_where(array('account_id' => $id ,'buy_sell' => 'sell', 'type'=> 'pre'));
-		$data['cash_rows']=$this->cash_model->get_where(array('id' => $id));
+		$data['buy_rows']=$this->oil_model->get_where(array('buyer_seller_id' => $id ,'buy_sell' => 'buy', 'type'=> 'pre'));
+		$data['sell_rows']=$this->oil_model->get_where(array('buyer_seller_id' => $id ,'buy_sell' => 'sell', 'type'=> 'pre'));
+		$data['cash_rows']=$this->cash_model->get_where(array('account_id' => $id));
+		$data['debit']=$this->cash_model->sum_where(array('account_id' => $id, 'transaction_type'=>'debit'));
+		$data['credit']=$this->cash_model->sum_where(array('account_id' => $id, 'transaction_type'=>'credit'));
+		$data['balance']=$this->cash_model->get_balance($id);
 
        	$this->load->template('accounts/profile',$data); 
     }

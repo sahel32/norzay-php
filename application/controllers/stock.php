@@ -83,6 +83,8 @@ class stock extends CI_Controller {
 		$data['sub_title']="stock details";
 		$data['desc']="stick descipttion";
 
+		$data['stock_transaction_rows']=$this->oil_model->get_where(array('stock_id' => $id));
+
        	$this->load->template('stock/profile',$data); 
     }
 

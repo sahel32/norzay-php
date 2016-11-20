@@ -66,19 +66,25 @@
                         <a  href="chart.html"><i><img class="sidebar-menu" src="<?php echo asset_url('img/accounts.png'); ?>" alt="accounts"/></i> حساب ها</a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="<?php echo site_url('account/lists');?>">حساب خریداران و فروشنده های تیل</a>
+                                <a href="<?php echo site_url('account/lists/seller');?>">حساب فروشنده های تیل</a>
                             </li>
                             <li>
-                                <a href="#">حساب صرافی ها</a>
+                                <a href="<?php echo site_url('account/lists/customer');?>">حساب خریدار های تیل</a>
                             </li>
                             <li>
-                                <a href="#">حساب کمیشن کار ها</a>
+                                <a href="<?php echo site_url('account/lists/exchanger');?>">حساب صرافی ها</a>
                             </li>
                             <li>
-                                <a href="#">حساب راننده ها</a>
+                                <a href="<?php echo site_url('account/lists/stuff');?>">حساب کمیشن کار ها</a>
                             </li>
                             <li>
-                                <a href="#">حساب کارکنان</a>
+                                <a href="<?php echo site_url('account/lists/driver');?>">حساب راننده ها</a>
+                            </li>
+                            <li>
+                                <a href="<?php echo site_url('account/lists/stuff');?>">حساب کارکنان</a>
+                            </li>
+                            <li>
+                                <a href="<?php echo site_url("account/add") ?>">حساب جدید</a>
                             </li>
                         </ul>
                     </li>
