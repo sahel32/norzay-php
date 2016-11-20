@@ -29,60 +29,24 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    <?php
+                                    foreach ($account_rows as $key => $value) {?>
+
                                         <tr class="odd gradeX">
-                                            <td>Trident</td>
-                                            <td>Internet Explorer 4.0</td>
-                                            <td>Win 95+</td>
+                                            <td><?php echo $value->id;?></td>
+                                            <td><?php echo $value->name;?></td>
+                                            <td><?php echo $value->lname;?></td>
                                             <td class="center">4</td>
                                             <td class="center">X</td>
                                             <td class="center">4</td>
-                                            <td class="center">X</td>
+                                            <td class="center">
+                                                <a href="#"><span class="glyphicon glyphicon-trash"></span></a>
+                                                <a href="#"><span class="glyphicon glyphicon-edit"></span></a>
+                                                <a href="<?php echo site_url('account/profile/'.$value->id); ?>"><span class="glyphicon glyphicon-asterisk"></span></a>
+                                            </td>
                                         </tr>
-                                        <tr class="even gradeC">
-                                            <td>Trident</td>
-                                            <td>Internet Explorer 5.0</td>
-                                            <td>Win 95+</td>
-                                            <td class="center">5</td>
-                                            <td class="center">C</td>
-                                            <td class="center">4</td>
-                                            <td class="center">X</td>
-                                        </tr>
-                                        <tr class="odd gradeA">
-                                            <td>Trident</td>
-                                            <td>Internet Explorer 5.5</td>
-                                            <td>Win 95+</td>
-                                            <td class="center">5.5</td>
-                                            <td class="center">A</td>
-                                            <td class="center">4</td>
-                                            <td class="center">X</td>
-                                        </tr>
-                                        <tr class="even gradeA">
-                                            <td>Trident</td>
-                                            <td>Internet Explorer 6</td>
-                                            <td>Win 98+</td>
-                                            <td class="center">6</td>
-                                            <td class="center">A</td>
-                                            <td class="center">4</td>
-                                            <td class="center">X</td>
-                                        </tr>
-                                        <tr class="odd gradeA">
-                                            <td>Trident</td>
-                                            <td>Internet Explorer 7</td>
-                                            <td>Win XP SP2+</td>
-                                            <td class="center">7</td>
-                                            <td class="center">A</td>
-                                            <td class="center">4</td>
-                                            <td class="center">X</td>
-                                        </tr>
-                                        <tr class="even gradeA">
-                                            <td>Trident</td>
-                                            <td>AOL browser</td>
-                                            <td>Win XP</td>
-                                            <td class="center">6</td>
-                                            <td class="center">A</td>
-                                            <td class="center">4</td>
-                                            <td class="center">X</td>
-                                        </tr>
+                                   <?php  }?>
+
                                     </tbody>
                                 </table>
                             </div>

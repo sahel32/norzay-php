@@ -1,5 +1,5 @@
 <?php 
-class account extends CI_Model{
+class account_model extends CI_Model{
 
   public $table;
   public $id;

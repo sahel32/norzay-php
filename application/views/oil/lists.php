@@ -35,13 +35,13 @@
                                     foreach ($oil_rows as $key => $value) {?>
                                         <tr class="odd gradeX">
                                             <td><?php echo $value->id;?></td>
-                                            <td>Internet Explorer 4.0</td>
-                                            <td>Win 95+</td>
-                                            <td class="center">4</td>
-                                            <td class="center">X</td>
-                                            <td class="center">4</td>
-                                            <td class="center">X</td>
-                                            <td class="center">4</td>
+                                            <td><?php echo $value->f_date;?></td>
+                                            <td><?php echo $value->s_date;?></td>
+                                            <td class="center"><?php echo $value->account_id;?></td>
+                                            <td class="center"><?php echo $value->name;?></td>
+                                            <td class="center"><?php echo $value->amount;?></td>
+                                            <td class="center"><?php echo $value->car_count;?></td>
+                                            <td class="center"><?php echo $value->unit_price;?></td>
                                             <td class="center">X</td>
                                         </tr>
 
