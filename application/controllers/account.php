@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Accounts extends CI_Controller {
+class account extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -27,6 +27,7 @@ class Accounts extends CI_Controller {
 	public function lists()
 	{
 		 $data['title']="dashboard";
+		$data['account_rows'] = $this->account_model->get();
 		 $this->load->template("Accounts/lists", $data);
 	}
 
@@ -76,9 +77,17 @@ class Accounts extends CI_Controller {
 
     public function profile($id=0){
     	  $data['fu_page_title']="Login Form";
-          $data['account_rows']=$this->account->get_where(array('id' => $id));
-          $data['balance_rows']=$this->account->get_where(array('id' => $id ,'type' => 'account'));
+          $data['account_rows']=$this->account_model->get_where(array('id' => $id));
+          $data['balance_rows']=$this->account_model->get_where(array('id' => $id ,'type' => 'account'));
+		$data['buy_rows']=$this->oil_model->get_where(array('account_id' => $id ,'buy_sell' => 'buy', 'type'=> 'pre'));
+		$data['sell_rows']=$this->oil_model->get_where(array('account_id' => $id ,'buy_sell' => 'sell', 'type'=> 'pre'));
+		$data['cash_rows']=$this->cash_model->get_where(array('id' => $id));
 
        	$this->load->template('accounts/profile',$data); 
     }
+	public function delete($id=0){
+
+
+		$this->load->template('accounts/profile',$data);
+	}
 }

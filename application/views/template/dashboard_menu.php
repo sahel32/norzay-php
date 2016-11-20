@@ -12,6 +12,15 @@
                     </li>
                     <li>
                         <a  href="ui.html"><i><img class="sidebar-menu" src="<?php echo asset_url('img/stock.png'); ?>" alt="stock"/></i> گدام</a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="<?php  echo site_url('stock/add');?>">گدام جدید</a>
+                            </li>
+                            <li>
+                                <a href="<?php  echo site_url('stock/lists');?>">گدام ها</a>
+                            </li>
+
+                        </ul>
                     </li>
                     <li>
                         <a  href="tab-panel.html"><i><img class="sidebar-menu" src="<?php echo asset_url('img/safebox.png'); ?>" alt="safebox"/></i> صندوق</a>
@@ -20,13 +29,16 @@
                         <a  href="chart.html"><i><img class="sidebar-menu" src="<?php echo asset_url('img/buys.png'); ?>" alt="buys"/></i> خریدها</a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="#">لیست خریدهای نهایی</a>
+                                <a href="<?php  echo site_url('oil/lists/buy/fact');?>">خریدهای</a>
                             </li>
                             <li>
-                                <a href="<?php  echo site_url('oil/lists');?>">لیست پیش خرید ها</a>
+                                <a href="<?php  echo site_url('oil/buy');?>"> خرید جدید</a>
                             </li>
                             <li>
-                                <a href="<?php  echo site_url('oil/prebuy');?>">پیش خرید جدید</a>
+                                <a href="<?php  echo site_url('oil/lists/buy/pre');?>">لیست پیش خرید ها</a>
+                            </li>
+                            <li>
+                                <a href="<?php  echo site_url('oil/pre_buy_sell/buy');?>">پیش خرید جدید</a>
                             </li>
                         </ul>
                     </li>
@@ -34,10 +46,16 @@
                         <a  href="chart.html"><i><img class="sidebar-menu" src="<?php echo asset_url('img/sells.png'); ?>" alt="sells"/></i> فروشات</a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="#">لیست فروشات نهایی</a>
+                                <a href="<?php  echo site_url('oil/lists/sell/fact');?>">فروشات</a>
                             </li>
                             <li>
-                                <a href="#">لیست پیش فروش ها</a>
+                                <a href="<?php  echo site_url('oil/sell');?>"> فروش جدید</a>
+                            </li>
+                            <li>
+                                <a href="<?php  echo site_url('oil/lists/sell/pre');?>">لیست پیش فروش ها</a>
+                            </li>
+                            <li>
+                                <a href="<?php  echo site_url('oil/pre_buy_sell/sell');?>">پیش فروش جدید</a>
                             </li>
                         </ul>
                     </li>   
@@ -48,7 +66,7 @@
                         <a  href="chart.html"><i><img class="sidebar-menu" src="<?php echo asset_url('img/accounts.png'); ?>" alt="accounts"/></i> حساب ها</a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="#">حساب خریداران و فروشنده های تیل</a>
+                                <a href="<?php echo site_url('account/lists');?>">حساب خریداران و فروشنده های تیل</a>
                             </li>
                             <li>
                                 <a href="#">حساب صرافی ها</a>

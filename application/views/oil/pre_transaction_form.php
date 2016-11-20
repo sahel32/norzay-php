@@ -76,26 +76,26 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <form role="form" action="<?php echo site_url('oil/presell'); ?>" method="post">
+                                    <form role="form" action="<?php echo site_url('oil/pre_buy_sell/'.$buy_sell); ?>" method="post" >
 
                                         <div class="col-md-3 form-group">
                                             <label><?php echo $pre_date;?></label>
 
-                                            <input type="text"  value="<?php echo set_value('f_date'); ?>"name="f_date" class="form-control"  id="datepicker"/>
+                                            <input type="text"  value="<?php echo set_value('f_date'); ?>" name="f_date" class="form-control"  id="datepicker"/>
                                             <span class="help-inline"><?php echo (form_error('f_date') ) ? form_error('f_date') : "<span class='red'>*</span>"; ?></span>
 
                                         </div>
                                         <div class="col-md-3 form-group">
                                             <label><?php echo $pre_date_2;?></label>
 
-                                            <input type="text"  value="<?php echo set_value('s_date'); ?>"name="s_date" class="form-control"  id="datepicker2"/>
+                                            <input type="text"  value="<?php echo set_value('s_date'); ?>" name="s_date" class="form-control"  id="datepicker2"/>
                                             <span class="help-inline"><?php echo (form_error('s_date') ) ? form_error('s_date') : "<span class='red'>*</span>"; ?></span>
 
                                         </div>
-                                        
+
                                         <div class="col-md-3 form-group">
                                             <label>نوع تیل</label>
-                                            <select class="form-control" namn="name">
+                                            <select class="form-control" name="oil_type">
                                                 <option value="petrol">پطرول</option>
                                                 <option value="desail">دیزل</option>
                                             </select>
@@ -114,6 +114,21 @@
                                             
                                             </select>
                                         </div>
+
+                                        <div class="col-md-3 form-group">
+                                            <label><?php echo $stock_label;?></label>
+                                            <select class="form-control" name="stock_id" <?php echo $stock_disable;?>>
+                                                <?php
+
+                                                foreach ($stock_rows as $key => $value) {?>
+
+                                                    <option value="<?php echo $value->id;?>"><?php echo $value->name;?></option>
+
+                                                <?php }?>
+
+                                            </select>
+                                        </div>
+
                                         <div class="col-md-3 form-group">
                                             <label>نوع فروش</label>
                                             <select class="form-control" id="measurement-type" name="unit" >
@@ -123,7 +138,7 @@
                                             </select>
                                         </div>
                                         <div class="col-md-3 form-group">
-                                            <label id="car-ton">مقدار</label>
+                                            <label id="car-ton">تعداد موتر</label>
 
                                             <input type="text"  value="<?php echo set_value('amount'); ?>"name="amount" class="form-control" />
                                             <span class="help-inline"><?php echo (form_error('amount') ) ? form_error('amount') : "<span class='red'>*</span>"; ?></span>
