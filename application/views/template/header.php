@@ -17,7 +17,9 @@
      <!-- GOOGLE FONTS-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 
+    <!-- JQUERY SCRIPTS -->
     <script src="<?php echo asset_url('js/jquery-1.10.2.js'); ?>" ></script>
+    <script src="<?php echo asset_url('js/jquery.min.js'); ?>" ></script>
     <!-- BOOTSTRAP SCRIPTS -->
 
     <script src="<?php echo asset_url('js/bootstrap.min.js'); ?>" ></script>
