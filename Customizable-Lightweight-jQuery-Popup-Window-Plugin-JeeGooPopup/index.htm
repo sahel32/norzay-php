@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<title>jQuery Jeegoopopup Plugin Examples</title>
+<link href="style.css" rel="Stylesheet" type="text/css" />
+<link href="jeegoopopup/skins/basic/style.css" rel="Stylesheet" type="text/css" />
+<link href="jeegoopopup/skins/black/style.css" rel="Stylesheet" type="text/css" />
+<link href="jeegoopopup/skins/blue/style.css" rel="Stylesheet" type="text/css" />
+<link href="jeegoopopup/skins/clean/style.css" rel="Stylesheet" type="text/css" />
+<link href="jeegoopopup/skins/gray/style.css" rel="Stylesheet" type="text/css" />
+<link href="jeegoopopup/skins/round/style.css" rel="Stylesheet" type="text/css" />
+
+</head>
+<body>
+<div id="outer">
+<div id="header">
+
+</div>
+<div id="content">
+<div style="width:900px; margin:0 auto">
+<div style="text-align:center">
+
+<input id="openpopup" type="button" value="Open popup" class="button" />
+</div>
+
+</div>
+</div>
+
+<!-- Big div to cause horizontal/vertical scrolling -->
+<div style="width:3000px; height:3000px"></div>
+<script type="text/javascript" src="jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="jeegoopopup/jquery.jeegoopopup.1.0.0.js"></script>
+<script type="text/javascript">
+        //<![CDATA[
+        $(function(){
+
+            // Open popup on button click.
+            $('#openpopup').click(function(){
+
+                var options = {
+                    width: 500,
+                    height: 600,
+                    center: 'center',
+                    fixed: $('#fixed').is(':checked'),
+                    skinClass: $('#skin').val(),
+                    overlay: 'overlay',
+                    overlayColor: $('#color').val(),
+                    fadeIn: parseInt($('#fadeIn').val()) || 0,
+                    draggable: $('#draggable').is(':checked'),
+                    resizable: $('#resizable').is(':checked'),
+                    scrolling: $('#scrolling').val(),
+                    parentScrolling: $('#parentScrolling').is(':checked'),
+                    title: $('#title').val()
+                };
+
+
+                
+                /*if($('#html').is(':checked'))
+                    options.html = $('#html_content').val();
+                else */
+                    options.url = 'iframe.htm';
+
+                $.jeegoopopup.open(options);
+            });
+        });
+        //]]>
+    </script>
+</body>
+</html>

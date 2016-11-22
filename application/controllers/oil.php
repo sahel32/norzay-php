@@ -163,7 +163,18 @@ class oil extends CI_Controller {
 			}
 		}
 
+public function buy(){
+	$data['account_rows'] = $this->account_model->get_where(array('type'=>'seller'));
+	$data['account_rows'] = $this->account_model->get_where(array('type'=>'driver'));
+	$data['stock_rows'] = $this->stock_model->get();
+	$this->load->template('oil/buy', $data);
+}
 
+	public function sell(){
+		$data['account_rows'] = $this->account_model->get_where(array('type'=>'driver'));
+		$data['stock_rows'] = $this->stock_model->get();
+		$this->load->template('oil/sell');
+	}
 
 
 }
