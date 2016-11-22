@@ -1,4 +1,4 @@
-<link href="<?php echo asset_url('jeegoopopup/style.css'); ?>" rel="Stylesheet" type="text/css" />
+<link href="<?php //echo asset_url('jeegoopopup/style.css'); ?>" rel="Stylesheet" type="text/css" />
 <link href="<?php echo asset_url('jeegoopopup/skins/basic/style.css'); ?>" rel="Stylesheet" type="text/css" />
 <link href="<?php echo asset_url('jeegoopopup/skins/black/style.css'); ?>" rel="Stylesheet" type="text/css" />
 <link href="<?php echo asset_url('jeegoopopup/skins/blue/style.css'); ?>" rel="Stylesheet" type="text/css" />
@@ -125,7 +125,7 @@
             /*if($('#html').is(':checked'))
              options.html = $('#html_content').val();
              else */
-            options.url = 'iframe.htm';
+            options.url = '<?php echo site_url('oil/buy/popupp'); ?>';
 
             $.jeegoopopup.open(options);
         });

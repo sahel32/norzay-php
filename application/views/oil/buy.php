@@ -38,6 +38,10 @@
                             <form role="form">
 
                                 <div class="col-md-3 form-group">
+                                    <label>کد پیش خرید</label>
+                                    <input class="form-control" name="pre-buy-id"  />
+                                </div>
+                                <div class="col-md-3 form-group">
                                     <label>تاریخ</label>
                                     <input class="form-control" name="date" id="date-picker" />
                                 </div>
@@ -79,11 +83,6 @@
                                 <div class="col-md-3 form-group">
                                     <label>تناژ (وزن سمیر)</label>
                                     <input class="form-control" name="first_amount" id="first_amount" />
-                                </div>
-                                <div class="col-md-3 form-group">
-                                    <label>فی تن</label>
-                                    <input type="text"  value="<?php echo set_value('unit_price'); ?>"name="unit_price" class="form-control"  id="car-number"/>
-                                    <span class="help-inline"><?php echo (form_error('unit_price') ) ? form_error('unit_price') : "<span class='red'>*</span>"; ?></span>
                                 </div>
                                 <div class="col-md-3 form-group">
                                     <label>وزن تخلیه</label>
