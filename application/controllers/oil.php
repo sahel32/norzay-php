@@ -55,7 +55,9 @@ class oil extends CI_Controller {
 					'pre_date_2' => 'pre buy give date',
 					'stock_label' => 'to stock',
 					'stock_disable' => 'disabled',
-					'buy_sell' => 'buy'
+					'buy_sell' => 'buy',
+					'transaction_type'=>'debit',
+					'type'=>'seller'
 				);
 			}else if($buy_sell=="sell"){
 				$data = array(
@@ -67,14 +69,16 @@ class oil extends CI_Controller {
 					'pre_date_2' => 'pre sell give date',
 					'stock_label' => 'from stock',
 					'stock_disable'=>'enabled',
-					'buy_sell' => 'sell'
+					'buy_sell' => 'sell',
+					'transaction_type'=>'credit',
+					'type'=>'customer'
 				);
 			}
 
 			//mines from stock pre
 			$data['stock_rows'] = $this->stock_model->get();
 			//$data['account_rows'] = $this->account->get_where(array('type' => 'customer'));
-			$data['account_rows'] = $this->account_model->get();
+			$data['account_rows'] = $this->account_model->get_where(array('type'=>$data['type']));
 
 
 
@@ -127,10 +131,10 @@ class oil extends CI_Controller {
 					'f_date' => $this->input->post('f_date'),
 					's_date' => $this->db->escape_str($this->input->post('s_date')),
 					'type' => "pre",
-					'account_id' => $this->db->escape_str($this->input->post('account_id')),
+					'buyer_seller_id' => $this->db->escape_str($this->input->post('account_id')),
 					'name' => $this->db->escape_str($this->input->post('oil_type')),
 					'unit_price' => $this->db->escape_str($this->input->post('unit_price')),
-					'stack_id' => $this->input->post('stock_id'),
+					'stock_id' => $this->input->post('stock_id'),
 					'car_count' => $this->db->escape_str($this->input->post('car_count')),
 					'buy_sell' => $data['buy_sell'],
 					'desc' => $this->db->escape_str($this->input->post('desc')),
@@ -143,9 +147,12 @@ class oil extends CI_Controller {
 
 
 				$cash_information = array(
-					'st_id' => $id,
 					'cash' =>$cash,
-					'type' => $this->db->escape_str($this->input->post('money_type'))
+					'type' => $this->db->escape_str($this->input->post('money_type')),
+					'transaction_type' =>$data['transaction_type'],
+					'st_parent_id'=>$id,
+					'account_id'=>$this->db->escape_str($this->input->post('account_id'))
+
 				);
 
 				$cash_id = $this->cash_model->insert($cash_information);
@@ -156,7 +163,18 @@ class oil extends CI_Controller {
 			}
 		}
 
+public function buy($template="template"){
+	$data['account_rows'] = $this->account_model->get_where(array('type'=>'seller'));
+	$data['account_rows'] = $this->account_model->get_where(array('type'=>'driver'));
+	$data['stock_rows'] = $this->stock_model->get();
+	$this->load->$template('oil/buy', $data);
+}
 
+	public function sell(){
+		$data['account_rows'] = $this->account_model->get_where(array('type'=>'driver'));
+		$data['stock_rows'] = $this->stock_model->get();
+		$this->load->template('oil/sell');
+	}
 
 
 }

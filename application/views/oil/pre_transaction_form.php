@@ -21,42 +21,6 @@
         });
     </script>
 
-    <style type="text/css">
-        *
-        {
-            font-family: Tahoma !important;
-            padding:0;
-            margin:0;
-            border:0;
-        }
-        body
-        {
-            background-color: #0972a5;
-            direction: rtl;
-           // font-size: 80%;
-        }
-        p
-        {
-            padding: 25px;
-            margin: 25px auto;
-            width: 450px;
-        }
-        p.ui-state-hover
-        {
-            font-weight: normal;
-        }
-        p.ui-widget-header
-        {
-            text-align: center;
-            font-weight: normal;
-        }
-        strong.ui-state-error
-        {
-            display: block;
-            padding: 3px;
-            text-align: center;
-        }
-    </style>
  <div class="row">
                     <div class="col-md-12">
                      <h2><?php  echo $main_title; ?></h2>   

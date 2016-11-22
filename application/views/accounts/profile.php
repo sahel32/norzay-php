@@ -30,18 +30,21 @@
                             </thead>
                             <tbody>
                             <?php
+
                             foreach ($account_rows as $key => $value) {?>
                             <tr class="odd gradeX">
                                 <td><?php echo $value->id;?></td>
+                                <td><?php echo $value->name;?></td>
                                 <td><?php echo $value->lname;?></td>
                                 <td><?php echo $value->phone;?></td>
-                                <td class="center">4</td>
-                                <td class="center">X</td>
-                                <td class="center">X</td>
-                                <td class="center">4</td>
+                                <td class="center"><?php echo $debit;?></td>
+                                <td class="center"><?php echo $credit;?></td>
+                                <td class="center"><?php echo $balance;?></td>
+                               
                                 <td class="center">
-                                    <a href="#"><span class="glyphicon glyphicon-trash"></span></a>
-                                    <a href="#"><span class="glyphicon glyphicon-edit"></span></a>
+                                    <a href="<?php echo site_url('account/delete/'.$value->id) ?>"><span class="glyphicon glyphicon-trash"></span></a>
+                                    <a href="<?php echo site_url('account/edit/'.$value->id) ?>"><span class="glyphicon glyphicon-edit"></span></a>
+                                    <a href="<?php echo site_url('account/profile/'.$value->id); ?>"><span class="glyphicon glyphicon-asterisk"></span></a>
                                 </td>
                             </tr>
                             <?php }?>
@@ -112,16 +115,16 @@
                                 ?>
                             <tr class="odd gradeX">
                                 <td><?php  echo $cash_value->id;?></td>
-                                <td>Internet Explorer 4.0</td>
-                                <td>Win 95+</td>
-                                <td class="center">4</td>
+                                <td><?php  echo $cash_value->date;?></td>
+                                <td><?php  echo $cash_value->cash;?></td>
+                                <td class="center"><?php  echo $cash_value->type;?></td>
+                                <td class="center"><?php  echo $cash_value->transaction_type;?></td>
                                 <td class="center">X</td>
-                                <td class="center">X</td>
-                                <td class="center">4</td>
+                                <td class="center"><?php  echo $cash_value->desc;?></td>
                                 <td class="center">
-                                    <a href="#"><span class="glyphicon glyphicon-trash"></span></a>
-                                    <a href="#"><span class="glyphicon glyphicon-edit"></span></a>
-                                    <a href="blank.html"><span class="glyphicon glyphicon-asterisk"></span></a>
+                                    <a href="<?php echo site_url('account/delete/'.$value->id) ?>"><span class="glyphicon glyphicon-trash"></span></a>
+                                    <a href="<?php echo site_url('account/edit/'.$value->id) ?>"><span class="glyphicon glyphicon-edit"></span></a>
+                                    <a href="<?php echo site_url('account/profile/'.$value->id); ?>"><span class="glyphicon glyphicon-asterisk"></span></a>
                                 </td>
                             </tr>
                             <?php  }?>
@@ -171,13 +174,13 @@
                                         <td>Trident</td>
                                         <td><?php echo $value->amount;?></td>
                                         <td><?php echo $value->name;?></td>
-                                        <td><?php echo $value->account_id;?></td>
+                                        <td><?php echo $value->buyer_seller_id;?></td>
                                         <td class="center"><?php echo $value->unit_price;?></td>
                                         <td class="center">4</td>
                                         <td class="center">
-                                            <a href="#"><span class="glyphicon glyphicon-trash"></span></a>
-                                            <a href="#"><span class="glyphicon glyphicon-edit"></span></a>
-                                            <a href="#moreinfo" data-toggle="tab"><span class="glyphicon glyphicon-asterisk"></span></a>
+                                            <a href="<?php echo site_url('account/delete/'.$value->id) ?>"><span class="glyphicon glyphicon-trash"></span></a>
+                                            <a href="<?php echo site_url('account/edit/'.$value->id) ?>"><span class="glyphicon glyphicon-edit"></span></a>
+                                            <a href="<?php echo site_url('account/profile/'.$value->id); ?>"><span class="glyphicon glyphicon-asterisk"></span></a>
                                         </td>
                                     </tr>
                                     <?php }  ?>
@@ -305,7 +308,6 @@
                                         <th>مقدار تیل (تناژ)</th>
                                         <th>نوع تیل</th>
                                         <th>فی تن</th>
-
                                         <th>موارد بیشتر</th>
                                     </tr>
                                     </thead>

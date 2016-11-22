@@ -17,7 +17,7 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <form role="form" action="<?php echo site_url('accounts/add'); ?>" method="post">
+                                    <form role="form" action="<?php echo site_url('account/add'); ?>" method="post">
 
                                         <div class="col-md-3 form-group">
 
@@ -46,7 +46,18 @@
                                             <span class="help-inline"><?php echo (form_error('phone') ) ? form_error('phone') :""; ?></span>
                                 
                                         </div>
-                                        
+
+                                        <div class="col-md-3 form-group">
+                                            <label>type</label>
+                                            <select class="form-control" name="type">
+
+                                                <option>seller</option>
+                                                <option>costumer</option>
+                                                <option>driver</option>
+                                                <option>stuf</option>
+                                            </select>
+                                        </div>
+
                                         <div class="col-md-3 gaps">
                                         <button type="submit" class="btn btn-default pull-left">تائید</button>
                                         <button type="reset" class="btn btn-primary pull-left">تنظیم مجدد</button>

@@ -12,7 +12,16 @@
                         <!-- Advanced Tables -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
+
+
                              لیست راننده ها
+                            <div class="btn-group pull-left">
+                                <select id="filter2">
+                                    <option value="debit">debit</option>
+                                    <option value="credit">credit</option>
+                                </select>
+                                <i class="fa fa-comments fa-filter" aria-hidden="true"> فیلتر </i>
+                            </div>
                         </div>
                         <div class="panel-body">
                             <div class="table-responsive">
@@ -67,6 +76,12 @@
             <script>
             $(document).ready(function () {
                 $('#dataTables-example').dataTable();
+            });
+
+            $('#list').change( function() {
+                var filtervalue = this.value;
+                var table2= $('#dataTables-example2').dataTable();
+                table2.fnFilter(filtervalue );
             });
     </script>
       <!-- CUSTOM SCRIPTS -->

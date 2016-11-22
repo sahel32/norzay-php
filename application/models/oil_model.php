@@ -11,7 +11,7 @@ class oil_model extends CI_Model{
     public $desc;
     public $amount;
     public $unit_price;
-    public $transit;
+    
     public $buy_sell;
     public $parent_id;
     public $unit;
@@ -26,7 +26,7 @@ class oil_model extends CI_Model{
         $this->type="type"; //pre or fact
         $this->f_date="f_date";
         $this->desc="desc";
-        $this->transit="transit";
+
         $this->provnice="province";
         $this->name="name";
         $this->s_date="s_date";
