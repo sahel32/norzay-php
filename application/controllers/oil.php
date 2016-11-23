@@ -29,6 +29,8 @@ class oil extends CI_Controller {
 	public function lists($buy_sell="sell" ,$type="fact")
 	{
 
+
+
 		$data=array(
 			'main_title'=>"pre sell",
 			'sub_title'=>"pre sell sub title",
@@ -38,6 +40,7 @@ class oil extends CI_Controller {
 			'pre_date_2'=>'pre sell give date',
 			'stock_label'=>'from stock'
 		);
+
 		$data['oil_rows']=$this->oil_model->get_where(array('type' => $type, 'buy_sell'=>$buy_sell));
 		$this->load->template("oil/lists", $data);
 	}
@@ -54,7 +57,7 @@ class oil extends CI_Controller {
 					'pre_date' => 'pre buy date',
 					'pre_date_2' => 'pre buy give date',
 					'stock_label' => 'to stock',
-					'stock_disable' => 'disabled',
+					'stock_disable' => 'enabled',
 					'buy_sell' => 'buy',
 					'transaction_type'=>'debit',
 					'type'=>'seller'
@@ -64,7 +67,7 @@ class oil extends CI_Controller {
 					'main_title' => "pre sell",
 					'sub_title' => "pre sell sub title",
 					'desc' => "pre sell desc",
-					'account_label' => 'sell from',
+					'account_label' => 'sell for',
 					'pre_date' => 'pre sell date',
 					'pre_date_2' => 'pre sell give date',
 					'stock_label' => 'from stock',
@@ -76,11 +79,11 @@ class oil extends CI_Controller {
 			}
 
 			//mines from stock pre
-			$data['stock_rows'] = $this->stock_model->get();
+			$data['stock_rows'] = $this->stock_model->get_where(array('type'=>'pre'));
 			//$data['account_rows'] = $this->account->get_where(array('type' => 'customer'));
 			$data['account_rows'] = $this->account_model->get_where(array('type'=>$data['type']));
 
-
+			$data['balance_rows'] = $this->balance_model->get_where(array('type'=>'pre'));
 
 
 			$this->form_validation->set_rules('f_date', null, 'required',
@@ -150,7 +153,7 @@ class oil extends CI_Controller {
 					'cash' =>$cash,
 					'type' => $this->db->escape_str($this->input->post('money_type')),
 					'transaction_type' =>$data['transaction_type'],
-					'st_id'=>$id,
+					'table_id'=>$id,
 					'account_id'=>$this->db->escape_str($this->input->post('account_id')),
 					'table_name'=>'stock_transaction'
 
@@ -164,6 +167,9 @@ class oil extends CI_Controller {
 			}
 		}
 
+	public function pre_buy_sell_balance(){
+		$this->oil_model->get_balance(array('type'=>'pre', 'buy_sell'=>'buy'));
+	}
 public function buy($template="template" , $popupp_pre_buy_sell_id=""){
 
 	$data = array(
@@ -242,7 +248,8 @@ public function buy($template="template" , $popupp_pre_buy_sell_id=""){
 
 		$data['seller_rows'] = $this->account_model->get_where(array('type'=>'seller'));
 		$data['driver_rows'] = $this->account_model->get_where(array('type'=>'driver'));
-		$data['stock_rows'] = $this->stock_model->get();
+		$data['stock_rows'] = $this->stock_model->get_where(array('type'=>'fact'));
+
 		$this->load->$template('oil/buy', $data);
 	} else {
 		$fact_transaction = array(
@@ -259,8 +266,26 @@ public function buy($template="template" , $popupp_pre_buy_sell_id=""){
 			'buy_sell' =>  'buy',
 		);
 
-
 		$id = $this->oil_model->insert($fact_transaction);
+
+		$pre_transaction=$this->oil_model->get_where(array('id'=>$this->input->post('pre_buy_sell_id')));
+		foreach ($pre_transaction as $key => $value){
+
+			$cash=$this->db->escape_str($this->input->post('second_amount')) * $value->unit_price;
+			$cash_information = array(
+				'cash' =>  $cash,
+				'type' => 'usa',
+				'transaction_type' =>'debit',
+				'table_id'=>$id,
+				'account_id'=>$this->db->escape_str($this->input->post('account_id')),
+				'table_name'=>'stock_transaction'
+
+			);
+
+			$this->cash_model->insert($cash_information);
+		}
+
+
 
 		$extra_transaction = array(
 			'st_id' => $id,
@@ -281,6 +306,7 @@ public function buy($template="template" , $popupp_pre_buy_sell_id=""){
 
 		);
 
+		$this->cash_model->insert($extra_cash_information);
 
 		$this->load->$template('oil/buy', $data);
 	}

@@ -90,7 +90,6 @@ class driver_model extends CI_Model{
     }
 
     function last_row(){
-
         $this->db->select('*');
         $this->db->from($this->table);
         $this->db->limit(1);

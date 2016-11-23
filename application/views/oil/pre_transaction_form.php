@@ -69,7 +69,7 @@
                                             <label><?php echo $account_label;?></label>
                                             <select class="form-control" name="account_id">
                                             <?php 
-									  	
+
 									  	foreach ($account_rows as $key => $value) {?>
 											
 											<option value="<?php echo $value->id;?>"><?php echo $value->name;?></option>
@@ -86,7 +86,11 @@
 
                                                 foreach ($stock_rows as $key => $value) {?>
 
-                                                    <option value="<?php echo $value->id;?>"><?php echo $value->name;?></option>
+                                                    <option value="<?php echo $value->id;?>">
+                                                        <?php echo $value->name." - ";
+                                                        $this->load->model('oil_model');
+                                                        echo $this->oil_model->get_balance(array('stock_id'=>$value->id,'type'=>'pre'))." -Ton";
+                                                        ?></option>
 
                                                 <?php }?>
 
@@ -160,7 +164,7 @@
              		var value=$(this).val()
                     if(value=="ton"){
                         $("#car-ton").text('مقدار');
-                        $("#car-count").prop('disabled', true);
+                        $("#car-count").prop('disabled', false);
                     }else{
                         $("#car-ton").text('تعداد موتر')
                         $("#car-count").prop('disabled', false);

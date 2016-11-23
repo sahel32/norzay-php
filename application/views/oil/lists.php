@@ -56,9 +56,17 @@
                                             <td><?php echo $value->id;?></td>
                                             <td><?php echo $value->f_date;?></td>
                                             <td><?php echo $value->s_date;?></td>
-                                            <td class="center"><?php echo $value->buyer_seller_id;?></td>
+                                            <td class="center"><?php
+                                                $this->load->model('account_model');
+                                                echo $this->account_model->get_name(array('id'=>$value->buyer_seller_id));
+                                                ?></td>
                                             <td class="center"><?php echo $value->name;?></td>
-                                            <td class="center"><?php echo $value->amount;?></td>
+                                            <td class="center">
+                                                <?php
+                                                $this->load->model('oil_model');
+                                                echo $this->oil_model->get_remain_oil($value->id);
+                                               ?>
+                                            </td>
                                             <td class="center"><?php echo $value->car_count;?></td>
                                             <td class="center"><?php echo $value->unit_price;?></td>
                                             <td class="center">

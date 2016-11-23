@@ -37,9 +37,9 @@
                                 <td><?php echo $value->name;?></td>
                                 <td><?php echo $value->lname;?></td>
                                 <td><?php echo $value->phone;?></td>
-                                <td class="center"><?php echo $debit;?></td>
-                                <td class="center"><?php echo $credit;?></td>
-                                <td class="center"><?php echo $balance;?></td>
+                                <td class="center"><?php echo $value->debit;?></td>
+                                <td class="center"><?php echo $value->credit;?></td>
+                                <td class="center"><?php echo $value->balance;?></td>
                                
                                 <td class="center">
                                     <a href="<?php echo site_url('account/delete/'.$value->id) ?>"><span class="glyphicon glyphicon-trash"></span></a>

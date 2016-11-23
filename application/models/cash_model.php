@@ -35,7 +35,38 @@ class cash_model extends CI_Model{
         return $query->result();
     }
 
+    function get_balance_credit_debit($id){
+        $query=$this->db->query("
+SELECT
+  (debit - credit) AS balance,
+  credit,
+  debit,
+  name,
+  lname,
+  phone,
+  account.id
+FROM
+  (SELECT
+    SUM(cash) AS debit
+  FROM
+    cash
+  WHERE transaction_type = 'debit'
+    AND account_ID = ?) AS result,
+  (SELECT
+    SUM(cash) AS credit
+  FROM
+    cash
+  WHERE transaction_type = 'credit'
+    AND account_ID = ?) AS result1,
+  account,
+  cash
+WHERE cash.`account_id` = account.id
+  AND account.`id` = ?
+GROUP BY account.`id`
+        ", array($id,$id,$id));
+        return  $query->result();
 
+    }
     //get data from table by condition or array of condition
     function sum_where($wheres){
         //$query = $this->db->get_where('mytable', array('id' => $id), $limit, $offset);

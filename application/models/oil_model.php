@@ -11,10 +11,10 @@ class oil_model extends CI_Model{
     public $desc;
     public $amount;
     public $unit_price;
-    
     public $buy_sell;
     public $parent_id;
     public $unit;
+    public $stock_id;
 
     public function __construct()
     {
@@ -26,14 +26,15 @@ class oil_model extends CI_Model{
         $this->type="type"; //pre or fact
         $this->f_date="f_date";
         $this->desc="desc";
-
         $this->provnice="province";
         $this->name="name";
         $this->s_date="s_date";
         $this->buy_sell="buy_sell"; //buy or sell
         $this->parent_id="parent_id";
         $this->unit="unit";
+        $this->stock_id="stock_id";
 
+       // $this->get_balance(array('stock_id'=>$this->stock_id));
     }
 
     //get all rows of table
@@ -43,8 +44,38 @@ class oil_model extends CI_Model{
         return $query->result();
     }
 
+    function get_remain_oil($id){
+        $query=$this->db->query('
+        SELECT (buy-sell) AS remain FROM (SELECT SUM(amount) AS sell FROM stock_transaction  WHERE parent_id=?
+          ) AS result, (SELECT amount AS buy FROM stock_transaction WHERE id=?) AS result1
+        ', array($id,$id));
+        $value =$query->row();
+        return $value->remain; 
+
+    }
+    function get_balance($wheres){
+        $this->load->model('balance_model');
+        $CI =& get_instance();
+
+        $this->db->select_sum($this->amount);
+        $query=$this->db->get_where($this->table, array(''));
+        $value= $query->row();
+
+        $this->db->select_sum($this->amount);
+        $query=$this->db->get_where($this->table, $wheres);
+        $value= $query->row();
+
+        $CI->balance_model->insert(array(
+            'type'=>'stock',
+            'balance_type'=>'ton',
+            'balance'=>$value->amount,
+            'balanced_id'=>$wheres['stock_id']
+        ));
+        return $value->amount;
 
 
+
+    }
     //get data from table by condition or array of condition
     function get_where($wheres){
         //$query = $this->db->get_where('mytable', array('id' => $id), $limit, $offset);

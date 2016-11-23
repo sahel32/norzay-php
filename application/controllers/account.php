@@ -78,14 +78,14 @@ class account extends CI_Controller {
 
     public function profile($id=0){
     	  $data['fu_page_title']="Login Form";
-          $data['account_rows']=$this->account_model->get_where(array('id' => $id));
+          $data['account_rows']=$this->cash_model->get_balance_credit_debit($id);
           $data['balance_rows']=$this->account_model->get_where(array('id' => $id ,'type' => 'account'));
 		$data['buy_rows']=$this->oil_model->get_where(array('buyer_seller_id' => $id ,'buy_sell' => 'buy', 'type'=> 'pre'));
 		$data['sell_rows']=$this->oil_model->get_where(array('buyer_seller_id' => $id ,'buy_sell' => 'sell', 'type'=> 'pre'));
 		$data['cash_rows']=$this->cash_model->get_where(array('account_id' => $id));
-		$data['debit']=$this->cash_model->sum_where(array('account_id' => $id, 'transaction_type'=>'debit'));
-		$data['credit']=$this->cash_model->sum_where(array('account_id' => $id, 'transaction_type'=>'credit'));
-		$data['balance']=$this->cash_model->get_balance($id);
+		//$data['debit']=$this->cash_model->sum_where(array('account_id' => $id, 'transaction_type'=>'debit'));
+		//$data['credit']=$this->cash_model->sum_where(array('account_id' => $id, 'transaction_type'=>'credit'));
+		//$data['balance']=$this->cash_model->get_balance($id);
 
        	$this->load->template('accounts/profile',$data); 
     }

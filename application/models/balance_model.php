@@ -1,5 +1,5 @@
 <?php 
-class balance extends CI_Model{
+class balance_model extends CI_Model{
 
   public $table;
   public $id;
@@ -16,12 +16,13 @@ class balance extends CI_Model{
      $this->id="id";
      $this->balance="balance";
      $this->balance_type="balance_type";
-     $this->foreign_id="balance_id";
+     $this->foreign_id="balanced_id";
      $this->type="type";
      $this->date="date";
      $this->desc="desc";
 
     }
+
 
     //get all rows of table
     function get(){
