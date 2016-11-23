@@ -1,38 +1,22 @@
 <?php
-class oil_model extends CI_Model{
+class driver_model extends CI_Model{
 
     public $table;
     public $id;
-    public $name;
-    public $province;
-    public $type;
-    public $f_date;
-    public $s_date;
-    public $desc;
+    public $st_id;
     public $amount;
-    public $unit_price;
-    
-    public $buy_sell;
-    public $parent_id;
-    public $unit;
+    public $transit;
+    public $driver_id;
 
     public function __construct()
     {
         parent::__construct();
-        $this->table="stock_transaction";
+        $this->table="driver_transaction";
         $this->id="id";
+        $this->st_id="st_id";
         $this->amount="amount";
-        $this->unit_price="unit_price";
-        $this->type="type"; //pre or fact
-        $this->f_date="f_date";
-        $this->desc="desc";
-
-        $this->provnice="province";
-        $this->name="name";
-        $this->s_date="s_date";
-        $this->buy_sell="buy_sell"; //buy or sell
-        $this->parent_id="parent_id";
-        $this->unit="unit";
+        $this->transit="transit";
+        $this->driver_id="driver_id";
 
     }
 
@@ -70,7 +54,7 @@ class oil_model extends CI_Model{
         return $str;
     }
 
-    function check_exist($wheres){
+    function check_email_exist($wheres){
         //$query = $this->db->get_where('mytable', array('id' => $id), $limit, $offset);
         $query=$this->db->get_where($this->table, $wheres);
         $result=$query->num_rows();

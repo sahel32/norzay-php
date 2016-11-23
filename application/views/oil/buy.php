@@ -35,15 +35,21 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <form role="form">
+                            <form role="form" action="<?php site_url('oil/buy'); ?>" method="post">
 
                                 <div class="col-md-3 form-group">
                                     <label>کد پیش خرید</label>
-                                    <input class="form-control" name="pre-buy-id"  />
+                                    <?php if ($popupp_pre_buy_sell_id==""){ ?>
+                                    <input type="text"  value="<?php echo set_value('pre_buy_sell_id'); ?>" name="pre_buy_sell_id" class="form-control"  />
+                                    <span class="help-inline"><?php echo (form_error('pre_buy_sell_id') ) ? form_error('pre_buy_sell_id') : "<span class='red'>*</span>"; ?></span>
+                                    <?php  }else{
+                                        echo $popupp_pre_buy_sell_id;
+                                        echo "<input type='hidden'  value='$popupp_pre_buy_sell_id' name='pre_buy_sell_id' >";
+                                    }?>
                                 </div>
                                 <div class="col-md-3 form-group">
                                     <label>تاریخ</label>
-                                    <input class="form-control" name="date" id="date-picker" />
+                                    <input class="form-control" name="received_date" id="date-picker" />
                                 </div>
 
                                 <div class="col-md-3 form-group">
@@ -51,9 +57,9 @@
                                     <select class="form-control" name="account_id">
                                         <?php
 
-                                        foreach ($account_rows as $key => $a_value) {?>
+                                        foreach ($seller_rows as $key => $s_value) {?>
 
-                                            <option value="<?php echo $a_value->id;?>"><?php echo $a_value->name;?></option>
+                                            <option value="<?php echo $s_value->id;?>"><?php echo $s_value->name;?></option>
 
                                         <?php }?>
 
@@ -61,7 +67,7 @@
                                 </div>
                                 <div class="col-md-3 form-group">
                                     <label>درایور (راننده)</label>
-                                    <select class="form-control" name="account_id">
+                                    <select class="form-control" name="driver_id">
                                         <?php
 
                                         foreach ($driver_rows as $key => $d_value) {?>
@@ -74,31 +80,38 @@
                                 </div>
                                 <div class="col-md-3 form-group">
                                     <label>ترانزیت (نمبر موتر)</label>
-                                    <input class="form-control" />
+                                    <input type="text"  value="<?php echo set_value('transit'); ?>" name="transit" class="form-control"  />
+                                    <span class="help-inline"><?php echo (form_error('transit') ) ? form_error('transit') : "<span class='red'>*</span>"; ?></span>
+
                                 </div>
                                 <div class="col-md-3 form-group">
                                     <label>سمیر (آیدی بارنامه)</label>
-                                    <input class="form-control" />
+                                    <input type="text"  value="<?php echo set_value('barcode'); ?>" name="barcode" class="form-control"  />
+                                    <span class="help-inline"><?php echo (form_error('barcode') ) ? form_error('barcode') : "<span class='red'>*</span>"; ?></span>
                                 </div>
                                 <div class="col-md-3 form-group">
                                     <label>تناژ (وزن سمیر)</label>
-                                    <input class="form-control" name="first_amount" id="first_amount" />
+                                    <input type="text"  value="<?php echo set_value('first_amount'); ?>" name="first_amount" class="form-control" id="first_amount"  />
+                                    <span class="help-inline"><?php echo (form_error('first_amount') ) ? form_error('first_amount') : "<span class='red'>*</span>"; ?></span>
                                 </div>
                                 <div class="col-md-3 form-group">
                                     <label>وزن تخلیه</label>
-                                    <input class="form-control" name="second_amount" id="second_amount" />
+                                    <input type="text"  value="<?php echo set_value('second_amount'); ?>" name="second_amount" class="form-control" id="second_amount"  />
+                                    <span class="help-inline"><?php echo (form_error('second_amount') ) ? form_error('second_amount') : "<span class='red'>*</span>"; ?></span>
                                 </div>
                                 <div class="col-md-3 form-group">
                                     <label>اضافه بار</label>
-                                    <input class="form-control"  name="extra_amount" id="extra_amount"/>
+                                    <input type="text"  value="<?php echo set_value('extra_amount'); ?>" name="extra_amount" class="form-control" id="extra_amount"  />
+                                    <span class="help-inline"><?php echo (form_error('extra_amount') ) ? form_error('extra_amount') : "<span class='red'>*</span>"; ?></span>
                                 </div>
                                 <div class="col-md-3 form-group">
                                     <label>مبلغ اضافه بار</label>
-                                    <input class="form-control" />
+                                    <input type="text"  value="<?php echo set_value('extra_money'); ?>" name="extra_money" class="form-control" id="extra_money"  />
+                                    <span class="help-inline"><?php echo (form_error('extra_money') ) ? form_error('extra_money') : "<span class='red'>*</span>"; ?></span>
                                 </div>
                                 <div class="col-md-3 form-group">
                                     <label>ناحیه بارگیری</label>
-                                    <input class="form-control" />
+                                    <input class="form-control" name="source" />
                                 </div>
                                 <div class="col-md-3 form-group">
                                     <label>ناحیه تخلیه</label>
@@ -115,7 +128,7 @@
                                 </div>
                                 <div class="col-md-6 form-group">
                                     <label>شرح و تفصیلات</label>
-                                    <textarea class="form-control" rows="1" data-toggle="tooltip" title="نکات بیشتر را میتوانید در این قسمت ذکر کنید." data-placement="top"></textarea>
+                                    <textarea name="desc" class="form-control" rows="1" data-toggle="tooltip" title="نکات بیشتر را میتوانید در این قسمت ذکر کنید." data-placement="top"></textarea>
                                 </div>
                                 <div class="col-md-3 gaps">
                                     <button type="submit" class="btn btn-default pull-left">تائید</button>
