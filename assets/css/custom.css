@@ -133,35 +133,7 @@ font-weight: 300;
 text-align: center;
 }
  .main-temp-back .text-temp {
-font-size: 25px;
-padding-top: 10px;
-}
-.stock{
-    background: #333;
-}
-.safebox{
-    background: #3c763d;
-}
-.reports{
-    background: #AF0000;
-}
-.backup{
-    background: #0078D7;
-}
-.buys{
-    background: #db0630;
-}
-.sells{
-    background: #4d3fb5;
-}
-.accounts{
-    background: #8702A8;
-}
-.debits{
-    background: #b94a00;
-}
-.credits{
-    background: #009688;
+font-size: 40px;
 }
 .back-dash {
     padding:20px;
@@ -431,12 +403,4 @@ label{
 }
 .entry{
     padding-right: 0;
-}
-.custom-select{
-    margin-top: -7px;
-}
-
-.sidebar-menu{
-    width: 35px;
-    height: 35px;
 }
