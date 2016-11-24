@@ -13,7 +13,6 @@
                         <h5>در جدول پایین شما میتوانید لیست پیش فروش های تیل را مشاهده کنید.</h5>
 
 
-                                    <input id="openpopup" type="button" value="Open popup" class="button" />
 
                     </div>
                 </div>
@@ -57,15 +56,24 @@
                                             <td><?php echo $value->id;?></td>
                                             <td><?php echo $value->f_date;?></td>
                                             <td><?php echo $value->s_date;?></td>
-                                            <td class="center"><?php echo $value->buyer_seller_id;?></td>
+                                            <td class="center"><?php
+                                                $this->load->model('account_model');
+                                                echo $this->account_model->get_name(array('id'=>$value->buyer_seller_id));
+                                                ?></td>
                                             <td class="center"><?php echo $value->name;?></td>
-                                            <td class="center"><?php echo $value->amount;?></td>
+                                            <td class="center">
+                                                <?php
+                                                $this->load->model('oil_model');
+                                                echo $this->oil_model->get_remain_oil($value->id);
+                                               ?>
+                                            </td>
                                             <td class="center"><?php echo $value->car_count;?></td>
                                             <td class="center"><?php echo $value->unit_price;?></td>
                                             <td class="center">
                                                 <a href="<?php echo site_url('account/delete/'.$value->id) ?>"><span class="glyphicon glyphicon-trash"></span></a>
                                                 <a href="<?php echo site_url('account/edit/'.$value->id) ?>"><span class="glyphicon glyphicon-edit"></span></a>
                                                 <a href="<?php echo site_url('account/profile/'.$value->id); ?>"><span class="glyphicon glyphicon-asterisk"></span></a>
+                                                <span id="openpopup" onclick="popupp(<?php echo $value->id ?>);" class="button">set to fact </span>
                                             </td>
                                         </tr>
 
@@ -99,11 +107,11 @@
 <script type="text/javascript" src="<?php echo asset_url('jeegoopopup/jquery.jeegoopopup.1.0.0.js'); ?>"></script>
 <script type="text/javascript">
     //<![CDATA[
-    $(function(){
+    function popupp(id){
 
         // Open popup on button click.
-        $('#openpopup').click(function(){
-
+      //  $('#openpopup').click(function(){
+//alert(id)
             var options = {
                 width: 500,
                 height: 600,
@@ -125,10 +133,10 @@
             /*if($('#html').is(':checked'))
              options.html = $('#html_content').val();
              else */
-            options.url = '<?php echo site_url('oil/buy/popupp'); ?>';
+            options.url = '<?php echo site_url('oil/buy/popupp'); ?>/'+id;
 
             $.jeegoopopup.open(options);
-        });
-    });
+     //   });
+    }
     //]]>
 </script>

@@ -32,21 +32,21 @@
                             <?php
 
                             foreach ($account_rows as $key => $value) {?>
-                            <tr class="odd gradeX">
-                                <td><?php echo $value->id;?></td>
-                                <td><?php echo $value->name;?></td>
-                                <td><?php echo $value->lname;?></td>
-                                <td><?php echo $value->phone;?></td>
-                                <td class="center"><?php echo $value->debit;?></td>
-                                <td class="center"><?php echo $value->credit;?></td>
-                                <td class="center"><?php echo $value->balance;?></td>
-                               
-                                <td class="center">
-                                    <a href="<?php echo site_url('account/delete/'.$value->id) ?>"><span class="glyphicon glyphicon-trash"></span></a>
-                                    <a href="<?php echo site_url('account/edit/'.$value->id) ?>"><span class="glyphicon glyphicon-edit"></span></a>
-                                    <a href="<?php echo site_url('account/profile/'.$value->id); ?>"><span class="glyphicon glyphicon-asterisk"></span></a>
-                                </td>
-                            </tr>
+                                <tr class="odd gradeX">
+                                    <td><?php echo $value->id;?></td>
+                                    <td><?php echo $value->name;?></td>
+                                    <td><?php echo $value->lname;?></td>
+                                    <td><?php echo $value->phone;?></td>
+                                    <td class="center"><?php echo $debit;?></td>
+                                    <td class="center"><?php echo $credit;?></td>
+                                    <td class="center"><?php echo $balance;?></td>
+
+                                    <td class="center">
+                                        <a href="<?php echo site_url('account/delete/'.$value->id) ?>"><span class="glyphicon glyphicon-trash"></span></a>
+                                        <a href="<?php echo site_url('account/edit/'.$value->id) ?>"><span class="glyphicon glyphicon-edit"></span></a>
+                                        <a href="<?php echo site_url('account/profile/'.$value->id); ?>"><span class="glyphicon glyphicon-asterisk"></span></a>
+                                    </td>
+                                </tr>
                             <?php }?>
                             </tbody>
                         </table>
@@ -64,9 +64,9 @@
                     اطلاعات مالی
                     <div class="btn-group pull-left">
 
-                       <!-- <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-chevron-down"></i>
-                        </button>-->
+                        <!-- <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                             <i class="fa fa-chevron-down"></i>
+                         </button>-->
                         <!--<ul class="dropdown-menu slidedown">
                             <li>
                                 <a href="#">
@@ -113,20 +113,20 @@
                             <?php
                             foreach ($cash_rows as $key => $cash_value) {
                                 ?>
-                            <tr class="odd gradeX">
-                                <td><?php  echo $cash_value->id;?></td>
-                                <td><?php  echo $cash_value->date;?></td>
-                                <td><?php  echo $cash_value->cash;?></td>
-                                <td class="center"><?php  echo $cash_value->type;?></td>
-                                <td class="center"><?php  echo $cash_value->transaction_type;?></td>
-                                <td class="center">X</td>
-                                <td class="center"><?php  echo $cash_value->desc;?></td>
-                                <td class="center">
-                                    <a href="<?php echo site_url('account/delete/'.$value->id) ?>"><span class="glyphicon glyphicon-trash"></span></a>
-                                    <a href="<?php echo site_url('account/edit/'.$value->id) ?>"><span class="glyphicon glyphicon-edit"></span></a>
-                                    <a href="<?php echo site_url('account/profile/'.$value->id); ?>"><span class="glyphicon glyphicon-asterisk"></span></a>
-                                </td>
-                            </tr>
+                                <tr class="odd gradeX">
+                                    <td><?php  echo $cash_value->id;?></td>
+                                    <td><?php  echo $cash_value->date;?></td>
+                                    <td><?php  echo $cash_value->cash;?></td>
+                                    <td class="center"><?php  echo $cash_value->type;?></td>
+                                    <td class="center"><?php  echo $cash_value->transaction_type;?></td>
+                                    <td class="center">X</td>
+                                    <td class="center"><?php  echo $cash_value->desc;?></td>
+                                    <td class="center">
+                                        <a href="<?php echo site_url('account/delete/'.$value->id) ?>"><span class="glyphicon glyphicon-trash"></span></a>
+                                        <a href="<?php echo site_url('account/edit/'.$value->id) ?>"><span class="glyphicon glyphicon-edit"></span></a>
+                                        <a href="<?php echo site_url('account/profile/'.$value->id); ?>"><span class="glyphicon glyphicon-asterisk"></span></a>
+                                    </td>
+                                </tr>
                             <?php  }?>
                             </tbody>
                         </table>
@@ -170,19 +170,19 @@
                                     <tbody>
                                     <?php
                                     foreach ($buy_rows as $key => $value) {?>
-                                    <tr class="odd gradeX">
-                                        <td>Trident</td>
-                                        <td><?php echo $value->amount;?></td>
-                                        <td><?php echo $value->name;?></td>
-                                        <td><?php echo $value->buyer_seller_id;?></td>
-                                        <td class="center"><?php echo $value->unit_price;?></td>
-                                        <td class="center">4</td>
-                                        <td class="center">
-                                            <a href="<?php echo site_url('account/delete/'.$value->id) ?>"><span class="glyphicon glyphicon-trash"></span></a>
-                                            <a href="<?php echo site_url('account/edit/'.$value->id) ?>"><span class="glyphicon glyphicon-edit"></span></a>
-                                            <a href="<?php echo site_url('account/profile/'.$value->id); ?>"><span class="glyphicon glyphicon-asterisk"></span></a>
-                                        </td>
-                                    </tr>
+                                        <tr class="odd gradeX">
+                                            <td>Trident</td>
+                                            <td><?php echo $value->amount;?></td>
+                                            <td><?php echo $value->name;?></td>
+                                            <td><?php echo $value->buyer_seller_id;?></td>
+                                            <td class="center"><?php echo $value->unit_price;?></td>
+                                            <td class="center">4</td>
+                                            <td class="center">
+                                                <a href="<?php echo site_url('account/delete/'.$value->id) ?>"><span class="glyphicon glyphicon-trash"></span></a>
+                                                <a href="<?php echo site_url('account/edit/'.$value->id) ?>"><span class="glyphicon glyphicon-edit"></span></a>
+                                                <a href="<?php echo site_url('account/profile/'.$value->id); ?>"><span class="glyphicon glyphicon-asterisk"></span></a>
+                                            </td>
+                                        </tr>
                                     <?php }  ?>
                                     </tbody>
                                 </table>
@@ -315,20 +315,20 @@
                                     <?php
                                     foreach ($buy_rows as $key => $value) {?>
 
-                                    <tr class="odd gradeX">
-                                        <td><?php echo $value->id; ?></td>
-                                        <td><?php echo $value->f_date; ?></td>
-                                        <td><?php echo $value->s_date; ?></td>
-                                        <td class="center"><?php echo $value->car_count; ?></td>
-                                        <td class="center"><?php echo $value->amount; ?></td>
-                                        <td class="center"><?php echo $value->name; ?></td>
-                                        <td class="center"><?php echo $value->unit_price; ?></td>
-                                        <td class="center">
-                                            <a href="<?php echo site_url('account/delete/'.$value->id); ?>"><span class="glyphicon glyphicon-trash"></span></a>
-                                            <a href="#"><span class="glyphicon glyphicon-edit"></span></a>
-                                            <a href="<?php echo site_url('account/profile/'.$value->id); ?>"><span class="glyphicon glyphicon-asterisk"></span></a>
-                                        </td>
-                                    </tr>
+                                        <tr class="odd gradeX">
+                                            <td><?php echo $value->id; ?></td>
+                                            <td><?php echo $value->f_date; ?></td>
+                                            <td><?php echo $value->s_date; ?></td>
+                                            <td class="center"><?php echo $value->car_count; ?></td>
+                                            <td class="center"><?php echo $value->amount; ?></td>
+                                            <td class="center"><?php echo $value->name; ?></td>
+                                            <td class="center"><?php echo $value->unit_price; ?></td>
+                                            <td class="center">
+                                                <a href="<?php echo site_url('account/delete/'.$value->id); ?>"><span class="glyphicon glyphicon-trash"></span></a>
+                                                <a href="#"><span class="glyphicon glyphicon-edit"></span></a>
+                                                <a href="<?php echo site_url('account/profile/'.$value->id); ?>"><span class="glyphicon glyphicon-asterisk"></span></a>
+                                            </td>
+                                        </tr>
                                     <?php  }?>
                                     </tbody>
                                 </table>
@@ -443,7 +443,7 @@
 
 <script>
     $(document).ready(function () {
-      $('#dataTables-example2').dataTable();
+        $('#dataTables-example2').dataTable();
 
     });
 

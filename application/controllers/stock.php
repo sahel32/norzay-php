@@ -63,6 +63,7 @@ class stock extends CI_Controller {
             'province'=>$this->db->escape_str($this->input->post('province')),
             'phone'=>$this->db->escape_str($this->input->post('phone')),
             'address'=>$this->db->escape_str($this->input->post('address')),
+			'type'=>$this->db->escape_str($this->input->post('type')),
             'desc'=>$this->db->escape_str($this->input->post('desc'))
             );
 
