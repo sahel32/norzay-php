@@ -32,7 +32,7 @@
                                 <a href="<?php  echo site_url('oil/lists/buy/fact');?>">خریدهای</a>
                             </li>
                             <li>
-                                <a href="<?php  echo site_url('oil/buy');?>"> خرید جدید</a>
+                                <a href="<?php  echo site_url('oil/fact_buy');?>"> خرید جدید</a>
                             </li>
                             <li>
                                 <a href="<?php  echo site_url('oil/lists/buy/pre');?>">لیست پیش خرید ها</a>

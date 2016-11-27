@@ -36,6 +36,17 @@ class driver_model extends CI_Model{
         return $query->result();
     }
 
+    function get_where_oil($wheres){
+        //$query = $this->db->get_where('mytable', array('id' => $id), $limit, $offset);
+        $this->db->select("parent_id,buyer_seller_id,driver_transaction.id as id,name,driver_id as buy_sell_id,
+        driver_transaction.amount as amount,unit_price,transit,type, car_count");
+        $this->db->from($this->table);
+        $this->db->join('stock_transaction','stock_transaction.id=driver_transaction.st_id');
+        $this->db->where($wheres);
+        $query=$this->db->get();
+        return $query->result();
+    }
+
     //deletes data from table by condtion or array of condition
     function delete($wheres){
         $this->db->delete($this->table,$wheres);

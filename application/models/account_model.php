@@ -34,11 +34,20 @@ class account_model extends CI_Model{
 
 
     //get data from table by condition or array of condition
-    function get_where($wheres){
+    function group_by($group_by){
       //$query = $this->db->get_where('mytable', array('id' => $id), $limit, $offset);
-      $query=$this->db->get_where($this->table, $wheres);
+        $this->db->group_by($group_by);
+      $query=$this->db->get($this->table);
       return $query->result();
     }
+
+    function get_where($wheres){
+        //$query = $this->db->get_where('mytable', array('id' => $id), $limit, $offset);
+        $query=$this->db->get_where($this->table, $wheres);
+        return $query->result();
+    }
+
+
     function get_name($wheres){
         //$query = $this->db->get_where('mytable', array('id' => $id), $limit, $offset);
         $query=$this->db->get_where($this->table, $wheres);
