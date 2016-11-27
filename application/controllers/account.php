@@ -52,7 +52,7 @@ class account extends CI_Controller {
                 'is_natural'         =>'Please Use Just numberic charecters'
         )
             );
-		//$data['account_type_rows']=$data['account_rows']=$this->account_model->get();
+		$data['account_rows']=$this->account_model->group_by('type');
         if($this->form_validation->run()==false){
 
         $data['signup_form']="active";
@@ -69,14 +69,14 @@ class account extends CI_Controller {
        $id=$this->account_model->insert($cantact_info);
 
         $data['fu_page_title']="Login Form";
-        redirect('account/profile/'.$id);
+        redirect('account/profile/'.$id.'/'.$this->input->post('type'));
       // $this->profile($id); 
         }
 
 
     }
 
-    public function profile($id=0){
+    public function profile($id=0,$type){
     	  $data['fu_page_title']="Login Form";
           $data['account_rows']=$this->cash_model->get_balance_credit_debit($id);
           $data['balance_rows']=$this->account_model->get_where(array('id' => $id ,'type' => 'account'));
@@ -87,11 +87,21 @@ class account extends CI_Controller {
 		//$data['credit']=$this->cash_model->sum_where(array('account_id' => $id, 'transaction_type'=>'credit'));
 		//$data['balance']=$this->cash_model->get_balance($id);
 
-       	$this->load->template('accounts/profile',$data); 
+       //	$this->load->template('accounts/profile',$data);
+		
+		if($type=="driver"){
+			$data['driver_cash_rows']=$this->cash_model->get_where(array('account_id' => $id, 'table_name'=>'driver_transaction'));
+			$this->load->template('accounts/driver_profile',$data);
+		}
+	echo $type;
+		if($type=="exchanger"){
+			$data['exchanger_cash_rows']=$this->cash_model->get_where(array('account_id' => $id, 'table_name'=>'account'));
+			$this->load->template('accounts/exchanger_profile',$data);
+		}
     }
 	public function delete($id=0){
 
 
-		$this->load->template('accounts/profile',$data);
+		//$this->load->template('accounts/profile',$data);
 	}
 }

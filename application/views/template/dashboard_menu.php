@@ -28,12 +28,7 @@
                     <li  >
                         <a  href="chart.html"><i><img class="sidebar-menu" src="<?php echo asset_url('img/buys.png'); ?>" alt="buys"/></i> خریدها</a>
                         <ul class="nav nav-second-level">
-                            <li>
-                                <a href="<?php  echo site_url('oil/lists/buy/fact');?>">خریدهای</a>
-                            </li>
-                            <li>
-                                <a href="<?php  echo site_url('oil/buy');?>"> خرید جدید</a>
-                            </li>
+
                             <li>
                                 <a href="<?php  echo site_url('oil/lists/buy/pre');?>">لیست پیش خرید ها</a>
                             </li>
@@ -45,12 +40,7 @@
                     <li  >
                         <a  href="chart.html"><i><img class="sidebar-menu" src="<?php echo asset_url('img/sells.png'); ?>" alt="sells"/></i> فروشات</a>
                         <ul class="nav nav-second-level">
-                            <li>
-                                <a href="<?php  echo site_url('oil/lists/sell/fact');?>">فروشات</a>
-                            </li>
-                            <li>
-                                <a href="<?php  echo site_url('oil/sell');?>"> فروش جدید</a>
-                            </li>
+                          
                             <li>
                                 <a href="<?php  echo site_url('oil/lists/sell/pre');?>">لیست پیش فروش ها</a>
                             </li>

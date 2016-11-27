@@ -44,13 +44,75 @@ class oil_model extends CI_Model{
         return $query->result();
     }
 
-    function get_remain_oil($id){
+    function get_remain_oil_each_pre_buy($id,$buy_sell){
         $query=$this->db->query('
-        SELECT (buy-sell) AS remain FROM (SELECT SUM(amount) AS sell FROM stock_transaction  WHERE parent_id=?
-          ) AS result, (SELECT amount AS buy FROM stock_transaction WHERE id=?) AS result1
-        ', array($id,$id));
-        $value =$query->row();
-        return $value->remain; 
+SELECT
+  (buy-sell) AS remain
+FROM
+  (SELECT
+    IFNULL(SUM(amount), 0) AS sell
+  FROM
+    stock_transaction
+  WHERE parent_id = ?) AS result,
+  (SELECT
+    amount AS buy
+  FROM
+    stock_transaction
+  WHERE id = ?
+    AND buy_sell = ?
+    AND TYPE = \'pre\') AS result1
+        ', array($id,$id,$buy_sell));
+        $query =$query->row();
+        return $query->remain;
+
+    }
+
+    function get_remain_oil_each_pre($id,$buy_sell){
+        $query=$this->db->query('
+SELECT (sell2-sell1) AS remain FROM (SELECT
+  IFNULL(amount,0) AS sell2
+FROM
+  stock_transaction
+WHERE buy_sell =?
+  AND TYPE = \'pre\'
+  AND id = ?) AS t, (SELECT
+  IFNULL(SUM(amount),0) AS sell1
+FROM
+  stock_transaction
+WHERE parent_id IN
+  (SELECT
+    id
+  FROM
+    stock_transaction
+  WHERE buy_sell = ? AND id=?)) AS t1
+        ', array($buy_sell,$id,$buy_sell,$id));
+        $query =$query->row();
+        return $query->remain;
+
+    }
+
+
+    function get_remain_oil_each_fact($id,$buy_sell){
+        $query=$this->db->query('
+SELECT (sell2-sell1) AS remain FROM (SELECT
+  IFNULL(amount,0) AS sell2
+FROM
+  stock_transaction
+WHERE buy_sell =?
+  AND TYPE = \'pre\'
+  AND id = ?) AS t, (SELECT
+  IFNULL(SUM(amount),0) AS sell1
+FROM
+  stock_transaction
+WHERE parent_id IN
+  (SELECT
+    id
+  FROM
+    stock_transaction
+  WHERE buy_sell = ? AND id=?)) AS t1
+        ', array($buy_sell,$id,$buy_sell,$id));
+        $query =$query->row();
+        return $query->remain;
 
     }
     function get_balance($wheres){
@@ -65,12 +127,12 @@ class oil_model extends CI_Model{
         $query=$this->db->get_where($this->table, $wheres);
         $value= $query->row();
 
-        $CI->balance_model->insert(array(
+   /*     $CI->balance_model->insert(array(
             'type'=>'stock',
             'balance_type'=>'ton',
             'balance'=>$value->amount,
             'balanced_id'=>$wheres['stock_id']
-        ));
+        ));*/
         return $value->amount;
 
 

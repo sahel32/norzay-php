@@ -9,7 +9,7 @@
 
 <div class="row">
                     <div class="col-md-12">
-                     <h2>لیست پیش فروش های تیل</h2>   
+                     <h2><?php echo $main_title; ?></h2>
                         <h5>در جدول پایین شما میتوانید لیست پیش فروش های تیل را مشاهده کنید.</h5>
 
 
@@ -64,7 +64,12 @@
                                             <td class="center">
                                                 <?php
                                                 $this->load->model('oil_model');
-                                                echo $this->oil_model->get_remain_oil($value->id);
+                                                    if($buy_sell=='pre') {
+                                                        echo $remain = $this->oil_model->get_remain_oil_each_pre($value->id, $buy_sell);
+                                                    }else{
+                                                        echo $remain=$value->amount;
+
+                                                    }
                                                ?>
                                             </td>
                                             <td class="center"><?php echo $value->car_count;?></td>
@@ -73,7 +78,8 @@
                                                 <a href="<?php echo site_url('account/delete/'.$value->id) ?>"><span class="glyphicon glyphicon-trash"></span></a>
                                                 <a href="<?php echo site_url('account/edit/'.$value->id) ?>"><span class="glyphicon glyphicon-edit"></span></a>
                                                 <a href="<?php echo site_url('account/profile/'.$value->id); ?>"><span class="glyphicon glyphicon-asterisk"></span></a>
-                                                <span id="openpopup" onclick="popupp(<?php echo $value->id ?>);" class="button">set to fact </span>
+                                                <span id="openpopup" style="cursor: pointer" onclick="popupp(<?php echo $value->id.','.$remain.",'".$buy_sell."'"; ?>)" class="button">set to fact </span>
+
                                             </td>
                                         </tr>
 
@@ -107,7 +113,7 @@
 <script type="text/javascript" src="<?php echo asset_url('jeegoopopup/jquery.jeegoopopup.1.0.0.js'); ?>"></script>
 <script type="text/javascript">
     //<![CDATA[
-    function popupp(id){
+    function popupp(id,remain,buy_sell){
 
         // Open popup on button click.
       //  $('#openpopup').click(function(){
@@ -133,7 +139,7 @@
             /*if($('#html').is(':checked'))
              options.html = $('#html_content').val();
              else */
-            options.url = '<?php echo site_url('oil/buy/popupp'); ?>/'+id;
+            options.url = '<?php echo site_url('oil/buy/popupp'); ?>/'+id+'/'+remain+'/'+buy_sell;
 
             $.jeegoopopup.open(options);
      //   });

@@ -30,19 +30,36 @@ class oil extends CI_Controller {
 	{
 
 
-
+	if($buy_sell=="sell") {
+		$data = array(
+			'main_title' => "pre sell",
+			'sub_title' => "pre sell sub title",
+			'desc' => "pre sell desc",
+			'buy_sell' => 'sell',
+			'account_label' => 'sell to',
+			'pre_date' => 'pre sell date',
+			'pre_date_2' => 'pre sell give date',
+			'stock_label' => 'from stock'
+		);
+	}else{
 		$data=array(
-			'main_title'=>"pre sell",
-			'sub_title'=>"pre sell sub title",
+			'main_title'=>"pre buy",
+			'sub_title'=>"pre buy sub title",
 			'desc'=>"pre sell desc",
+			'buy_sell' => 'buy',
 			'account_label'=>'sell to',
 			'pre_date'=>'pre sell date',
 			'pre_date_2'=>'pre sell give date',
 			'stock_label'=>'from stock'
 		);
 
+	}
 		$data['oil_rows']=$this->oil_model->get_where(array('type' => $type, 'buy_sell'=>$buy_sell));
-		$this->load->template("oil/lists", $data);
+		if($type='fact'){
+			$this->load->template("oil/lists_fact", $data);
+		}else {
+			$this->load->template("oil/lists_pre", $data);
+		}
 	}
 
 		public function pre_buy_sell($buy_sell="buy")
@@ -79,7 +96,7 @@ class oil extends CI_Controller {
 			}
 
 			//mines from stock pre
-			$data['stock_rows'] = $this->stock_model->get_where(array('type'=>'pre'));
+			$data['stock_rows'] = $this->stock_model->get_where(array('type'=>$data['buy_sell']));
 			//$data['account_rows'] = $this->account->get_where(array('type' => 'customer'));
 			$data['account_rows'] = $this->account_model->get_where(array('type'=>$data['type']));
 
@@ -170,22 +187,42 @@ class oil extends CI_Controller {
 	public function pre_buy_sell_balance(){
 		$this->oil_model->get_balance(array('type'=>'pre', 'buy_sell'=>'buy'));
 	}
-public function buy($template="template" , $popupp_pre_buy_sell_id=""){
+public function buy($template="template" , $popupp_pre_buy_sell_id="",$remain='',$buy_sell=''){
 
-	$data = array(
-		'main_title' => "pre sell",
-		'sub_title' => "pre sell sub title",
-		'desc' => "pre sell desc",
-		'account_label' => 'sell from',
-		'pre_date' => 'pre sell date',
-		'pre_date_2' => 'pre sell give date',
-		'stock_label' => 'from stock',
-		'stock_disable'=>'enabled',
-		'buy_sell' => 'sell',
-		'transaction_type'=>'credit',
-		'type'=>'customer',
-		'popupp_pre_buy_sell_id'=>$popupp_pre_buy_sell_id
-	);
+	if($buy_sell=="sell") {
+		$data = array(
+			'main_title' => "pre sell",
+			'sub_title' => "pre sell sub title",
+			'desc' => "pre sell desc",
+			'account_label' => 'sell from',
+			'pre_date' => 'pre sell date',
+			'pre_date_2' => 'pre sell give date',
+			'stock_label' => 'from stock',
+			'stock_disable' => 'enabled',
+			'buy_sell' => $buy_sell,
+			'transaction_type' => 'credit',
+			'type' => 'customer',
+			'popupp_pre_buy_sell_id' => $popupp_pre_buy_sell_id,
+			'remain' => $remain
+		);
+	}else{
+		$data = array(
+			'main_title' => "pre sell",
+			'sub_title' => "pre sell sub title",
+			'desc' => "pre sell desc",
+			'account_label' => 'sell from',
+			'pre_date' => 'pre sell date',
+			'pre_date_2' => 'pre sell give date',
+			'stock_label' => 'from stock',
+			'stock_disable'=>'enabled',
+			'buy_sell' => $buy_sell,
+			'transaction_type'=>'credit',
+			'type'=>'customer',
+			'popupp_pre_buy_sell_id'=>$popupp_pre_buy_sell_id,
+			'remain'=>$remain
+		);
+	}
+
 
 	$this->form_validation->set_rules('pre_buy_sell_id', null, 'required',
 		array(
@@ -217,20 +254,20 @@ public function buy($template="template" , $popupp_pre_buy_sell_id=""){
 			'is_natural' => 'Please Use Just numberic charecters'
 		)
 	);
-
 	$this->form_validation->set_rules('extra_amount', null, 'is_natural|required',
 		array(
 			'required' => 'You have not provided name in name field',
 			'is_natural' => 'Please Use Just numberic charecters'
 		)
 	);
-
-	$this->form_validation->set_rules('extra_money', null, 'is_natural|required',
-		array(
-			'required' => 'You have not provided name in name field',
-			'is_natural' => 'Please Use Just numberic charecters'
-		)
-	);
+	if($this->input->post('extra_amount')!=0){
+		$this->form_validation->set_rules('extra_money', null, 'is_natural|required',
+			array(
+				'required' => 'You have not provided name in name field',
+				'is_natural' => 'Please Use Just numberic charecters'
+			)
+		);
+	}
 
 	$this->form_validation->set_rules('pre_buy_sell_id', null, 'required|check_exist_pre_buy_sell_id',
 		array(
@@ -263,7 +300,7 @@ public function buy($template="template" , $popupp_pre_buy_sell_id=""){
 			'desc' => $this->db->escape_str($this->input->post('desc')),
 			'unit' => 'ton',
 			'type' => "fact",
-			'buy_sell' =>  'buy',
+			'buy_sell' =>  $buy_sell,
 		);
 
 		$id = $this->oil_model->insert($fact_transaction);
@@ -286,28 +323,28 @@ public function buy($template="template" , $popupp_pre_buy_sell_id=""){
 		}
 
 
+		if($this->input->post('extra_amount')!=0) {
+			$extra_transaction = array(
+				'st_id' => $id,
+				'driver_id' => $this->input->post('driver_id'),
+				'transit' => $this->db->escape_str($this->input->post('transit')),
+				'amount' => $this->db->escape_str($this->input->post('extra_amount'))
+			);
 
-		$extra_transaction = array(
-			'st_id' => $id,
-			'driver_id' =>$this->input->post('driver_id'),
-			'transit' =>  $this->db->escape_str($this->input->post('transit')),
-			'amount' =>  $this->db->escape_str($this->input->post('extra_amount'))
-		);
 
+			$d_id = $this->driver_model->insert($extra_transaction);
+			$extra_cash_information = array(
+				'cash' => $this->db->escape_str($this->input->post('extra_money')),
+				'type' => 'ir',
+				'transaction_type' => 'debit',
+				'table_id' => $d_id,
+				'account_id' => $this->db->escape_str($this->input->post('driver_id')),
+				'table_name' => 'driver_transaction'
 
-		$d_id = $this->driver_model->insert($extra_transaction);
-		$extra_cash_information = array(
-			'cash' =>  $this->db->escape_str($this->input->post('extra_money')),
-			'type' => 'ir',
-			'transaction_type' =>'debit',
-			'table_id'=>$d_id,
-			'account_id'=>$this->db->escape_str($this->input->post('account_id')),
-			'table_name'=>'driver_transaction'
+			);
 
-		);
-
-		$this->cash_model->insert($extra_cash_information);
-
+			$this->cash_model->insert($extra_cash_information);
+		}
 		$this->load->$template('oil/buy', $data);
 	}
 
@@ -323,5 +360,149 @@ public function buy($template="template" , $popupp_pre_buy_sell_id=""){
 
 	public function profile($id=""){
 		$this->load->template('oil/profile');
+	}
+
+	public function fact_buy(){
+
+			$data = array(
+				'main_title' => "pre sell",
+				'sub_title' => "pre sell sub title",
+				'desc' => "pre sell desc",
+				'account_label' => 'sell from',
+				'pre_date' => 'pre sell date',
+				'pre_date_2' => 'pre sell give date',
+				'stock_label' => 'from stock',
+				'stock_disable'=>'enabled',
+				'buy_sell' => 'buy',
+				'transaction_type'=>'credit',
+				'type'=>'customer'
+			);
+
+
+
+		$this->form_validation->set_rules('pre_buy_sell_id', null, 'required',
+			array(
+				'required' => 'You have not provided name in name field'
+			)
+		);
+		$this->form_validation->set_rules('transit', null, 'required',
+			array(
+				'required' => 'You have not provided name in name field'
+			)
+		);
+
+		$this->form_validation->set_rules('barcode', null, 'required',
+			array(
+				'required' => 'You have not provided name in name field'
+			)
+		);
+
+		$this->form_validation->set_rules('first_amount', null, 'is_natural|required',
+			array(
+				'required' => 'You have not provided name in name field',
+				'is_natural' => 'Please Use Just numberic charecters'
+			)
+		);
+
+		$this->form_validation->set_rules('second_amount', null, 'is_natural|required',
+			array(
+				'required' => 'You have not provided name in name field',
+				'is_natural' => 'Please Use Just numberic charecters'
+			)
+		);
+		$this->form_validation->set_rules('extra_amount', null, 'is_natural|required',
+			array(
+				'required' => 'You have not provided name in name field',
+				'is_natural' => 'Please Use Just numberic charecters'
+			)
+		);
+		if($this->input->post('extra_amount')!=0){
+			$this->form_validation->set_rules('extra_money', null, 'is_natural|required',
+				array(
+					'required' => 'You have not provided name in name field',
+					'is_natural' => 'Please Use Just numberic charecters'
+				)
+			);
+		}
+
+		$this->form_validation->set_rules('pre_buy_sell_id', null, 'required|check_exist_pre_buy_sell_id',
+			array(
+				'required' => 'You have not provided name in name field',
+				'check_exist_pre_buy_sell_id' => 'factor id does not exost'
+			)
+		);
+
+		function check_exist_pre_buy_sell_id($id){
+			$ci = get_instance();
+			$con= $ci->oil_model->check_exist(array('id'=>$id));
+			return $con;
+		}
+		if ($this->form_validation->run() == false) {
+
+			$data['seller_rows'] = $this->account_model->get_where(array('type'=>'seller'));
+			$data['driver_rows'] = $this->account_model->get_where(array('type'=>'driver'));
+			$data['stock_rows'] = $this->stock_model->get_where(array('type'=>'fact'));
+
+			$this->load->template('oil/fact_buy', $data);
+		} else {
+			$fact_transaction = array(
+				'parent_id' => $this->input->post('pre_buy_sell_id'),
+				'f_date' => $this->input->post('received_date'),
+				'buyer_seller_id' =>$this->input->post('account_id'),
+				'barcode' =>  $this->db->escape_str($this->input->post('barcode')),
+				'amount' =>  $this->db->escape_str($this->input->post('second_amount')),
+				'source' =>  $this->db->escape_str($this->input->post('source')),
+				'stock_id' => $this->input->post('stock_id'),
+				'desc' => $this->db->escape_str($this->input->post('desc')),
+				'unit' => 'ton',
+				'type' => "fact",
+				'buy_sell' =>  $buy_sell,
+			);
+
+			$id = $this->oil_model->insert($fact_transaction);
+
+			$pre_transaction=$this->oil_model->get_where(array('id'=>$this->input->post('pre_buy_sell_id')));
+			foreach ($pre_transaction as $key => $value){
+
+				$cash=$this->db->escape_str($this->input->post('second_amount')) * $value->unit_price;
+				$cash_information = array(
+					'cash' =>  $cash,
+					'type' => 'usa',
+					'transaction_type' =>'debit',
+					'table_id'=>$id,
+					'account_id'=>$this->db->escape_str($this->input->post('account_id')),
+					'table_name'=>'stock_transaction'
+
+				);
+
+				$this->cash_model->insert($cash_information);
+			}
+
+
+			if($this->input->post('extra_amount')!=0) {
+				$extra_transaction = array(
+					'st_id' => $id,
+					'driver_id' => $this->input->post('driver_id'),
+					'transit' => $this->db->escape_str($this->input->post('transit')),
+					'amount' => $this->db->escape_str($this->input->post('extra_amount'))
+				);
+
+
+				$d_id = $this->driver_model->insert($extra_transaction);
+				$extra_cash_information = array(
+					'cash' => $this->db->escape_str($this->input->post('extra_money')),
+					'type' => 'ir',
+					'transaction_type' => 'debit',
+					'table_id' => $d_id,
+					'account_id' => $this->db->escape_str($this->input->post('account_id')),
+					'table_name' => 'driver_transaction'
+
+				);
+
+				$this->cash_model->insert($extra_cash_information);
+			}
+			$this->load->temolate('oil/buy', $data);
+		}
+
 	}
 }

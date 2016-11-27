@@ -27,7 +27,6 @@ class stock extends CI_Controller {
 
 	public function add(){
 
-
 				$data['main_title']="add stock";
 		$data['sub_title']="add stock form ";
 		$data['desc']="add stock decription";
@@ -70,29 +69,34 @@ class stock extends CI_Controller {
        $id=$this->stock_model->insert($cantact_info);
 
         $data['fu_page_title']="Login Form";
-        redirect('stock/profile/'.$id);
+        redirect('stock/profile/'.$id.','.$this->input->post('type'));
       // $this->profile($id); 
         }
 
 
     }
 
-    public function profile($id=0){
+    public function profile($id=0,$type){
     	  $data['fu_page_title']="Login Form";
           $data['stock_rows']=$this->stock_model->get_where(array('id' => $id));
           		$data['main_title']="stock profile";
 		$data['sub_title']="stock details";
 		$data['desc']="stick descipttion";
 
-		$data['stock_transaction_rows']=$this->oil_model->get_where(array('stock_id' => $id));
 
-       	$this->load->template('stock/profile',$data); 
+		$data['pre_oil_rows']=$this->oil_model->get_where(array('stock_id' => $id,'type'=>'pre'));
+
+		$data['fact_oil_rows']=$this->oil_model->get_where(array('stock_id' => $id,'type'=>'fact'));
+		$data['driver_oil_rows']=$this->driver_model->get_where_oil(array('stock_id' => $id,'type'=>'fact'));
+
+       	$this->load->template('stock/profile_'.$type,$data);
     }
 
 	public function lists()
 	{
 		$data['main_title']="stock profile";
 		$data['sub_title']="stock details";
+		$data['buy_sell']="stock details";
 		$data['desc']="stick descipttion";
 		 $data['stock_rows']=$this->stock_model->get();
 		 $this->load->template("stock/lists", $data);

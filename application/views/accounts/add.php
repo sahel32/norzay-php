@@ -22,7 +22,9 @@
                                         <div class="col-md-3 form-group">
 
                                             <label>name :</label>
-                                       
+                                            <a href="#new-customer" data-toggle="modal">
+                                                <i class="fa fa-plus-circle" data-toggle="tooltip" title="ثبت مشتری جدید" data-placement="top"></i>
+                                            </a>
                                             <input type="text"  value="<?php echo set_value('name'); ?>"name="name" class="form-control" data-trigger="hover"/>
                                             <span class="help-inline"><?php echo (form_error('name') ) ? form_error('name') : "<span class='red'>*</span>"; ?></span>
                                 
@@ -55,6 +57,7 @@
                                                 <option>costumer</option>
                                                 <option>driver</option>
                                                 <option>stuf</option>
+                                                <option>exchanger</option>
                                             </select>
                                         </div>
 
@@ -63,6 +66,36 @@
                                         <button type="reset" class="btn btn-primary pull-left">تنظیم مجدد</button>
                                         </div>
                                     </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="new-customer" class="modal fade" tabindex="-1">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close glyphicon glyphicon-remove" data-dismiss="modal"></button>
+                                    <h3 class="modal-title">ثبت مشتری جدید</h3>
+                                </div>
+                                <div class="modal-body clearfix">
+                                    <form role="form">
+                                        <div class="col-md-3 form-group">
+                                            <label>نام</label>
+                                            <input class="form-control" />
+                                        </div>
+                                        <div class="col-md-3 form-group">
+                                            <label>تخلص</label>
+                                            <input class="form-control" />
+                                        </div>
+                                        <div class="col-md-3 form-group">
+                                            <label>شماره تماس</label>
+                                            <input class="form-control" />
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-success" data-dismiss="modal">تائید</button>
                                 </div>
                             </div>
                         </div>

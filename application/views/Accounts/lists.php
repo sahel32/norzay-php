@@ -51,7 +51,7 @@
                                             <td class="center">
                                                 <a href="#"><span class="glyphicon glyphicon-trash"></span></a>
                                                 <a href="#"><span class="glyphicon glyphicon-edit"></span></a>
-                                                <a href="<?php echo site_url('account/profile/'.$value->id); ?>"><span class="glyphicon glyphicon-asterisk"></span></a>
+                                                <a href="<?php echo site_url('account/profile/'.$value->id.'/'.$value->type); ?>"><span class="glyphicon glyphicon-asterisk"></span></a>
                                             </td>
                                         </tr>
                                    <?php  }?>
