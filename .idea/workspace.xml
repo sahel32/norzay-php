@@ -5,27 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="93d312fc-130c-436d-b7d6-118f32262ab4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/views/accounts/driver_profile.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/views/accounts/exchanger_profile.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/views/oil/fact_buy.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/views/oil/lists_fact.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/views/stock/profile_fact.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/views/stock/profile_pre.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/application/views/stock/profile.php" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/application/views/oil/lists.php" afterPath="$PROJECT_DIR$/application/views/oil/lists_pre.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/account.php" afterPath="$PROJECT_DIR$/application/controllers/account.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/oil.php" afterPath="$PROJECT_DIR$/application/controllers/oil.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/stock.php" afterPath="$PROJECT_DIR$/application/controllers/stock.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/account_model.php" afterPath="$PROJECT_DIR$/application/models/account_model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/driver_model.php" afterPath="$PROJECT_DIR$/application/models/driver_model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/oil_model.php" afterPath="$PROJECT_DIR$/application/models/oil_model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/stock_model.php" afterPath="$PROJECT_DIR$/application/models/stock_model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/Accounts/lists.php" afterPath="$PROJECT_DIR$/application/views/Accounts/lists.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/accounts/add.php" afterPath="$PROJECT_DIR$/application/views/accounts/add.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/oil/buy.php" afterPath="$PROJECT_DIR$/application/views/oil/buy.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/oil/pre_transaction_form.php" afterPath="$PROJECT_DIR$/application/views/oil/pre_transaction_form.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/stock/lists.php" afterPath="$PROJECT_DIR$/application/views/stock/lists.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/template/dashboard_menu.php" afterPath="$PROJECT_DIR$/application/views/template/dashboard_menu.php" />
     </list>
     <ignored path="norzay-php.iws" />
@@ -68,11 +47,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="add.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="add.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/views/accounts/add.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="289">
               <caret line="26" column="48" selection-start-line="26" selection-start-column="48" selection-end-line="26" selection-end-column="48" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dashboard_menu.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/views/template/dashboard_menu.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="317">
+              <caret line="42" column="26" selection-start-line="42" selection-start-column="26" selection-end-line="42" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -138,16 +127,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="profile.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/accounts/profile.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="49" column="37" selection-start-line="0" selection-start-column="0" selection-end-line="455" selection-end-column="9" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="Git.Settings">
@@ -182,7 +161,6 @@
         <option value="$PROJECT_DIR$/application/views/stock/profile_fact.php" />
         <option value="$PROJECT_DIR$/application/models/stock_model.php" />
         <option value="$PROJECT_DIR$/application/views/oil/fact_buy.php" />
-        <option value="$PROJECT_DIR$/application/views/template/dashboard_menu.php" />
         <option value="$PROJECT_DIR$/application/views/stock/profile_pre.php" />
         <option value="$PROJECT_DIR$/application/models/oil_model.php" />
         <option value="$PROJECT_DIR$/application/views/oil/lists.php" />
@@ -194,6 +172,7 @@
         <option value="$PROJECT_DIR$/application/controllers/account.php" />
         <option value="$PROJECT_DIR$/application/views/accounts/exchanger_profile.php" />
         <option value="$PROJECT_DIR$/application/views/accounts/add.php" />
+        <option value="$PROJECT_DIR$/application/views/template/dashboard_menu.php" />
       </list>
     </option>
   </component>
@@ -494,12 +473,12 @@
       <workItem from="1479844678074" duration="27858000" />
       <workItem from="1479988197202" duration="8160000" />
       <workItem from="1480085736353" duration="2839000" />
-      <workItem from="1480147516079" duration="43886000" />
+      <workItem from="1480147516079" duration="44433000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="143315000" />
+    <option name="totallyTimeSpent" value="143862000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -816,14 +795,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/template/dashboard_menu.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="34" column="72" selection-start-line="34" selection-start-column="72" selection-end-line="34" selection-end-column="72" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/stock/profile_pre.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -996,6 +967,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="26" column="48" selection-start-line="26" selection-start-column="48" selection-end-line="26" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/template/dashboard_menu.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="42" column="26" selection-start-line="42" selection-start-column="26" selection-end-line="42" selection-end-column="26" />
           <folding />
         </state>
       </provider>
