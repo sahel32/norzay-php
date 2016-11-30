@@ -55,8 +55,8 @@ FROM
 
     function get_stock_balance_fact($id){
         $query=$this->db->query('
-SELECT (buy-sell) AS remain FROM (SELECT (driver+buy1) AS buy FROM (SELECT
-  SUM(amount) AS buy1
+SELECT (buy+sell) AS remain FROM (SELECT (driver+buy1) AS buy FROM (SELECT
+  IFNULL(SUM(amount),0) AS buy1
 FROM
   stock,
   stock_transaction
@@ -64,7 +64,7 @@ WHERE stock.id = ?
   AND stock.id = stock_transaction.`stock_id`
   AND buy_sell = \'buy\' AND stock_transaction.type=\'fact\') AS t,
   (SELECT
-  SUM(driver_transaction.amount) AS driver
+  IFNULL(SUM(driver_transaction.amount),0) AS driver
 FROM
   driver_transaction,
   stock_transaction
@@ -128,98 +128,82 @@ WHERE buy_sell =?
 
     function get_stock_balance_pre_sell($id){
         $query=$this->db->query('
-SELECT (presell-factsell) AS remain_presell FROM (SELECT
-  IFNULL(SUM(amount), 0) AS presell
+SELECT
+  (presell - factsell) AS remain_presell
 FROM
-  stock_transaction
-WHERE NULLIF(parent_id, \' \') IS NULL
-  AND buy_sell = \'sell\'
-  AND TYPE = \'pre\'
-  AND stock_id =
   (SELECT
-    id
-  FROM
-    stock
-  WHERE TYPE = \'sell\')) AS t,
-  (SELECT
-  IFNULL(SUM(amount),0) AS factsell
-FROM
-  stock_transaction
-WHERE TYPE=\'fact\' AND buy_sell=\'sell\' AND parent_id IN
-  (SELECT
-    id
+    IFNULL(SUM(amount), 0) AS presell
   FROM
     stock_transaction
-  WHERE buy_sell = \'sell\' AND TYPE=\'pre\'   AND stock_id =
+  WHERE buy_sell = \'sell\'
+    AND TYPE = \'pre\'
+    AND stock_id = ?) AS t,
   (SELECT
-    id
+    IFNULL(SUM(amount), 0) AS factsell
   FROM
-    stock
-  WHERE TYPE = \'sell\'))) AS t1
-        ', array($id));
+    stock_transaction
+  WHERE TYPE = \'fact\'
+    AND buy_sell = \'sell\'
+    AND parent_id IN
+    (SELECT
+      id
+    FROM
+      stock_transaction
+    WHERE buy_sell = \'sell\'
+      AND TYPE = \'pre\'
+      AND stock_id = ?)) AS t1
+        ', array($id,$id));
         $value =$query->row();
         return $value->remain_presell;
     }
 
     function get_stock_balance_pre_buy($id){
         $query=$this->db->query('
-SELECT (remian_prebuy-remain_presell) AS remain FROM (SELECT (presell-factsell) AS remain_presell FROM (SELECT
-  IFNULL(SUM(amount), 0) AS presell
+SELECT
+  (presell - factsell) AS remain
 FROM
-  stock_transaction
-WHERE NULLIF(parent_id, \' \') IS NULL
-  AND buy_sell = \'sell\'
-  AND TYPE = \'pre\'
-  AND stock_id =
   (SELECT
-    id
-  FROM
-    stock
-  WHERE TYPE = \'sell\')) AS t,
-  (SELECT
-  IFNULL(SUM(amount),0) AS factsell
-FROM
-  stock_transaction
-WHERE TYPE=\'fact\' AND buy_sell=\'sell\' AND parent_id IN
-  (SELECT
-    id
+    IFNULL(SUM(amount), 0) AS presell
   FROM
     stock_transaction
-  WHERE buy_sell = \'sell\' AND TYPE=\'pre\'   AND stock_id =
+  WHERE NULLIF(parent_id, \' \') IS NULL
+    AND buy_sell = \'buy\'
+    AND TYPE = \'pre\'
+    AND stock_id = ?) AS t,
   (SELECT
-    id
+    (facsell + presel) AS factsell
   FROM
-    stock
-  WHERE TYPE = \'sell\'))) AS t1) AS t2,
-  (SELECT (presell-factsell) AS remian_prebuy FROM (SELECT
-  IFNULL(SUM(amount), 0) AS presell
-FROM
-  stock_transaction
-WHERE NULLIF(parent_id, \' \') IS NULL
-  AND buy_sell = \'buy\'
-  AND TYPE = \'pre\'
-  AND stock_id =
-  (SELECT
-    id
-  FROM
-    stock
-  WHERE TYPE = \'buy\')) AS t,
-  (SELECT
-  IFNULL(SUM(amount),0) AS factsell
-FROM
-  stock_transaction
-WHERE TYPE=\'fact\' AND buy_sell=\'buy\' AND parent_id IN
-  (SELECT
-    id
-  FROM
-    stock_transaction
-  WHERE buy_sell = \'buy\' AND TYPE=\'pre\'   AND stock_id =
-  (SELECT
-    id
-  FROM
-    stock
-  WHERE TYPE = \'buy\'))) AS t1) AS t3
-        ', array($id));
+    (SELECT
+      IFNULL(SUM(amount), 0) AS facsell
+    FROM
+      stock_transaction
+    WHERE TYPE = \'fact\'
+      AND buy_sell = \'buy\'
+      AND parent_id IN
+      (SELECT
+        id
+      FROM
+        stock_transaction
+      WHERE buy_sell = \'buy\'
+        AND TYPE = \'pre\'
+        AND stock_id = ?)) AS t7,
+    (SELECT
+      IFNULL(SUM(amount), 0) AS presel
+    FROM
+      stock_transaction
+    WHERE TYPE = \'pre\'
+      AND buy_sell = \'sell\'
+      AND parent_id IN
+      (SELECT
+        id
+      FROM
+        stock_transaction
+      WHERE buy_sell = \'buy\'
+        AND TYPE = \'pre\'
+        AND stock_id = ?)
+      OR stock = ?) AS t1) AS t1
+  
+        ', array($id,$id,$id,$id));
         $value =$query->row();
         return $value->remain;
     }

@@ -78,10 +78,27 @@
                                             
                                             </select>
                                         </div>
-
                                         <div class="col-md-3 form-group">
-                                            <label><?php echo $stock_label;?></label>
-                                            <select class="form-control" name="stock_id" <?php echo $stock_disable;?>>
+                                            <label>from stock</label>
+                                            <select class="form-control" name="stock" <?php echo $stock_disable;?>>
+                                        <?php
+
+                                        foreach ($stock_buy as $key => $bvalue) {?>
+
+
+                                            <option value="<?php echo $bvalue->id;?>">
+                                            <?php echo $bvalue->name." - ";
+                                            $this->load->model('stock_model');
+                                            echo $this->stock_model->get_stock_balance_pre_buy($bvalue->id,$buy_sell)." -Ton";
+                                            ?></option>
+
+
+                                        <?php }?>
+                                        </select>
+                                            </div>
+                                        <div class="col-md-3 form-group">
+                                            <label>to stock</label>
+                                            <select class="form-control" name="stock_id" >
                                                 <?php
 
                                                 foreach ($stock_rows as $key => $value) {?>
@@ -89,7 +106,7 @@
                                                     <option value="<?php echo $value->id;?>">
                                                         <?php echo $value->name." - ";
                                                         $this->load->model('stock_model');
-                                                        echo $this->stock_model->get_stock_balance_pre($value->id,$buy_sell)." -Ton";
+                                                        echo $this->stock_model->get_stock_balance_pre_buy($value->id,$buy_sell)." -Ton";
                                                         ?></option>
 
                                                 <?php }?>

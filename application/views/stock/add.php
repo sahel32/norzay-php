@@ -46,13 +46,7 @@
                                             <span class="help-inline"><?php echo (form_error('phone') ) ? form_error('phone') :""; ?></span>
                                 
                                         </div>
-                                        <div class="col-md-3 form-group">
-                                            <label> نوع انبار</label>
-                                            <select class="form-control" name="type">
-                                                <option value="fact">انبار وافعی </option>
-                                                <option value="pre">انباری پیش فروش</option>
-                                            </select>
-                                        </div>
+                                       
                                         <div class="col-md-3 form-group">
 
                                             <label>address:</label>

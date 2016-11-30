@@ -152,21 +152,22 @@
         <script>
             $(document).ready(function() {
 
-                $( "#submit" ).click( function( ) {
+              /*  $( "#submit" ).click( function( ) {
                     var first=$("#first_amount").val()
                     var remain=$("#remain").val()
-                    alert(remain+'/'+first)
+
                     if(remain<first){
+                        alert(remain+'/'+first)
                         alert("مقدار وارده شما بیشتراز مفدار باقی مانده هست ")
                         return false;
                     }
 
-                });
+                });*/
 
                 $( "#second_amount" ).change( function( ) {
                   var first_amount=$("#first_amount").val()
                     var second_amount=this.value
-                    var extra_amount=first_amount - second_amount
+                    var extra_amount= second_amount - first_amount
 
                     $("#extra_amount").val(extra_amount)
 
