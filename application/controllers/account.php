@@ -33,16 +33,16 @@ class account extends CI_Controller {
 
 	public function add(){
 
-        $this->form_validation->set_rules('name' , null, 'alpha_numeric_spaces|required',
+        $this->form_validation->set_rules('name' , null, 'alpha_int|required',
             array(
                 'required'      => 'You have not provided name in name field',
-                'alpha_numeric_spaces'         =>'please insert just alghabatic charecters'
+                'alpha_int'         =>'please insert just alghabatic charecters'
         )
             );
-       $this->form_validation->set_rules('lname' , null, 'alpha_numeric_spaces|required',
+       $this->form_validation->set_rules('lname' , null, 'alpha_int|required',
             array(
                 'required'      => 'You have not provided name in name field',
-                'alpha_numeric_spaces'         =>'please insert just alghabatic charecters'
+                'alpha_int'         =>'please insert just alghabatic charecters'
         )
             );
 
@@ -52,6 +52,15 @@ class account extends CI_Controller {
                 'is_natural'         =>'Please Use Just numberic charecters'
         )
             );
+
+		function alpha_int($str)
+		{
+			$ci =& get_instance();
+			$str = (strtolower($ci->config->item('charset')) != 'utf-8') ? utf8_encode($str) : $str;
+
+			return ( ! preg_match("/^[[:alpha:]- چجحخهعغفقثصضشسیبلاتنمکگپظطزرذدئو_.]+$/", $str)) ? FALSE : TRUE;
+		}
+
 		$data['account_rows']=$this->account_model->group_by('type');
         if($this->form_validation->run()==false){
 
@@ -93,10 +102,15 @@ class account extends CI_Controller {
 			$data['driver_cash_rows']=$this->cash_model->get_where(array('account_id' => $id, 'table_name'=>'driver_transaction'));
 			$this->load->template('accounts/driver_profile',$data);
 		}
-	echo $type;
+
 		if($type=="exchanger"){
 			$data['exchanger_cash_rows']=$this->cash_model->get_where(array('account_id' => $id, 'table_name'=>'account'));
 			$this->load->template('accounts/exchanger_profile',$data);
+		}
+
+		if($type=="seller"){
+			$data['cash_rows']=$this->cash_model->get_where(array('account_id' => $id));
+			$this->load->template('accounts/seller_profile',$data);
 		}
     }
 	public function delete($id=0){

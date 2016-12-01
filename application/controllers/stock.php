@@ -31,16 +31,17 @@ class stock extends CI_Controller {
 		$data['sub_title']="add stock form ";
 		$data['desc']="add stock decription";
 
-        $this->form_validation->set_rules('name' , null, 'alpha_numeric_spaces|required',
+        $this->form_validation->set_rules('name' , null, 'alpha_int|required',
             array(
                 'required'      => 'You have not provided name in name field',
-                'alpha_numeric_spaces'         =>'please insert just alghabatic charecters'
+                'alpha_int'         =>'please insert just alghabatic charecters'
         )
             );
-       $this->form_validation->set_rules('province' , null, 'alpha_numeric_spaces|required',
+
+       $this->form_validation->set_rules('province' , null, 'alpha_int|required',
             array(
                 'required'      => 'You have not provided name in name field',
-                'alpha_numeric_spaces'         =>'please insert just alghabatic charecters'
+                'alpha_int'         =>'please insert just alghabatic charecters'
         )
             );
 
@@ -50,6 +51,14 @@ class stock extends CI_Controller {
                 'is_natural'         =>'Please Use Just numberic charecters'
         )
             );
+		
+		function alpha_int($str)
+		{
+			$ci =& get_instance();
+			$str = (strtolower($ci->config->item('charset')) != 'utf-8') ? utf8_encode($str) : $str;
+
+			return ( ! preg_match("/^[[:alpha:]- چجحخهعغفقثصضشسیبلاتنمکگپظطزرذدئو_.]+$/", $str)) ? FALSE : TRUE;
+		}
 
         if($this->form_validation->run()==false){
 
@@ -62,14 +71,14 @@ class stock extends CI_Controller {
             'province'=>$this->db->escape_str($this->input->post('province')),
             'phone'=>$this->db->escape_str($this->input->post('phone')),
             'address'=>$this->db->escape_str($this->input->post('address')),
-			'type'=>$this->db->escape_str($this->input->post('type')),
+			'type'=>'fact',
             'desc'=>$this->db->escape_str($this->input->post('desc'))
             );
 
        $id=$this->stock_model->insert($cantact_info);
 
         $data['fu_page_title']="Login Form";
-        redirect('stock/profile/'.$id.','.$this->input->post('type'));
+        redirect('stock/profile/'.$id.'/fact');
       // $this->profile($id); 
         }
 

@@ -152,6 +152,7 @@
         <script>
             $(document).ready(function() {
 
+<<<<<<< HEAD
                 // $( "#submit" ).click( function( ) {
                  //   var first=$("#first_amount").val()
                    // var remain=$("#remain").val()
@@ -162,11 +163,24 @@
                     }
 
                 // });
+=======
+              /*  $( "#submit" ).click( function( ) {
+                    var first=$("#first_amount").val()
+                    var remain=$("#remain").val()
+
+                    if(remain<first){
+                        alert(remain+'/'+first)
+                        alert("مقدار وارده شما بیشتراز مفدار باقی مانده هست ")
+                        return false;
+                    }
+
+                });*/
+>>>>>>> refs/remotes/origin/master
 
                 $( "#second_amount" ).change( function( ) {
                   var first_amount=$("#first_amount").val()
                     var second_amount=this.value
-                    var extra_amount=first_amount - second_amount
+                    var extra_amount= second_amount - first_amount
 
                     $("#extra_amount").val(extra_amount)
 

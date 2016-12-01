@@ -66,8 +66,10 @@
                                     $this->load->model('oil_model');
                                     if($buy_sell=='pre') {
                                         echo $remain = $this->oil_model->get_remain_oil_each_pre($value->id, $buy_sell);
+
                                     }else{
                                         echo $remain=$value->amount;
+                                        
 
                                     }
                                     ?>

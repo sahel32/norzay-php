@@ -53,11 +53,11 @@
                                             <label>type</label>
                                             <select class="form-control" name="type">
 
-                                                <option>seller</option>
-                                                <option>costumer</option>
-                                                <option>driver</option>
-                                                <option>stuf</option>
-                                                <option>exchanger</option>
+                                                <option value="seller">seller</option>
+                                                <option value="costumer">costumer</option>
+                                                <option value="driver">driver</option>
+                                                <option value="stuff">stuf</option>
+                                                <option value="exchanger">exchanger</option>
                                             </select>
                                         </div>
 
