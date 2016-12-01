@@ -152,16 +152,16 @@
         <script>
             $(document).ready(function() {
 
-                $( "#submit" ).click( function( ) {
-                    var first=$("#first_amount").val()
-                    var remain=$("#remain").val()
-                    alert(remain+'/'+first)
-                    if(remain<first){
-                        alert("مقدار وارده شما بیشتراز مفدار باقی مانده هست ")
-                        return false;
+                // $( "#submit" ).click( function( ) {
+                 //   var first=$("#first_amount").val()
+                   // var remain=$("#remain").val()
+                    //alert(remain+'/'+first)
+                    //if(remain<first){
+                      //  alert("مقدار وارده شما بیشتراز مفدار باقی مانده هست ")
+                        //return false;
                     }
 
-                });
+                // });
 
                 $( "#second_amount" ).change( function( ) {
                   var first_amount=$("#first_amount").val()
