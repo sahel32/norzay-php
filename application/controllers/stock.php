@@ -30,6 +30,7 @@ class stock extends CI_Controller {
 				$data['main_title']="add stock";
 		$data['sub_title']="add stock form ";
 		$data['desc']="add stock decription";
+		$data['oil_type_rows'] = $this->stock_model->get_group_by('oil_type');
 
         $this->form_validation->set_rules('name' , null, 'alpha_int|required',
             array(
@@ -72,6 +73,7 @@ class stock extends CI_Controller {
             'phone'=>$this->db->escape_str($this->input->post('phone')),
             'address'=>$this->db->escape_str($this->input->post('address')),
 			'type'=>'fact',
+			'oil_type'=>$this->input->post('oil_type'),
             'desc'=>$this->db->escape_str($this->input->post('desc'))
             );
 

@@ -25,23 +25,29 @@ class oil extends CI_Controller {
 		 $this->load->template("oil/lists", $data);
 	}
 
+	public function lists_pre_sell(){
 
-	public function lists($buy_sell="sell" ,$type)
+
+			$data = array(
+				'main_title' => "pre sell",
+				'sub_title' => "pre sell sub title",
+				'desc' => "pre sell desc",
+				'buy_sell' =>'sell',
+				'account_label' => 'sell to',
+				'pre_date' => 'pre sell date',
+				'pre_date_2' => 'pre sell give date',
+				'stock_label' => 'from stock'
+			);
+
+		$data['oil_rows']=$this->oil_model->get_where(array('type' => 'pre', 'buy_sell'=>'sell'));
+
+			$this->load->template("oil/lists_pre_sell", $data);
+
+	}
+	public function lists_pre_buy($buy_sell="buy" ,$type='pre')
 	{
 
 
-	if($buy_sell=="sell") {
-		$data = array(
-			'main_title' => "pre sell",
-			'sub_title' => "pre sell sub title",
-			'desc' => "pre sell desc",
-			'buy_sell' =>$buy_sell,
-			'account_label' => 'sell to',
-			'pre_date' => 'pre sell date',
-			'pre_date_2' => 'pre sell give date',
-			'stock_label' => 'from stock'
-		);
-	}else{
 		$data=array(
 			'main_title'=>"pre buy",
 			'sub_title'=>"pre buy sub title",
@@ -53,13 +59,10 @@ class oil extends CI_Controller {
 			'stock_label'=>'from stock'
 		);
 
-	}
 		$data['oil_rows']=$this->oil_model->get_where(array('type' => $type, 'buy_sell'=>$buy_sell));
-		if($type=='fact'){
-			$this->load->template("oil/lists_fact", $data);
-		}else {
-			$this->load->template("oil/lists_pre", $data);
-		}
+
+			$this->load->template("oil/lists_pre_buy", $data);
+
 	}
 
 		public function pre_buy_sell($buy_sell="buy")
@@ -193,25 +196,83 @@ class oil extends CI_Controller {
 	public function pre_buy_sell_balance(){
 		$this->oil_model->get_balance(array('type'=>'pre', 'buy_sell'=>'buy'));
 	}
-public function buy($template="template" , $popupp_pre_buy_sell_id="",$remain='',$buy_sell=''){
 
-	if($buy_sell=="sell") {
-		$data = array(
-			'main_title' => "pre sell",
-			'sub_title' => "pre sell sub title",
-			'desc' => "pre sell desc",
-			'account_label' => 'sell from',
-			'pre_date' => 'pre sell date',
-			'pre_date_2' => 'pre sell give date',
-			'stock_label' => 'from stock',
-			'stock_disable' => 'enabled',
-			'buy_sell' => $buy_sell,
-			'transaction_type' => 'credit',
-			'type' => 'customer',
-			'popupp_pre_buy_sell_id' => $popupp_pre_buy_sell_id,
-			'remain' => $remain
+	public function pre_sell_to_fact_form($template="template" , $popupp_pre_buy_sell_id="",$remain='',$buy_sell=''){
+
+			$data = array(
+				'main_title' => "pre sell",
+				'sub_title' => "pre sell sub title",
+				'desc' => "pre sell desc",
+				'account_label' => 'sell from',
+				'pre_date' => 'pre sell date',
+				'pre_date_2' => 'pre sell give date',
+				'stock_label' => 'from stock',
+				'stock_disable' => 'enabled',
+				'buy_sell' => 'sell',
+				'transaction_type' => 'credit',
+				'type' => 'customer',
+				'popupp_pre_buy_sell_id' => $popupp_pre_buy_sell_id,
+				'remain' => $remain
+			);
+
+
+		$this->form_validation->set_rules('pre_buy_sell_id', null, 'required',
+			array(
+				'required' => 'You have not provided name in name field'
+			)
 		);
-	}else{
+
+		if ($this->form_validation->run() == false) {
+
+			//$data['seller_rows'] = $this->account_model->get_where(array('type'=>'customer'));
+			//$data['driver_rows'] = $this->account_model->get_where(array('type'=>'driver'));
+			$data['stock_rows'] = $this->stock_model->get_where(array('type'=>'fact'));
+			$this->load->popupp('oil/pre_sell_to_fact_form', $data);
+		} else {
+			$fact_transaction = array(
+				'parent_id' => $this->input->post('pre_buy_sell_id'),
+				'f_date' => $this->input->post('received_date'),
+				'buyer_seller_id' =>$this->input->post('account_id'),
+				'amount' =>  $this->db->escape_str($this->input->post('amount')),
+				/*'barcode' =>  $this->db->escape_str($this->input->post('barcode')),
+				'source' =>  $this->db->escape_str($this->input->post('source')),*/
+				'stock_id' => $this->input->post('stock_id'),
+				//'desc' => $this->db->escape_str($this->input->post('desc')),
+				'unit' => 'ton',
+				'type' => "fact",
+				'buy_sell' =>  $buy_sell,
+			);
+
+			$id = $this->oil_model->insert($fact_transaction);
+
+			$pre_transaction=$this->oil_model->get_where(array('id'=>$this->input->post('pre_buy_sell_id')));
+			foreach ($pre_transaction as $key => $value){
+
+				$cash=$this->db->escape_str($this->input->post('amount')) * $value->unit_price;
+				$cash_information = array(
+					'cash' =>  $cash,
+					'type' => 'usa',
+					'transaction_type' =>'debit',
+					'table_id'=>$id,
+					'account_id'=>$this->db->escape_str($this->input->post('account_id')),
+					'table_name'=>'stock_transaction'
+
+				);
+
+				$this->cash_model->insert($cash_information);
+			}
+
+
+
+			$this->load->popupp('oil/pre_sell_to_fact_form', $data);
+		}
+
+
+
+	}
+public function pre_buy_to_fact_form($template="template" , $popupp_pre_buy_sell_id="",$remain='',$buy_sell=''){
+
+
 		$data = array(
 			'main_title' => "pre sell",
 			'sub_title' => "pre sell sub title",
@@ -227,7 +288,7 @@ public function buy($template="template" , $popupp_pre_buy_sell_id="",$remain=''
 			'popupp_pre_buy_sell_id'=>$popupp_pre_buy_sell_id,
 			'remain'=>$remain
 		);
-	}
+
 
 
 	$this->form_validation->set_rules('pre_buy_sell_id', null, 'required',
@@ -293,7 +354,7 @@ public function buy($template="template" , $popupp_pre_buy_sell_id="",$remain=''
 		$data['driver_rows'] = $this->account_model->get_where(array('type'=>'driver'));
 		$data['stock_rows'] = $this->stock_model->get_where(array('type'=>'fact'));
 
-		$this->load->$template('oil/buy', $data);
+		$this->load->$template('oil/pre_buy_to_fact_form', $data);
 	} else {
 		$fact_transaction = array(
 			'parent_id' => $this->input->post('pre_buy_sell_id'),
@@ -351,7 +412,7 @@ public function buy($template="template" , $popupp_pre_buy_sell_id="",$remain=''
 
 			$this->cash_model->insert($extra_cash_information);
 		}
-		$this->load->$template('oil/buy', $data);
+		$this->load->$template('oil/pre_sell_to_fact_form', $data);
 	}
 
 
