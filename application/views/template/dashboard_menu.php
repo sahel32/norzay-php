@@ -85,7 +85,10 @@
                                 <a href="#">ثبت پیش خرید</a>
                             </li>
                             <li>
-                                <a href="#">ثبت خرید</a>
+                                <a href="<?php echo site_url("cash/simple_credit") ?>">پرداخت پول ساده</a>
+                            </li>
+                            <li>
+                                <a href="<?php echo site_url("cash/customer_credit") ?>">پرداخت پول مشتری</a>
                             </li>
                         </ul>
                     </li>
@@ -96,7 +99,10 @@
                                 <a href="#">ثبت پیش فروش</a>
                             </li>
                             <li>
-                                <a href="#">ثبت فروش</a>
+                                <a href="<?php echo site_url("cash/simple_debit") ?>">دربافت پول ساده</a>
+                            </li>
+                            <li>
+                                <a href="<?php echo site_url("cash/customer_debit") ?>">دریافت پول مشتری</a>
                             </li>
                         </ul>
                     </li>

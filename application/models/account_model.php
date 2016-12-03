@@ -34,9 +34,10 @@ class account_model extends CI_Model{
 
 
     //get data from table by condition or array of condition
-    function group_by($group_by){
+    function group_by($wheres=array(),$group_by){
       //$query = $this->db->get_where('mytable', array('id' => $id), $limit, $offset);
         $this->db->group_by($group_by);
+        $this->db->where($wheres);
       $query=$this->db->get($this->table);
       return $query->result();
     }

@@ -68,25 +68,25 @@
                                 </div>
 
 
-                                <!--<div class="col-md-3 form-group">
+                                <div class="col-md-3 form-group">
                                     <label>درایور (راننده)</label>
                                     <select class="form-control" name="driver_id">
                                         <?php
-/*
-                                        foreach ($driver_rows as $key => $d_value) {*/?>
 
-                                            <option value="<?php /*echo $d_value->id;*/?>"><?php /*echo $d_value->name;*/?></option>
+                                        foreach ($driver_rows as $key => $d_value) {?>
 
-                                        <?php /*}*/?>
+                                            <option value="<?php echo $d_value->id;?>"><?php echo $d_value->name;?></option>
+
+                                        <?php }?>
 
                                     </select>
-                                </div>-->
-                                <!--<div class="col-md-3 form-group">
+                                </div>
+                                <div class="col-md-3 form-group">
                                     <label>ترانزیت (نمبر موتر)</label>
-                                    <input type="text"  value="<?php /*echo set_value('transit'); */?>" name="transit" class="form-control"  />
-                                    <span class="help-inline"><?php /*echo (form_error('transit') ) ? form_error('transit') : "<span class='red'>*</span>"; */?></span>
+                                    <input type="text"  value="<?php echo set_value('transit'); ?>" name="transit" class="form-control"  />
+                                    <span class="help-inline"><?php echo (form_error('transit') ) ? form_error('transit') : "<span class='red'>*</span>"; ?></span>
 
-                                </div>-->
+                                </div>
                                 <div class="col-md-3 form-group">
                                     <label>تناژ (وزن سمیر)</label>
                                     <input type="text"  value="<?php echo set_value('amount'); ?>" name="amount" class="form-control" id="amount"  />

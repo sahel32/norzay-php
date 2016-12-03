@@ -1,7 +1,7 @@
 <div id="page-inner">
     <div class="row">
         <div class="col-md-12">
-            <h2>پروفایل فروشنده ها </h2>
+            <h2>پروفایل مشتری ها </h2>
             <h5>در این قسمت شما میتوانید تمام اطلاعات مربوط به خریدار و فروشنده مورد نظر را مشاهده کنید.</h5>
         </div>
     </div>
@@ -39,22 +39,22 @@
                         </div>
                         <div class="row">
 
-                                <div class="col-md-3 form-group">
-                                    <label>نوع چک</label>
-                                    <select>
-                                        <option>usa</option>
-                                        <option>ir</option>
-                                        <option >check</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-3 form-group">
-                                    <label>اسم صاحب چک</label>
-                                    <input class="form-control" />
-                                </div>
-                                <div class="col-md-3 form-group">
-                                    <label> کد جک</label>
-                                    <input class="form-control" />
-                                </div>
+                            <div class="col-md-3 form-group">
+                                <label>نوع چک</label>
+                                <select>
+                                    <option>usa</option>
+                                    <option>ir</option>
+                                    <option >check</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 form-group">
+                                <label>اسم صاحب چک</label>
+                                <input class="form-control" />
+                            </div>
+                            <div class="col-md-3 form-group">
+                                <label> کد جک</label>
+                                <input class="form-control" />
+                            </div>
 
                         </div>
 

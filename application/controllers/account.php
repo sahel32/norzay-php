@@ -100,17 +100,36 @@ class account extends CI_Controller {
 		
 		if($type=="driver"){
 			$data['driver_cash_rows']=$this->cash_model->get_where(array('account_id' => $id, 'table_name'=>'driver_transaction'));
+			$data['driver_oil_rows']=$this->driver_model->get_where_oil(array('driver_transaction.driver_id' => $id));
 			$this->load->template('accounts/driver_profile',$data);
 		}
 
 		if($type=="exchanger"){
 			$data['exchanger_cash_rows']=$this->cash_model->get_where(array('account_id' => $id, 'table_name'=>'account'));
+			$data['cash_type_rows']=$this->cash_model->group_by(array('account_id' => $id),'type');
+
 			$this->load->template('accounts/exchanger_profile',$data);
 		}
 
 		if($type=="seller"){
 			$data['cash_rows']=$this->cash_model->get_where(array('account_id' => $id));
 			$this->load->template('accounts/seller_profile',$data);
+		}
+		if($type=="customer"){
+			$data['cash_rows']=$this->cash_model->get_where(array('account_id' => $id));
+			$this->load->template('accounts/customer_profile',$data);
+		}
+
+		if($type=="stuff"){
+			$data['driver_cash_rows']=$this->cash_model->get_where(array('account_id' => $id, 'table_name'=>'driver_transaction'));
+			$data['driver_oil_rows']=$this->driver_model->get_where_oil(array('driver_transaction.driver_id' => $id));
+			$this->load->template('accounts/stuff_profile',$data);
+		}
+
+		if($type=="dealer"){
+			$data['driver_cash_rows']=$this->cash_model->get_where(array('account_id' => $id, 'table_name'=>'driver_transaction'));
+			$data['driver_oil_rows']=$this->driver_model->get_where_oil(array('driver_transaction.driver_id' => $id));
+			$this->load->template('accounts/dealer_profile',$data);
 		}
     }
 	public function delete($id=0){

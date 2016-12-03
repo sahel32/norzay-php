@@ -40,6 +40,40 @@ class cash_model extends CI_Model{
         return $query->result();
     }
 
+    function get_balance_credit_debit_mylty_money($id,$type){
+        $query=$this->db->query("
+SELECT
+  (debit - credit) AS balance,
+  credit,
+  debit,
+  NAME,
+  lname,
+  phone,
+  account.id
+FROM
+  (SELECT
+    IFNULL(SUM(cash),0) AS debit
+  FROM
+    cash
+  WHERE transaction_type = 'debit'
+    AND account_ID = ? AND TYPE=?) AS result,
+  (SELECT
+    IFNULL(SUM(cash),0)  AS credit
+  FROM
+    cash
+  WHERE transaction_type = 'credit'
+    AND account_ID = ? AND TYPE=?) AS result1,
+  account,
+  cash
+WHERE cash.`account_id` = account.id
+  AND account.`id` = ?
+GROUP BY account.`id`
+        ", array($id,$type,$id,$type,$id));
+        return  $query->result();
+
+    }
+
+
     function get_balance_credit_debit($id){
         $query=$this->db->query("
 SELECT
@@ -73,6 +107,13 @@ GROUP BY account.`id`
 
     }
     //get data from table by condition or array of condition
+    function group_by($wheres=array(),$group_by){
+        //$query = $this->db->get_where('mytable', array('id' => $id), $limit, $offset);
+        $this->db->group_by($group_by);
+        $this->db->where($wheres);
+        $query=$this->db->get($this->table);
+        return $query->result();
+    }
     function sum_where($wheres){
         //$query = $this->db->get_where('mytable', array('id' => $id), $limit, $offset);
         $this->db->select_sum('cash');

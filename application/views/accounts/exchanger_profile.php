@@ -94,6 +94,62 @@
         </div>
     </div>
     <!-- /. ROW -->
+    <div class="row">
+        <div class="col-md-12 col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+
+                    اطلاعات عمومی
+                    <div class="btn-group pull-left">
+
+                        <button href="#new-customer" data-toggle="modal" >پرداخت
+                            <i class="fa fa-plus-circle" data-toggle="tooltip" title="ثبت مشتری جدید" data-placement="top"></i></button><button>رسید</button>
+
+                        <i class="fa fa-comments fa-button" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <thead>
+                            <tr>
+                                <th>کد</th>
+                                <th>نام</th>
+                                <th>تخلص</th>
+                                <th>شماره تماس</th>
+                                <th>بردگی</th>
+                                <th>رسیدگی</th>
+                                <th>بیلانس (الباقی)</th>
+                                <th>تغییرات</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <?php
+
+                            foreach ($cash_type_rows as $key => $value) {?>
+                                <tr class="odd gradeX">
+                                    <td><?php echo $value->id;?></td>
+                                    <td><?php echo $value->name;?></td>
+                                    <td><?php echo $value->lname;?></td>
+                                    <td><?php echo $value->phone;?></td>
+                                    <td class="center"><?php echo $value->debit;?></td>
+                                    <td class="center"><?php echo $value->credit;?></td>
+                                    <td class="center"><?php echo $value->balance;?></td>
+
+                                    <td class="center">
+                                        <a href="<?php echo site_url('account/delete/'.$value->id) ?>"><span class="glyphicon glyphicon-trash"></span></a>
+                                        <a href="<?php echo site_url('account/edit/'.$value->id) ?>"><span class="glyphicon glyphicon-edit"></span></a>
+                                        <a href="<?php echo site_url('account/profile/'.$value->id); ?>"><span class="glyphicon glyphicon-asterisk"></span></a>
+                                    </td>
+                                </tr>
+                            <?php }?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <hr />
     <div class="row">
         <div class="col-md-12 col-sm-6">
