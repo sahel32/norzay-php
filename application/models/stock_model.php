@@ -28,7 +28,13 @@ class stock_model extends CI_Model{
       $query=$this->db->get($this->table);
       return $query->result();
     }
+    function get_group_by($column){
+        $this->db->group_by($column);
+        $query=$this->db->get($this->table);
+        return $query->result();
 
+
+    }
 
     function get_remain_oil($id,$buy_sell){
         $query=$this->db->query('
@@ -55,7 +61,7 @@ FROM
 
     function get_stock_balance_fact($id){
         $query=$this->db->query('
-SELECT (buy+sell) AS remain FROM (SELECT (driver+buy1) AS buy FROM (SELECT
+SELECT (buy-sell) AS remain FROM (SELECT (driver+buy1) AS buy FROM (SELECT
   IFNULL(SUM(amount),0) AS buy1
 FROM
   stock,

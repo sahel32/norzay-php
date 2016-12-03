@@ -110,6 +110,8 @@
 
 <script type="text/javascript" src="<?php echo asset_url('jeegoopopup/jquery-1.10.2.min.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo asset_url('jeegoopopup/jquery.jeegoopopup.1.0.0.js'); ?>"></script>
+
+
 <script type="text/javascript">
     //<![CDATA[
     function popupp(id,remain,buy_sell){
@@ -138,7 +140,7 @@
             /*if($('#html').is(':checked'))
              options.html = $('#html_content').val();
              else */
-            options.url = '<?php echo site_url('oil/buy/popupp'); ?>/'+id+'/'+remain+'/'+buy_sell;
+            options.url = '<?php echo site_url('oil/pre_buy_to_fact_form/popupp'); ?>/'+id+'/'+remain+'/'+buy_sell;
 
             $.jeegoopopup.open(options);
      //   });

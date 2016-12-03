@@ -39,7 +39,7 @@
                         <tr>
                             <th>کد</th>
                             <th>تاریخ پیش فروش</th>
-                            <th>اسم انبار</th>
+                            <th>تاریخ تقریبی تحویل</th>
                             <th>نام فروشنده</th>
                             <th>نوغ تیل</th>
                             <th>تناژ</th>
@@ -55,7 +55,7 @@
                             <tr class="odd gradeX">
                                 <td><?php echo $value->id;?></td>
                                 <td><?php echo $value->f_date;?></td>
-                                <td><?php echo $value->stock_id;?></td>
+                                <td><?php echo $value->s_date;?></td>
                                 <td class="center"><?php
                                     $this->load->model('account_model');
                                     echo $this->account_model->get_name(array('id'=>$value->buyer_seller_id));
@@ -64,13 +64,10 @@
                                 <td class="center">
                                     <?php
                                     $this->load->model('oil_model');
-                                    if($buy_sell=='pre') {
-                                        echo $remain = $this->oil_model->get_remain_oil_each_pre($value->id, $buy_sell);
-
+                                    if($value->type=='pre') {
+                                        echo $remain = $this->oil_model->get_remain_oil_each_pre_buy($value->id, $buy_sell);
                                     }else{
                                         echo $remain=$value->amount;
-                                        
-
                                     }
                                     ?>
                                 </td>
@@ -111,8 +108,10 @@
 </script>
 <!-- CUSTOM SCRIPTS -->
 
-<script type="text/javascript" src="<?php //echo asset_url('jeegoopopup/jquery-1.10.2.min.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo asset_url('jeegoopopup/jquery-1.10.2.min.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo asset_url('jeegoopopup/jquery.jeegoopopup.1.0.0.js'); ?>"></script>
+
+
 <script type="text/javascript">
     //<![CDATA[
     function popupp(id,remain,buy_sell){
@@ -141,7 +140,7 @@
         /*if($('#html').is(':checked'))
          options.html = $('#html_content').val();
          else */
-        options.url = '<?php echo site_url('oil/buy/popupp'); ?>/'+id+'/'+remain+'/'+buy_sell;
+        options.url = '<?php echo site_url('oil/pre_sell_to_fact_form/popupp'); ?>/'+id+'/'+remain+'/'+buy_sell;
 
         $.jeegoopopup.open(options);
         //   });

@@ -27,7 +27,12 @@ class cash_model extends CI_Model{
 
 
     }
+    function get_where_column($wheres,$column){
+        $query=$this->db->get_where($this->table, $wheres);
+        $value=$query->row();
+        return $value->$column;
 
+    }
     //get all rows of table
     function get(){
         //  $this->db->order_by($this->id,'desc');

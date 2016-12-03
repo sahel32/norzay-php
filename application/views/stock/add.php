@@ -46,7 +46,19 @@
                                             <span class="help-inline"><?php echo (form_error('phone') ) ? form_error('phone') :""; ?></span>
                                 
                                         </div>
-                                       
+                                        <div class="col-md-3 form-group">
+                                            <label>نوع گدام</label>
+                                            <select class="form-control" name="oil_type">
+                                                <?php
+
+                                                foreach ($oil_type_rows as $key => $d_value) {?>
+
+                                                    <option value="<?php echo $d_value->oil_type;?>"><?php echo $d_value->oil_type;?></option>
+
+                                                <?php }?>
+
+                                            </select>
+                                        </div>
                                         <div class="col-md-3 form-group">
 
                                             <label>address:</label>

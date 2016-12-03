@@ -145,6 +145,9 @@ WHERE parent_id IN
         return $query->result();
     }
 
+    //get data from table by condition or array of condition
+
+
     //deletes data from table by condtion or array of condition
     function delete($wheres){
         $this->db->delete($this->table,$wheres);
