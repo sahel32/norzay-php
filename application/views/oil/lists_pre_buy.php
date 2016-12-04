@@ -121,7 +121,7 @@
 //alert(id)
             var options = {
                 width: 500,
-                height: 600,
+                height: 500,
                 center: 'center',
                 fixed: $('#fixed').is(':checked'),
                 skinClass: $('#skin').val(),
