@@ -104,7 +104,7 @@ class cash extends CI_Controller {
                 'cash' => $this->db->escape_str($this->input->post('amount')),
                 'type' => $this->input->post('type'),
                 'transaction_type' => $this->input->post('transaction_type'),
-                'account_id' => $this->account_model->get_column(array('name'=>$this->input->post('account_name')),'id'),
+                'account_id' => $this->oil_model->get_column(array('id'=>$this->db->escape_str($this->input->post('st_id'))),'buyer_seller_id'),
                 'table_id'=>$this->db->escape_str($this->input->post('st_id')),
                 'table_name'=>'stock_transaction'
 

@@ -43,7 +43,13 @@ class oil_model extends CI_Model{
         $query=$this->db->get($this->table);
         return $query->result();
     }
+    function get_column($wheres,$column_name){
 
+        //$query = $this->db->get_where('mytable', array('id' => $id), $limit, $offset);
+        $query=$this->db->get_where($this->table, $wheres);
+        $value =$query->row();
+        return $value->buyer_seller_id;
+    }
     function get_remain_oil_each_pre_buy($id,$buy_sell){
         $query=$this->db->query('
 SELECT
@@ -146,7 +152,8 @@ WHERE parent_id IN
         $query = $this->db->get($this->table);
         if($query->num_rows() > 0){
             foreach ($query->result_array() as $row){
-                $row_set[] = htmlentities(stripslashes(' شماره فاکتور-'.$row['id'].' - '.$row['name'])); //build an array
+               // $row_set[] = htmlentities(stripslashes(' شماره فاکتور-'.$row['id'].' - '.$row['name'])); //build an array
+                $row_set[] = htmlentities(stripslashes($row['id'])); //build an array
             }
             echo json_encode($row_set); //format the array into json data
         }

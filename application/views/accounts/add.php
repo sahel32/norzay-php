@@ -54,7 +54,7 @@
                                             <select class="form-control" name="type">
 
                                                 <option value="seller">seller</option>
-                                                <option value="costumer">costumer</option>
+                                                <option value="customer">costumer</option>
                                                 <option value="driver">driver</option>
                                                 <option value="stuff">stuff</option>
                                                 <option value="exchanger">exchanger</option>

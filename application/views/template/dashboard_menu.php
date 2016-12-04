@@ -33,7 +33,7 @@
                                 <a href="<?php  echo site_url('oil/lists_pre_buy');?>">لیست پیش خرید ها</a>
                             </li>
                             <li>
-                                <a href="<?php  echo site_url('oil/pre_buy_sell/buy');?>">پیش خرید جدید</a>
+                                <a href="<?php  echo site_url('oil/pre_buy');?>">پیش خرید جدید</a>
                             </li>
                         </ul>
                     </li>
@@ -45,7 +45,7 @@
                                 <a href="<?php  echo site_url('oil/lists_pre_sell');?>">لیست پیش فروش ها</a>
                             </li>
                             <li>
-                                <a href="<?php  echo site_url('oil/pre_buy_sell/sell');?>">پیش فروش جدید</a>
+                                <a href="<?php  echo site_url('oil/pre_sell');?>">پیش فروش جدید</a>
                             </li>
                         </ul>
                     </li>   
