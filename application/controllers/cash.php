@@ -24,19 +24,145 @@ class cash extends CI_Controller {
         $this->load->template("Accounts/index", $data);
     }
 
+
     public function lists($type)
     {
         $data['title']="dashboard";
         $data['account_rows'] = $this->account_model->get_where(array('type'=>$type));
         $this->load->template("Accounts/lists", $data);
     }
-    public function simple_credit(){
+    public function credit_debit(){
         $data['title']="dashboard";
-        $this->load->template('cash/simple_credit', $data);
-}
-    public function simple_debit(){
+        $this->form_validation->set_rules('amount' , null, 'required',
+            array(
+                'required'      => 'You have not provided name in name field'
+            )
+        );
+        /*        $this->form_validation->set_rules('account_name' , null, 'alpha_int|required',
+                    array(
+                        'required'      => 'You have not provided name in name field',
+                        'alpha_int'         =>'please insert just alghabatic charecters'
+                    )
+                );*/
+        function alpha_int($str)
+        {
+            $ci =& get_instance();
+            $str = (strtolower($ci->config->item('charset')) != 'utf-8') ? utf8_encode($str) : $str;
+
+            return ( ! preg_match("/^[[:alpha:]- چجحخهعغفقثصضشسیبلاتنمکگپظطزرذدئو_.]+$/", $str)) ? FALSE : TRUE;
+        }
+        if($this->form_validation->run()==false){
+
+            $data['signup_form']="active";
+            $this->load->template('cash/credit_debit', $data);
+        }else {
+
+            $cash_information = array(
+                'cash' => $this->db->escape_str($this->input->post('amount')),
+                'type' => $this->input->post('type'),
+                'transaction_type' => $this->input->post('transaction_type'),
+                'account_id' => $this->account_model->get_column(array('name'=>$this->input->post('account_name')),'id')
+
+            );
+
+            $cash_id=  $this->cash_model->insert($cash_information);
+            if($this->input->post('type')=="check"){
+                $this->check_type($cash_id);
+            }else {
+                $this->load->template('cash/credit_debit', $data);
+            }
+        }
+
+    }
+    public function oil_credit_debit(){
         $data['title']="dashboard";
-        $this->load->view('cash/simple_debit', $data);
+        $this->form_validation->set_rules('amount' , null, 'required',
+            array(
+                'required'      => 'You have not provided name in name field'
+            )
+        );
+/*        $this->form_validation->set_rules('account_name' , null, 'alpha_int|required',
+            array(
+                'required'      => 'You have not provided name in name field',
+                'alpha_int'         =>'please insert just alghabatic charecters'
+            )
+        );*/
+        function alpha_int($str)
+        {
+            $ci =& get_instance();
+            $str = (strtolower($ci->config->item('charset')) != 'utf-8') ? utf8_encode($str) : $str;
+
+            return ( ! preg_match("/^[[:alpha:]- چجحخهعغفقثصضشسیبلاتنمکگپظطزرذدئو_.]+$/", $str)) ? FALSE : TRUE;
+        }
+        if($this->form_validation->run()==false){
+
+            $data['signup_form']="active";
+            $this->load->template('cash/oil_credit_debit', $data);
+        }else {
+
+            $cash_information = array(
+                'cash' => $this->db->escape_str($this->input->post('amount')),
+                'type' => $this->input->post('type'),
+                'transaction_type' => $this->input->post('transaction_type'),
+                'account_id' => $this->account_model->get_column(array('name'=>$this->input->post('account_name')),'id'),
+                'table_id'=>$this->db->escape_str($this->input->post('st_id')),
+                'table_name'=>'stock_transaction'
+
+            );
+
+           $cash_id=  $this->cash_model->insert($cash_information);
+            if($this->input->post('type')=="check"){
+                $this->check_type($cash_id);
+            }else {
+                $this->load->template('cash/oil_credit_debit', $data);
+            }
+        }
+        
+    }
+    function check_type($cash_id){
+        $data['main_title']="check";
+        $data['cash_id']=$cash_id;
+        $this->form_validation->set_rules('code' , null, 'required',
+            array(
+                'required'      => 'You have not provided name in name field'
+            )
+        );
+        $this->form_validation->set_rules('name' , null, 'required',
+            array(
+                'required'      => 'You have not provided name in name field'
+            )
+        );
+
+        if($this->form_validation->run()==false){
+
+            $data['signup_form']="active";
+            $this->load->template('cash/check_type', $data);
+        }else {
+            $check_information = array(
+                'cash_id' => $this->input->post('cash_id'),
+                'check_type' => $this->input->post('check_type'),
+                'code' => $this->db->escape_str($this->input->post('code')),
+                'name' => $this->db->escape_str($this->input->post('name'))
+
+            );
+
+            $cash_id=  $this->check_model->insert($check_information);
+            redirect('cash/credit_debit', $data);
+            }
+    }
+    function get_birds(){
+
+        if (isset($_GET['term'])){
+            $q = strtolower($_GET['term']);
+            echo $this->account_model->accounts_json($q);
+        }
+    }
+    function stock_transactions_json(){
+
+        if (isset($_GET['term'])){
+            $q = strtolower($_GET['term']);
+            print_r( $this->oil_model->srock_transactions_json($q));
+        }
     }
     public function add(){
 
@@ -67,7 +193,6 @@ class cash extends CI_Controller {
 
             return ( ! preg_match("/^[[:alpha:]- چجحخهعغفقثصضشسیبلاتنمکگپظطزرذدئو_.]+$/", $str)) ? FALSE : TRUE;
         }
-
         $data['account_rows']=$this->account_model->group_by('type');
         if($this->form_validation->run()==false){
 

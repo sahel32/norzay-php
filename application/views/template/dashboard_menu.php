@@ -81,29 +81,19 @@
                      <li  >
                         <a  href="chart.html"><i><img class="sidebar-menu" src="<?php echo asset_url('img/debits.png'); ?>" alt="debits"/></i> پرداخت ها</a>
                         <ul class="nav nav-second-level">
+
                             <li>
-                                <a href="#">ثبت پیش خرید</a>
+                                <a href="<?php echo site_url("cash/credit_debit") ?>"> کارمند، راننده، کمیشن کار،صراف</a>
                             </li>
                             <li>
-                                <a href="<?php echo site_url("cash/simple_credit") ?>">پرداخت پول ساده</a>
-                            </li>
-                            <li>
-                                <a href="<?php echo site_url("cash/customer_credit") ?>">پرداخت پول مشتری</a>
+                                <a href="<?php echo site_url("cash/oil_credit_debit") ?>">فرشنده و خریدار های تیل</a>
                             </li>
                         </ul>
                     </li>
                     <li  >
                         <a  href="chart.html"><i><img class="sidebar-menu" src="<?php echo asset_url('img/credits.png'); ?>" alt="credits"/></i> دریافت ها</a>
                         <ul class="nav nav-second-level">
-                            <li>
-                                <a href="#">ثبت پیش فروش</a>
-                            </li>
-                            <li>
-                                <a href="<?php echo site_url("cash/simple_debit") ?>">دربافت پول ساده</a>
-                            </li>
-                            <li>
-                                <a href="<?php echo site_url("cash/customer_debit") ?>">دریافت پول مشتری</a>
-                            </li>
+
                         </ul>
                     </li>
                         

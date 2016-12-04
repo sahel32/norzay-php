@@ -31,7 +31,17 @@ class account_model extends CI_Model{
       return $query->result();
     }
 
-
+    function accounts_json($q){
+        $this->db->select('name');
+        $this->db->like('name', $q);
+        $query = $this->db->get($this->table);
+        if($query->num_rows() > 0){
+            foreach ($query->result_array() as $row){
+                $row_set[] = htmlentities(stripslashes($row['name'])); //build an array
+            }
+            echo json_encode($row_set); //format the array into json data
+        }
+    }
 
     //get data from table by condition or array of condition
     function group_by($wheres=array(),$group_by){
@@ -48,7 +58,13 @@ class account_model extends CI_Model{
         return $query->result();
     }
 
-
+    function get_column($wheres,$column_name){
+      
+        //$query = $this->db->get_where('mytable', array('id' => $id), $limit, $offset);
+        $query=$this->db->get_where($this->table, $wheres);
+        $value =$query->row();
+        return $value->$column_name;
+    }
     function get_name($wheres){
         //$query = $this->db->get_where('mytable', array('id' => $id), $limit, $offset);
         $query=$this->db->get_where($this->table, $wheres);
