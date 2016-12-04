@@ -138,6 +138,19 @@ WHERE parent_id IN
 
 
     }
+
+    function srock_transactions_json($q){
+        $this->db->select('stock_transaction.id as id,account.name as name');
+        $this->db->like('stock_transaction.id', $q);
+        $this->db->join('account','account.id=stock_transaction.buyer_seller_id');
+        $query = $this->db->get($this->table);
+        if($query->num_rows() > 0){
+            foreach ($query->result_array() as $row){
+                $row_set[] = htmlentities(stripslashes(' شماره فاکتور-'.$row['id'].' - '.$row['name'])); //build an array
+            }
+            echo json_encode($row_set); //format the array into json data
+        }
+    }
     //get data from table by condition or array of condition
     function get_where($wheres){
         //$query = $this->db->get_where('mytable', array('id' => $id), $limit, $offset);

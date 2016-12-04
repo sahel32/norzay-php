@@ -105,7 +105,7 @@ class oil extends CI_Controller {
 			$data['stock_buy'] = $this->stock_model->get_where(array('type'=>'buy'));
 			$data['stock_rows'] = $this->stock_model->get_where(array('type'=>$data['buy_sell']));
 			//$data['account_rows'] = $this->account->get_where(array('type' => 'customer'));
-			$data['account_rows'] = $this->account_model->get_where(array('type'=>$data['type']));
+			$data['account_rows'] = $this->account_model->get();
 
 			$data['balance_rows'] = $this->balance_model->get_where(array('type'=>'pre'));
 
@@ -185,7 +185,7 @@ class oil extends CI_Controller {
 
 				);
 
-				$cash_id = $this->cash_model->insert($cash_information);
+				//$cash_id = $this->cash_model->insert($cash_information);
 				$data['fu_page_title'] = "Login Form";
 				//echo $cash_id;
 				redirect('oil/pre_buy_sell/'.$data['buy_sell']);
@@ -270,7 +270,7 @@ class oil extends CI_Controller {
 
 
 	}
-public function pre_buy_to_fact_form($template="template" , $popupp_pre_buy_sell_id="",$remain='',$buy_sell=''){
+    public function pre_buy_to_fact_form($template="template" , $popupp_pre_buy_sell_id="",$remain='',$buy_sell=''){
 
 
 		$data = array(
@@ -379,7 +379,7 @@ public function pre_buy_to_fact_form($template="template" , $popupp_pre_buy_sell
 			$cash_information = array(
 				'cash' =>  $cash,
 				'type' => 'usa',
-				'transaction_type' =>'debit',
+				'transaction_type' =>'credit',
 				'table_id'=>$id,
 				'account_id'=>$this->db->escape_str($this->input->post('account_id')),
 				'table_name'=>'stock_transaction'
@@ -403,7 +403,7 @@ public function pre_buy_to_fact_form($template="template" , $popupp_pre_buy_sell
 			$extra_cash_information = array(
 				'cash' => $this->db->escape_str($this->input->post('extra_money')),
 				'type' => 'ir',
-				'transaction_type' => 'debit',
+				'transaction_type' => 'credit',
 				'table_id' => $d_id,
 				'account_id' => $this->db->escape_str($this->input->post('driver_id')),
 				'table_name' => 'driver_transaction'
@@ -535,7 +535,7 @@ public function pre_buy_to_fact_form($template="template" , $popupp_pre_buy_sell
 				$cash_information = array(
 					'cash' =>  $cash,
 					'type' => 'usa',
-					'transaction_type' =>'debit',
+					'transaction_type' =>'credit',
 					'table_id'=>$id,
 					'account_id'=>$this->db->escape_str($this->input->post('account_id')),
 					'table_name'=>'stock_transaction'
@@ -559,7 +559,7 @@ public function pre_buy_to_fact_form($template="template" , $popupp_pre_buy_sell
 				$extra_cash_information = array(
 					'cash' => $this->db->escape_str($this->input->post('extra_money')),
 					'type' => 'ir',
-					'transaction_type' => 'debit',
+					'transaction_type' => 'credit',
 					'table_id' => $d_id,
 					'account_id' => $this->db->escape_str($this->input->post('account_id')),
 					'table_name' => 'driver_transaction'
