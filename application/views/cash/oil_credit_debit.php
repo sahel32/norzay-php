@@ -64,7 +64,7 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <form role="form" action="<?php echo site_url('cash/credit_debit'); ?>" method="post" id="debit">
+                        <form role="form" action="<?php echo site_url('cash/oil_credit_debit'); ?>" method="post" id="debit">
                             <div class="col-md-3 form-group">
                                 <!-- <a href="#new-driver" data-toggle="modal">
                                      <i class="fa fa-plus-circle" data-toggle="tooltip" title="ثبت درایور جدید" data-placement="top"></i>
@@ -95,15 +95,16 @@
 
                             </div>
 
+
+
+
+
                             <div class="col-md-3 form-group">
 
                                 <label>نوع پول</label>
 
 
                                 <select class="form-control" name="type" id="type">
-
-                                    <option value="af">af</option>
-                                    <option value="ir">ir</option>
                                     <option value="usa">usa</option>
                                     <option value="check" >check</option>
 
@@ -111,15 +112,14 @@
                                 </select>
 
                             </div>
-
-                            <div class="col-md-3 form-group">
-                                <!-- <a href="#new-driver" data-toggle="modal">
+                          <!--  <div class="col-md-3 form-group">
+                                 <a href="#new-driver" data-toggle="modal">
                                      <i class="fa fa-plus-circle" data-toggle="tooltip" title="ثبت درایور جدید" data-placement="top"></i>
-                                 </a>-->
+                                 </a>
                                 <label>اسم شخص گیرنده یا دهند </label>
                                 <input type="text" name="account_name"  id="birds" class="form-control">
                             </div>
-
+-->
                             <div class="col-md-3 gaps">
                                 <button type="submit" class="btn btn-default pull-left">تائید</button>
                                 <button type="reset" class="btn btn-primary pull-left">تنظیم مجدد</button>
@@ -133,7 +133,7 @@
 
             $("#type").change(function () {
                 if(this.value=="check") {
-                    $('#new-driver').modal('toggle');
+                    //$('#new-driver').modal('toggle');
                 }
             })
 

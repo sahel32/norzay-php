@@ -219,7 +219,13 @@ FROM
       $query=$this->db->get_where($this->table, $wheres);
       return $query->result();
     }
-
+    function get_or_where($wheres,$or_wheres){
+        //$query = $this->db->get_where('mytable', array('id' => $id), $limit, $offset);
+        $this->db->where($wheres);
+        $this->db->or_where($or_wheres);
+        $query=$this->db->get($this->table);
+        return $query->result();
+    }
     //deletes data from table by condtion or array of condition
     function delete($wheres){
       $this->db->delete($this->table,$wheres);

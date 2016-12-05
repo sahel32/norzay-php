@@ -20,7 +20,6 @@
             });
         });
     </script>
-
  <div class="row">
                     <div class="col-md-12">
                      <h2><?php  echo $main_title; ?></h2>   
@@ -57,13 +56,13 @@
 
                                         </div>
 
-                                        <div class="col-md-3 form-group">
+                                      <!--  <div class="col-md-3 form-group">
                                             <label>نوع تیل</label>
                                             <select class="form-control" name="oil_type">
                                                 <option value="petrol">پطرول</option>
                                                 <option value="desail">دیزل</option>
                                             </select>
-                                        </div>
+                                        </div>-->
 
                                         <div class="col-md-3 form-group">
                                             <label><?php echo $account_label;?></label>
@@ -79,40 +78,38 @@
                                             </select>
                                         </div>
                                         <div class="col-md-3 form-group">
-                                            <label>from stock</label>
-                                            <select class="form-control" name="stock" <?php echo $stock_disable;?>>
+                                            <label>stock</label>
+                                            <select class="form-control" name="stock">
                                         <?php
 
                                         foreach ($stock_buy as $key => $bvalue) {?>
 
 
                                             <option value="<?php echo $bvalue->id;?>">
-                                            <?php echo $bvalue->name." - ";
-                                            $this->load->model('stock_model');
-                                            echo $this->stock_model->get_stock_balance_pre_buy($bvalue->id,$buy_sell)." -Ton";
+                                            <?php echo $bvalue->oil_type;
                                             ?></option>
 
 
                                         <?php }?>
                                         </select>
                                             </div>
-                                        <div class="col-md-3 form-group">
+                                        <!--<div class="col-md-3 form-group">
                                             <label>to stock</label>
                                             <select class="form-control" name="stock_id" >
                                                 <?php
+/*
+                                                foreach ($stock_rows as $key => $value) {*/?>
 
-                                                foreach ($stock_rows as $key => $value) {?>
-
-                                                    <option value="<?php echo $value->id;?>">
-                                                        <?php echo $value->name." - ";
+                                                    <option value="<?php /*echo $value->id;*/?>">
+                                                        <?php /*echo $value->name." - ";
                                                         $this->load->model('stock_model');
                                                         echo $this->stock_model->get_stock_balance_pre_buy($value->id,$buy_sell)." -Ton";
-                                                        ?></option>
+                                                        */?></option>
 
-                                                <?php }?>
+                                                <?php /*}*/?>
 
                                             </select>
-                                        </div>
+                                        </div>-->
 
                                         <div class="col-md-3 form-group">
                                             <label>نوع فروش</label>
@@ -143,15 +140,15 @@
                                             <span class="help-inline"><?php echo (form_error('unit_price') ) ? form_error('unit_price') : "<span class='red'>*</span>"; ?></span>
 
                                         </div>
-                                        <div class="col-md-3 form-group">
+                                        <!--<div class="col-md-3 form-group">
                                             <label>poney type</label>
                                             <select class="form-control"  name="money_type" >
-                                            
+
                                                 <option value="usa">$</option>
                                                 <option value="usa">ریال</option>
-                                                
+
                                             </select>
-                                        </div>
+                                        </div>-->
                                         <div class="col-md-6 form-group">
                                             <label>شرح و تفصیلات</label>
                                             <textarea class="form-control" rows="3" name="desc" ></textarea>

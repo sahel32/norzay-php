@@ -54,7 +54,11 @@
                                             <select class="form-control" name="type">
 
                                                 <option value="seller">seller</option>
+<<<<<<< HEAD
                                                 <option value="customer">customer</option>
+=======
+                                                <option value="customer">costumer</option>
+>>>>>>> refs/remotes/origin/master
                                                 <option value="driver">driver</option>
                                                 <option value="stuff">stuff</option>
                                                 <option value="exchanger">exchanger</option>

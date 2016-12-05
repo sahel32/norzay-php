@@ -61,7 +61,7 @@ class account extends CI_Controller {
 			return ( ! preg_match("/^[[:alpha:]- چجحخهعغفقثصضشسیبلاتنمکگپظطزرذدئو_.]+$/", $str)) ? FALSE : TRUE;
 		}
 
-		$data['account_rows']=$this->account_model->group_by('type');
+		$data['account_rows']=$this->account_model->group_by(array(),'type');
         if($this->form_validation->run()==false){
 
         $data['signup_form']="active";

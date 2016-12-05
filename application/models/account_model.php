@@ -65,6 +65,14 @@ class account_model extends CI_Model{
         $value =$query->row();
         return $value->$column_name;
     }
+
+    function get_or_where($wheres,$or_wheres){
+        //$query = $this->db->get_where('mytable', array('id' => $id), $limit, $offset);
+        $this->db->where($wheres);
+        $this->db->or_where($or_wheres);
+        $query=$this->db->get($this->table);
+        return $query->result();
+    }
     function get_name($wheres){
         //$query = $this->db->get_where('mytable', array('id' => $id), $limit, $offset);
         $query=$this->db->get_where($this->table, $wheres);
