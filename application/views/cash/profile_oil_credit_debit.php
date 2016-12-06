@@ -19,10 +19,11 @@
 -->
 <script type="text/javascript">
     $(function(){
-        $("#birds").autocomplete({
-            source: "<?php echo site_url('cash/get_accounts');?>" // path to the get_birds method
+        $("#stock_transactions").autocomplete({
+            source: "<?php echo site_url('cash/stock_transactions_json');?>" // path to the get_birds method
         });
     });
+
 </script>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-modal/2.2.6/js/bootstrap-modal.js"></script>
@@ -42,8 +43,8 @@
 </style>
 <div class="row">
     <div class="col-md-12">
-        <h2>ثبت درایور</h2>
-        <h5>از این قسمت میتوانید مشخصات درایور را ثبت نمایید. </h5>
+        <h2>پرداخت و دریافت </h2>
+        <h5>پول یا چک برای مشتری و فروشنده های تیل</h5>
 
     </div>
 </div>
@@ -59,17 +60,14 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <form role="form" action="<?php echo site_url('cash/credit_debit'); ?>" method="post" id="debit">
-
-
+                        <form role="form" action="<?php echo site_url('cash/oil_credit_debit'); ?>" method="post" id="debit">
                             <div class="col-md-3 form-group">
                                 <!-- <a href="#new-driver" data-toggle="modal">
                                      <i class="fa fa-plus-circle" data-toggle="tooltip" title="ثبت درایور جدید" data-placement="top"></i>
                                  </a>-->
-                                <label>اسم شخص گیرنده یا دهند </label>
-                                <input type="text" name="account_name"  id="birds" class="form-control">
+                                <label>فاکتور مربوظ </label>
+                                <input type="text" name="st_id"  id="stock_transactions" class="form-control">
                             </div>
-
                             <div class="col-md-3 form-group">
 
                                 <label>مقدار پول</label>
@@ -93,15 +91,16 @@
 
                             </div>
 
+
+
+
+
                             <div class="col-md-3 form-group">
 
                                 <label>نوع پول</label>
 
 
                                 <select class="form-control" name="type" id="type">
-
-                                    <option value="af">af</option>
-                                    <option value="ir">ir</option>
                                     <option value="usa">usa</option>
                                     <option value="check" >check</option>
 
@@ -109,8 +108,14 @@
                                 </select>
 
                             </div>
-
-
+                            <!--  <div class="col-md-3 form-group">
+                                   <a href="#new-driver" data-toggle="modal">
+                                       <i class="fa fa-plus-circle" data-toggle="tooltip" title="ثبت درایور جدید" data-placement="top"></i>
+                                   </a>
+                                  <label>اسم شخص گیرنده یا دهند </label>
+                                  <input type="text" name="account_name"  id="birds" class="form-control">
+                              </div>
+  -->
                             <div class="col-md-3 gaps">
                                 <button type="submit" class="btn btn-default pull-left">تائید</button>
                                 <button type="reset" class="btn btn-primary pull-left">تنظیم مجدد</button>
@@ -120,16 +125,16 @@
                 </div>
             </div>
         </div>
-<script>
+        <script>
 
-    $("#type").change(function () {
-        if(this.value=="check") {
-            $('#new-driver').modal('toggle');
-        }
-    })
+            $("#type").change(function () {
+                if(this.value=="check") {
+                    //$('#new-driver').modal('toggle');
+                }
+            })
 
 
-</script>
+        </script>
         <!-- Start Modal driver -->
         <div id="new-driver" class="modal fade" tabindex="-1">
             <script>
@@ -140,39 +145,9 @@
                 })
 
             </script>
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close glyphicon glyphicon-remove" data-dismiss="modal"></button>
-                        <h3 class="modal-title">ثبت درایور (راننده) جدید</h3>
-                    </div>
-                    <div class="modal-body clearfix">
-                        <form role="form" method="post" >
-                            <div class="col-md-3 form-group">
-                                <label>نام</label>
-                                <input class="form-control" />
-                            </div>
-                            <div class="col-md-3 form-group">
-                                <label>تخلص</label>
-                                <input class="form-control" />
-                            </div>
-                            <div class="col-md-3 form-group">
-                                <label>شماره تماس</label>
-                                <input class="form-control" />
-                            </div>
-                            <div class="col-md-3 form-group">
 
-                                <input class="form-control" type="submit" data-dismiss="modal" id="insert-check"/>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-success" data-dismiss="modal">تائید</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Modal driver -->
+            <!-- End Modal driver -->
 
 
 
+   

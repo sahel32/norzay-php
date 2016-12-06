@@ -150,7 +150,7 @@ class cash extends CI_Controller {
             redirect('cash/credit_debit', $data);
             }
     }
-    function get_birds(){
+    function get_accounts(){
 
         if (isset($_GET['term'])){
             $q = strtolower($_GET['term']);
@@ -254,7 +254,7 @@ class cash extends CI_Controller {
 
         if($type=="stuff"){
             $data['driver_cash_rows']=$this->cash_model->get_where(array('account_id' => $id, 'table_name'=>'driver_transaction'));
-            $data['driver_oil_rows']=$this->driver_model->get_where_oil(array('driver_transaction.driver_id' => $id));
+            $data['all_debit_credit']=$this->driver_model->get_where(array('account_id' => $id));
             $this->load->template('accounts/stuff_profile',$data);
         }
 

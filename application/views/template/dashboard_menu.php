@@ -65,7 +65,7 @@
                                 <a href="<?php echo site_url('account/lists/exchanger');?>">حساب صرافی ها</a>
                             </li>
                             <li>
-                                <a href="<?php echo site_url('account/lists/stuff');?>">حساب کمیشن کار ها</a>
+                                <a href="<?php echo site_url('account/lists/dealer');?>">حساب کمیشن کار ها</a>
                             </li>
                             <li>
                                 <a href="<?php echo site_url('account/lists/driver');?>">حساب راننده ها</a>

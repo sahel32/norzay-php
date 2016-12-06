@@ -11,7 +11,8 @@
         <div class="col-md-12 col-sm-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    اطلاعات عمومی
+
+             اطلاعات عمومی
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive">
@@ -31,7 +32,7 @@
                             <tbody>
                             <?php
 
-                            foreach ($account_rows as $key => $value) {?>
+                            foreach ($single_balance_rows as $key => $value) {?>
                                 <tr class="odd gradeX">
                                     <td><?php echo $value->id;?></td>
                                     <td><?php echo $value->name;?></td>
@@ -82,14 +83,14 @@
                                 <th>مقدار پول</th>
                                 <th>نوع پول</th>
                                 <th>نوع دریافت / پرداخت پول</th>
-                                <th>بیلانس (الباقی)</th>
+
                                 <th>شرح و تفصیلات</th>
                                 <th>تغییرات</th>
                             </tr>
                             </thead>
                             <tbody>
                             <?php
-                            foreach ($driver_cash_rows as $key => $cash_value) {
+                            foreach ($all_debit_credit as $key => $cash_value) {
                                 ?>
                                 <tr class="odd gradeX">
                                     <td><?php  echo $cash_value->id;?></td>
@@ -97,7 +98,7 @@
                                     <td><?php  echo $cash_value->cash;?></td>
                                     <td class="center"><?php  echo $cash_value->type;?></td>
                                     <td class="center"><?php  echo $cash_value->transaction_type;?></td>
-                                    <td class="center">X</td>
+                          
                                     <td class="center"><?php  echo $cash_value->desc;?></td>
                                     <td class="center">
                                         <a href="<?php echo site_url('account/delete/'.$value->id) ?>"><span class="glyphicon glyphicon-trash"></span></a>

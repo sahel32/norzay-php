@@ -74,10 +74,10 @@ GROUP BY account.`id`
     }
 
 
-    function get_balance_credit_debit($id){
+    function get_balance_credit_debit_single($id){
         $query=$this->db->query("
 SELECT
-  (debit - credit) AS balance,
+  (debit-credit) AS balance,
   credit,
   debit,
   name,
@@ -86,13 +86,13 @@ SELECT
   account.id
 FROM
   (SELECT
-    SUM(cash) AS debit
+    IFNULL(SUM(cash),0) AS credit
   FROM
     cash
   WHERE transaction_type = 'debit'
     AND account_ID = ?) AS result,
   (SELECT
-    SUM(cash) AS credit
+    IFNULL(SUM(cash),0) AS debit
   FROM
     cash
   WHERE transaction_type = 'credit'
