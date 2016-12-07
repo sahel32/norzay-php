@@ -19,10 +19,6 @@
 -->
 <script type="text/javascript">
     $(function(){
-        $("#birds").autocomplete({
-            source: "<?php echo site_url('cash/get_birds');?>" // path to the get_birds method
-        });
-
         $("#stock_transactions").autocomplete({
             source: "<?php echo site_url('cash/stock_transactions_json');?>" // path to the get_birds method
         });
@@ -47,8 +43,8 @@
 </style>
 <div class="row">
     <div class="col-md-12">
-        <h2>ثبت درایور</h2>
-        <h5>از این قسمت میتوانید مشخصات درایور را ثبت نمایید. </h5>
+        <h2>پرداخت و دریافت </h2>
+        <h5>پول یا چک برای مشتری و فروشنده های تیل</h5>
 
     </div>
 </div>

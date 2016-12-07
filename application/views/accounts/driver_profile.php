@@ -31,7 +31,7 @@
                             <tbody>
                             <?php
 
-                            foreach ($account_rows as $key => $value) {?>
+                            foreach ($single_balance_rows as $key => $value) {?>
                                 <tr class="odd gradeX">
                                     <td><?php echo $value->id;?></td>
                                     <td><?php echo $value->name;?></td>
@@ -89,7 +89,7 @@
                             </thead>
                             <tbody>
                             <?php
-                            foreach ($driver_cash_rows as $key => $cash_value) {
+                            foreach ($all_debit_credit as $key => $cash_value) {
                                 ?>
                                 <tr class="odd gradeX">
                                     <td><?php  echo $cash_value->id;?></td>
@@ -119,26 +119,23 @@
         <div class="col-md-12 col-sm-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    اطلاعات خرید و فروش تیل
+                   پیره های تیل
                 </div>
                 <div class="panel-body">
-                    <ul class="nav nav-tabs">
-                        <li class="active"><a href="#buy" data-toggle="tab">خرید</a></li>
 
-                    </ul>
 
-                    <div class="tab-content">
-                        <div class="tab-pane fade active in" id="buy">
+
+                        <div >
                             <h4></h4>
                             <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example3">
                                     <thead>
                                     <tr>
                                         <th>تاریخ</th>
                                         <th>مقدار تیل (تناژ)</th>
                                         <th>نوع تیل</th>
                                         <th>فروشنده دست اول</th>
-                                        <th>فی تن</th>
+
                                         <th>پلت موتر</th>
                                         <th>موارد بیشتر</th>
                                     </tr>
@@ -152,7 +149,7 @@
                                             <td><?php echo $value->amount;?></td>
                                             <td><?php echo $value->name;?></td>
                                             <td><?php echo $value->buyer_seller_id;?></td>
-                                            <td class="center"><?php echo $value->unit_price;?></td>
+
                                             <td class="center"><?php echo $value->transit;?></td>
                                             <td class="center">
                                                 <a href="<?php echo site_url('account/delete/'.$value->id) ?>"><span class="glyphicon glyphicon-trash"></span></a>
@@ -169,7 +166,7 @@
 
                         </div>
 
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -183,6 +180,11 @@
 <script>
     $(document).ready(function () {
         $('#dataTables-example2').dataTable();
+
+    });
+
+    $(document).ready(function () {
+        $('#dataTables-example3').dataTable();
 
     });
 
