@@ -11,8 +11,11 @@
         <div class="col-md-12 col-sm-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
-
              اطلاعات عمومی
+                    <div class="btn-group pull-left">
+                        <a href="<?php echo site_url('cash/profile_credit_debit/').$this->uri->segment('3')."/".$this->uri->segment('4');?>">
+                            پرداخت/دریافت</a>
+                    </div>
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive">
@@ -65,6 +68,7 @@
                     اطلاعات مالی
                     <div class="btn-group pull-left">
 
+                        <a href="<?php echo site_url('cash/credit_debit');?>">پرداخت/دریافت</a>
                         <select id="filter2">
                             <option value="debit">debit</option>
                             <option value="credit">credit</option>

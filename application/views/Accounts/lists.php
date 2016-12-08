@@ -16,6 +16,14 @@
 
                              لیست راننده ها
                             <div class="btn-group pull-left">
+                                <?php
+                                if($this->uri->segment('3')=="seller" or $this->uri->segment('3')=="customer"){?>
+                                    <a href="<?php echo site_url('cash/oil_credit_debit/').$this->uri->segment('3');?>">پرداخت/دریافت</a>
+                               <?php  }else{
+                                ?>
+                                <a href="<?php echo site_url('cash/credit_debit/').$this->uri->segment('3');?>">پرداخت/دریافت</a>
+                                <?php }?>
+
                                 <select id="filter2">
                                     <option value="debit">debit</option>
                                     <option value="credit">credit</option>

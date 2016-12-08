@@ -100,9 +100,11 @@
 
                                 <select class="form-control" name="type" id="type">
 
-                                    <option value="af">af</option>
-                                    <option value="ir">ir</option>
-                                    <option value="usa">usa</option>
+                                    <?php
+                                        foreach ($money_type as $anotherkey => $val) {
+                                           echo "<option value='".$anotherkey."'>".$val."</option>";
+                                        }
+                                    ?>
                                     <option value="check" >check</option>
 
 

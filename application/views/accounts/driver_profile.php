@@ -12,6 +12,8 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     اطلاعات عمومی
+                    <a href="<?php echo site_url('cash/profile_credit_debit/').$this->uri->segment('3')."/".$this->uri->segment('4');?>">
+                        پرداخت/دریافت</a>
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive">

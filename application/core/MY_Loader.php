@@ -26,9 +26,9 @@ class MY_Loader extends CI_Loader
 
     public function popupp($template_name, $vars = array(), $return = FALSE)
     {
-        $content1 = $this->view('template/header_library', $vars, $return); // header
+        $content1 = $this->view('template/header_without_container', $vars, $return); // header
         $content2 = $this->view($template_name, $vars, $return); // view
-        $content3 = $this->view('template/footer', $vars, $return); // footer
+        $content3 = $this->view('template/footer_without_container', $vars, $return); // footer
 
         if ($return) {
             return $content1;
