@@ -19,11 +19,10 @@
 -->
 <script type="text/javascript">
     $(function(){
-        $("#stock_transactions").autocomplete({
-            source: "<?php echo site_url('cash/stock_transactions_json');?>" // path to the get_birds method
+        $("#birds").autocomplete({
+            source: "<?php echo site_url('cash/get_accounts');?>" // path to the get_birds method
         });
     });
-
 </script>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-modal/2.2.6/js/bootstrap-modal.js"></script>
@@ -43,8 +42,8 @@
 </style>
 <div class="row">
     <div class="col-md-12">
-        <h2>پرداخت و دریافت </h2>
-        <h5>پول یا چک برای مشتری و فروشنده های تیل</h5>
+        <h2>ثبت درایور</h2>
+        <h5>از این قسمت میتوانید مشخصات درایور را ثبت نمایید. </h5>
 
     </div>
 </div>
@@ -55,13 +54,17 @@
         <!-- Form Elements -->
         <div class="panel panel-default">
             <div class="panel-heading">
+
                 فورم ثبت درایور
             </div>
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <form role="form" action="<?php echo site_url('cash/oil_credit_debit'); ?>" method="post" id="debit">
-                            <input type="hidden" name="account_id" value="<?php echo $account_id; ?>"  id="birds" class="form-control">
+                        <form role="form" action="<?php echo site_url('cash/credit_debit'); ?>" method="post" id="debit">
+
+
+
+                                <input type="hidden" name="account_id" value="<?php echo $account_id; ?>"  id="birds" class="form-control">
 
 
                             <div class="col-md-3 form-group">
@@ -87,31 +90,26 @@
 
                             </div>
 
-
-
-
-
                             <div class="col-md-3 form-group">
 
                                 <label>نوع پول</label>
 
 
                                 <select class="form-control" name="type" id="type">
-                                    <option value="usa">usa</option>
+
+                                    <?php
+                                    foreach ($money_type as $anotherkey => $val) {
+                                        echo "<option value='".$anotherkey."'>".$val."</option>";
+                                    }
+                                    ?>
                                     <option value="check" >check</option>
 
 
                                 </select>
 
                             </div>
-                            <!--  <div class="col-md-3 form-group">
-                                   <a href="#new-driver" data-toggle="modal">
-                                       <i class="fa fa-plus-circle" data-toggle="tooltip" title="ثبت درایور جدید" data-placement="top"></i>
-                                   </a>
-                                  <label>اسم شخص گیرنده یا دهند </label>
-                                  <input type="text" name="account_name"  id="birds" class="form-control">
-                              </div>
-  -->
+
+
                             <div class="col-md-3 gaps">
                                 <button type="submit" class="btn btn-default pull-left">تائید</button>
                                 <button type="reset" class="btn btn-primary pull-left">تنظیم مجدد</button>
@@ -125,7 +123,7 @@
 
             $("#type").change(function () {
                 if(this.value=="check") {
-                    //$('#new-driver').modal('toggle');
+                    $('#new-driver').modal('toggle');
                 }
             })
 
@@ -142,8 +140,9 @@
 
             </script>
 
-            <!-- End Modal driver -->
+
+        </div>
+        <!-- End Modal driver -->
 
 
 
-   

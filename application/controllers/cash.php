@@ -31,7 +31,29 @@ class cash extends CI_Controller {
         $data['account_rows'] = $this->account_model->get_where(array('type'=>$type));
         $this->load->template("Accounts/lists", $data);
     }
-    public function credit_debit(){
+    public function credit_debit($account_type){
+        switch ($account_type){
+            case "stuff":
+                $money_type=array('af'=>'افغانی');
+                break;
+
+            case "driver":
+                $money_type=array('ir'=>'تومان');
+                break;
+
+            case "exchanger":
+                $money_type=array(
+                    'usa'=>'دالر',
+                    'af'=>'افغانی',
+                    'usa'=>'دالر',
+                    'eur'=>'یرو'
+            );
+                break;
+
+            default:
+                $money_type=array('usa'=>'دالر');
+        }
+        $data['money_type']=$money_type;
         $data['title']="dashboard";
         $this->form_validation->set_rules('amount' , null, 'required',
             array(
@@ -74,7 +96,90 @@ class cash extends CI_Controller {
         }
 
     }
-    public function oil_credit_debit(){
+    public function profile_credit_debit($account_type,$account_id){
+        switch ($account_id){
+            case "stuff":
+                $money_type=array('af'=>'افغانی');
+                break;
+
+            case "driver":
+                $money_type=array('ir'=>'تومان');
+                break;
+
+            case "exchanger":
+                $money_type=array(
+                    'usa'=>'دالر',
+                    'af'=>'افغانی',
+                    'usa'=>'دالر',
+                    'eur'=>'یرو'
+                );
+                break;
+
+            default:
+                $money_type=array('usa'=>'دالر');
+        }
+        $data['money_type']=$money_type;
+        $data['account_id']=$account_id;
+        $data['title']="dashboard";
+        $this->form_validation->set_rules('amount' , null, 'required',
+            array(
+                'required'      => 'You have not provided name in name field'
+            )
+        );
+
+        function alpha_int($str)
+        {
+            $ci =& get_instance();
+            $str = (strtolower($ci->config->item('charset')) != 'utf-8') ? utf8_encode($str) : $str;
+
+            return ( ! preg_match("/^[[:alpha:]- چجحخهعغفقثصضشسیبلاتنمکگپظطزرذدئو_.]+$/", $str)) ? FALSE : TRUE;
+        }
+        if($this->form_validation->run()==false){
+
+            $data['signup_form']="active";
+            $this->load->template('cash/profile_credit_debit', $data);
+        }else {
+
+            $cash_information = array(
+                'cash' => $this->db->escape_str($this->input->post('amount')),
+                'type' => $this->input->post('type'),
+                'transaction_type' => $this->input->post('transaction_type'),
+                'account_id' => $this->input->post('account_id')
+
+            );
+
+            $cash_id=  $this->cash_model->insert($cash_information);
+            if($this->input->post('type')=="check"){
+                $this->check_type($cash_id);
+            }else {
+                $this->load->template('cash/profile_credit_debit', $data);
+            }
+        }
+
+    }
+    public function oil_credit_debit($account_type){
+        switch ($account_type){
+            case "stuff":
+                $money_type=array('af'=>'افغانی');
+                break;
+
+            case "driver":
+                $money_type=array('ir'=>'تومان');
+                break;
+
+            case "exchanger":
+                $money_type=array(
+                    'usa'=>'دالر',
+                    'af'=>'افغانی',
+                    'usa'=>'دالر',
+                    'eur'=>'یرو'
+                );
+                break;
+
+            default:
+                $money_type=array('usa'=>'دالر');
+        }
+        $data['money_type']=$money_type;
         $data['title']="dashboard";
         $this->form_validation->set_rules('amount' , null, 'required',
             array(
@@ -118,6 +223,74 @@ class cash extends CI_Controller {
             }
         }
         
+    }
+    public function profile_oil_credit_debit($account_type,$account_id){
+        switch ($account_type){
+            case "stuff":
+                $money_type=array('af'=>'افغانی');
+                break;
+
+            case "driver":
+                $money_type=array('ir'=>'تومان');
+                break;
+
+            case "exchanger":
+                $money_type=array(
+                    'usa'=>'دالر',
+                    'af'=>'افغانی',
+                    'usa'=>'دالر',
+                    'eur'=>'یرو'
+                );
+                break;
+
+            default:
+                $money_type=array('usa'=>'دالر');
+        }
+        $data['money_type']=$money_type;
+        $data['account_id']=$account_id;
+        $data['title']="dashboard";
+        $this->form_validation->set_rules('amount' , null, 'required',
+            array(
+                'required'      => 'You have not provided name in name field'
+            )
+        );
+        /*        $this->form_validation->set_rules('account_name' , null, 'alpha_int|required',
+                    array(
+                        'required'      => 'You have not provided name in name field',
+                        'alpha_int'         =>'please insert just alghabatic charecters'
+                    )
+                );*/
+        function alpha_int($str)
+        {
+            $ci =& get_instance();
+            $str = (strtolower($ci->config->item('charset')) != 'utf-8') ? utf8_encode($str) : $str;
+
+            return ( ! preg_match("/^[[:alpha:]- چجحخهعغفقثصضشسیبلاتنمکگپظطزرذدئو_.]+$/", $str)) ? FALSE : TRUE;
+        }
+        if($this->form_validation->run()==false){
+
+            $data['signup_form']="active";
+            $this->load->template('cash/profile_oil_credit_debit', $data);
+        }else {
+
+            $cash_information = array(
+                'cash' => $this->db->escape_str($this->input->post('amount')),
+                'type' => $this->input->post('type'),
+                'transaction_type' => $this->input->post('transaction_type'),
+                'account_id' => $this->input->post('account_id'),
+                'table_id'=>$this->db->escape_str($this->input->post('st_id')),
+                'table_name'=>'stock_transaction'
+
+            );
+
+            $cash_id=  $this->cash_model->insert($cash_information);
+            if($this->input->post('type')=="check"){
+                $this->check_type($cash_id);
+            }else {
+                $this->load->template('cash/profile_oil_credit_debit', $data);
+            }
+        }
+
     }
     function check_type($cash_id){
         $data['main_title']="check";

@@ -1,3 +1,12 @@
+<link href="<?php //echo asset_url('jeegoopopup/style.css'); ?>" rel="Stylesheet" type="text/css" />
+<link href="<?php echo asset_url('jeegoopopup/skins/basic/style.css'); ?>" rel="Stylesheet" type="text/css" />
+<link href="<?php echo asset_url('jeegoopopup/skins/black/style.css'); ?>" rel="Stylesheet" type="text/css" />
+<link href="<?php echo asset_url('jeegoopopup/skins/blue/style.css'); ?>" rel="Stylesheet" type="text/css" />
+<link href="<?php echo asset_url('jeegoopopup/skins/clean/style.css'); ?>" rel="Stylesheet" type="text/css" />
+<link href="<?php echo asset_url('jeegoopopup/skins/gray/style.css'); ?>" rel="Stylesheet" type="text/css" />
+<link href="<?php echo asset_url('jeegoopopup/skins/round/style.css'); ?>" rel="Stylesheet" type="text/css" />
+
+
 <div id="page-inner">
     <div class="row">
         <div class="col-md-12">
@@ -13,6 +22,8 @@
                 <div class="panel-heading">
 
                     اطلاعات عمومی
+                    <a href="<?php echo site_url('cash/profile_credit_debit/').$this->uri->segment('3')."/".$this->uri->segment('4');?>">
+                        پرداخت/دریافت</a>
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive">
@@ -96,7 +107,13 @@
                                     <td><?php  echo $cash_value->id;?></td>
                                     <td><?php  echo $cash_value->date;?></td>
                                     <td><?php  echo $cash_value->cash;?></td>
-                                    <td class="center"><?php  echo $cash_value->type;?></td>
+                                    <td class="center"><?php
+                                        if($cash_value->type=="check"){
+                                           echo "<span style='cursor: pointer' onclick='get_check_info(".$cash_value->id.")'>".$cash_value->type."</span>";
+                                        }else{
+                                            echo $cash_value->type;
+                                        }
+                                        ?></td>
                                     <td class="center"><?php  echo $cash_value->transaction_type;?></td>
 
                                     <td class="center"><?php  echo $cash_value->desc;?></td>
@@ -133,4 +150,45 @@
         var table2= $('#dataTables-example2').dataTable();
         table2.fnFilter(filtervalue );
     });
+
 </script>
+<script type="text/javascript" src="<?php echo asset_url('jeegoopopup/jquery-1.10.2.min.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo asset_url('jeegoopopup/jquery.jeegoopopup.1.0.0.js'); ?>"></script>
+
+
+<script type="text/javascript">
+    //<![CDATA[
+    function get_check_info(id){
+
+        // Open popup on button click.
+        //  $('#openpopup').click(function(){
+//alert(id)
+        var options = {
+            width: 500,
+            height: 200,
+            center: 'center',
+            fixed: $('#fixed').is(':checked'),
+            skinClass: $('#skin').val(),
+            overlay: 'overlay',
+            overlayColor: $('#color').val(),
+            fadeIn: parseInt($('#fadeIn').val()) || 0,
+           // draggable: $('#draggable').is(':checked'),
+           // resizable: $('#resizable').is(':checked'),
+          //  scrolling: $('#scrolling').val(),
+           // parentScrolling: $('#parentScrolling').is(':checked'),
+            title: $('#title').val()
+        };
+
+
+
+        /*if($('#html').is(':checked'))
+         options.html = $('#html_content').val();
+         else */
+        options.url = '<?php echo site_url('check/get_check_info/'); ?>/'+id;
+
+        $.jeegoopopup.open(options);
+        //   });
+    }
+    //]]>
+</script>
+
