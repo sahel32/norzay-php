@@ -59,7 +59,7 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <form role="form" action="<?php echo site_url('cash/check_type/'.$cash_id); ?>" method="post" id="debit">
+                        <form role="form" action="<?php echo site_url('cash/check_type/'.$cash_id.'/'.$this->uri->segment(4)); ?>" method="post" id="debit">
                                 <input type="hidden" name="cash_id" value="<?php echo $cash_id;?>">
                             <div class="col-md-3 form-group">
 
@@ -76,6 +76,24 @@
 
                                 <input type="text"  value="<?php echo set_value('name'); ?>"name="name" class="form-control" data-trigger="hover"/>
                                 <span class="help-inline"><?php echo (form_error('name') ) ? form_error('name') : "<span class='red'>*</span>"; ?></span>
+
+                            </div>
+                            <div class="col-md-3 form-group">
+
+                                <label>نوع پول</label>
+
+
+                                <select class="form-control" name="type" id="type">
+
+                                    <?php
+                                    foreach ($money_type as $anotherkey => $val) {
+                                        echo "<option value='".$anotherkey."'>".$val."</option>";
+                                    }
+                                    ?>
+                                    
+
+
+                                </select>
 
                             </div>
                             <div class="col-md-3 form-group">

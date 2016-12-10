@@ -83,10 +83,10 @@
                         <ul class="nav nav-second-level">
 
                             <li>
-                                <a href="<?php echo site_url("cash/credit_debit") ?>"> کارمند، راننده، کمیشن کار،صراف</a>
+                                <a href="<?php echo site_url("cash/credit_debit/exchanger") ?>"> کارمند، راننده، کمیشن کار،صراف</a>
                             </li>
                             <li>
-                                <a href="<?php echo site_url("cash/oil_credit_debit") ?>">فرشنده و خریدار های تیل</a>
+                                <a href="<?php echo site_url("cash/oil_credit_debit/exchanger") ?>">فرشنده و خریدار های تیل</a>
                             </li>
                         </ul>
                     </li>

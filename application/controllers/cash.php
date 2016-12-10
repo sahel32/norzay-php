@@ -32,6 +32,7 @@ class cash extends CI_Controller {
         $this->load->template("Accounts/lists", $data);
     }
     public function credit_debit($account_type){
+        $this->session->set_userdata('url',$this->router->fetch_class().'/'.$this->router->fetch_method().'/'.$this->uri->segment(3));
         switch ($account_type){
             case "stuff":
                 $money_type=array('af'=>'افغانی');
@@ -46,7 +47,8 @@ class cash extends CI_Controller {
                     'usa'=>'دالر',
                     'af'=>'افغانی',
                     'usa'=>'دالر',
-                    'eur'=>'یرو'
+                    'eur'=>'یرو',
+                    'ir'=>'تومان'
             );
                 break;
 
@@ -89,14 +91,15 @@ class cash extends CI_Controller {
 
             $cash_id=  $this->cash_model->insert($cash_information);
             if($this->input->post('type')=="check"){
-                $this->check_type($cash_id);
+                $this->check_type($cash_id,$account_type);
             }else {
                 $this->load->template('cash/credit_debit', $data);
             }
         }
 
     }
-    public function profile_credit_debit($account_type,$account_id){
+    public function profile_credit_debit($account_id,$account_type){
+        $this->session->set_userdata('url',$this->router->fetch_class().'/'.$this->router->fetch_method().'/'.$this->uri->segment(3).'/'.$this->uri->segment(4));
         switch ($account_id){
             case "stuff":
                 $money_type=array('af'=>'افغانی');
@@ -111,7 +114,8 @@ class cash extends CI_Controller {
                     'usa'=>'دالر',
                     'af'=>'افغانی',
                     'usa'=>'دالر',
-                    'eur'=>'یرو'
+                    'eur'=>'یرو',
+                    'ir'=>'تومان'
                 );
                 break;
 
@@ -150,7 +154,7 @@ class cash extends CI_Controller {
 
             $cash_id=  $this->cash_model->insert($cash_information);
             if($this->input->post('type')=="check"){
-                $this->check_type($cash_id);
+                $this->check_type($cash_id,$account_type);
             }else {
                 $this->load->template('cash/profile_credit_debit', $data);
             }
@@ -158,6 +162,8 @@ class cash extends CI_Controller {
 
     }
     public function oil_credit_debit($account_type){
+        $this->session->set_userdata('url',$this->router->fetch_class().'/'.$this->router->fetch_method().'/'.$this->uri->segment(3));
+
         switch ($account_type){
             case "stuff":
                 $money_type=array('af'=>'افغانی');
@@ -172,7 +178,8 @@ class cash extends CI_Controller {
                     'usa'=>'دالر',
                     'af'=>'افغانی',
                     'usa'=>'دالر',
-                    'eur'=>'یرو'
+                    'eur'=>'یرو',
+                    'ir'=>'تومان'
                 );
                 break;
 
@@ -217,14 +224,15 @@ class cash extends CI_Controller {
 
            $cash_id=  $this->cash_model->insert($cash_information);
             if($this->input->post('type')=="check"){
-                $this->check_type($cash_id);
+                $this->check_type($cash_id,$account_type);
             }else {
                 $this->load->template('cash/oil_credit_debit', $data);
             }
         }
         
     }
-    public function profile_oil_credit_debit($account_type,$account_id){
+    public function profile_oil_credit_debit($account_id,$account_type){
+        $this->session->set_userdata('url',$this->router->fetch_class().'/'.$this->router->fetch_method().'/'.$this->uri->segment(3).'/'.$this->uri->segment(4));
         switch ($account_type){
             case "stuff":
                 $money_type=array('af'=>'افغانی');
@@ -239,7 +247,8 @@ class cash extends CI_Controller {
                     'usa'=>'دالر',
                     'af'=>'افغانی',
                     'usa'=>'دالر',
-                    'eur'=>'یرو'
+                    'eur'=>'یرو',
+                    'ir'=>'تومان'
                 );
                 break;
 
@@ -247,7 +256,6 @@ class cash extends CI_Controller {
                 $money_type=array('usa'=>'دالر');
         }
         $data['money_type']=$money_type;
-        $data['account_id']=$account_id;
         $data['title']="dashboard";
         $this->form_validation->set_rules('amount' , null, 'required',
             array(
@@ -285,14 +293,38 @@ class cash extends CI_Controller {
 
             $cash_id=  $this->cash_model->insert($cash_information);
             if($this->input->post('type')=="check"){
-                $this->check_type($cash_id);
+                $this->check_type($cash_id,$account_type);
             }else {
                 $this->load->template('cash/profile_oil_credit_debit', $data);
             }
         }
 
     }
-    function check_type($cash_id){
+    function check_type($cash_id,$account_type){
+        echo $this->uri->segment(2);
+        switch ($account_type){
+            case "stuff":
+                $money_type=array('af'=>'افغانی');
+                break;
+
+            case "driver":
+                $money_type=array('ir'=>'تومان');
+                break;
+
+            case "exchanger":
+                $money_type=array(
+                    'usa'=>'دالر',
+                    'af'=>'افغانی',
+                    'eur'=>'یرو',
+                    'ir'=>'تومان'
+                );
+                break;
+
+            default:
+                $money_type=array('usa'=>'دالر');
+        }
+        $data['money_type']=$money_type;
+
         $data['main_title']="check";
         $data['cash_id']=$cash_id;
         $this->form_validation->set_rules('code' , null, 'required',
@@ -315,12 +347,13 @@ class cash extends CI_Controller {
                 'cash_id' => $this->input->post('cash_id'),
                 'check_type' => $this->input->post('check_type'),
                 'code' => $this->db->escape_str($this->input->post('code')),
+                'type' => $this->db->escape_str($this->input->post('type')),
                 'name' => $this->db->escape_str($this->input->post('name'))
 
             );
 
             $cash_id=  $this->check_model->insert($check_information);
-            redirect('cash/credit_debit', $data);
+            redirect($this->session->userdata('url'), $data);
             }
     }
     function get_accounts(){

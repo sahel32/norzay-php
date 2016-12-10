@@ -35,7 +35,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <form role="form" action="<?php site_url('oil/buy'); ?>" method="post">
+                            <form role="form" action="<?php echo site_url('oil/pre_buy_to_fact_form'); ?>" method="post">
 
                                 <div class="col-md-3 form-group">
                                     <label>کد پیش خرید</label>

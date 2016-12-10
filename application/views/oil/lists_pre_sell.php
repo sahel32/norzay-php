@@ -76,7 +76,7 @@
                                 <td class="center">
                                     <a href="<?php echo site_url('account/delete/'.$value->id) ?>"><span class="glyphicon glyphicon-trash"></span></a>
                                     <a href="<?php echo site_url('account/edit/'.$value->id) ?>"><span class="glyphicon glyphicon-edit"></span></a>
-                                    <a href="<?php echo site_url('account/profile/'.$value->id); ?>"><span class="glyphicon glyphicon-asterisk"></span></a>
+                                    <a href="<?php echo site_url('oil/profile/'.$value->id.'/sell'); ?>"><span class="glyphicon glyphicon-asterisk"></span></a>
                                     <span id="openpopup" style="cursor: pointer" onclick="popupp(<?php echo $value->id.','.$remain.",'".$buy_sell."'"; ?>)" class="button">set to fact </span>
 
                                 </td>

@@ -60,7 +60,7 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <form role="form" action="<?php echo site_url('cash/oil_credit_debit'); ?>" method="post" id="debit">
+                        <form role="form" action="<?php echo site_url('cash/profile_oil_credit_debit/'.$account_id.'/'.$this->uri->segment(4)); ?>" method="post" id="debit">
                             <input type="hidden" name="account_id" value="<?php echo $account_id; ?>"  id="birds" class="form-control">
 
 
