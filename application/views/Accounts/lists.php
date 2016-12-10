@@ -1,4 +1,5 @@
- <div id="page-inner">
+
+<div id="page-inner">
                 <div class="row">
                     <div class="col-md-12">
                      <h2>لیست افراد</h2>   

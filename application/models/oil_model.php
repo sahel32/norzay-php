@@ -50,6 +50,39 @@ class oil_model extends CI_Model{
         $value =$query->row();
         return $value->buyer_seller_id;
     }
+
+    function get_oil_profile($id){
+        $query=$this->db->query('
+SELECT
+  *
+FROM
+  stock_transaction,
+  cash
+WHERE stock_transaction.id = cash.`table_id`
+  AND cash.`table_name` = \'stock_transaction\'
+  AND stock_transaction.`parent_id`=?
+        ', array($id));
+        //$query =$query->row();
+        return $query->result();
+
+    }
+    function get_sum_profile($id){
+        $query=$this->db->query('
+SELECT
+  SUM(cash.`cash`) AS sum_cash,
+  SUM(amount) AS sum_amount
+FROM
+  stock_transaction,
+  cash
+WHERE stock_transaction.id = cash.`table_id`
+  AND cash.`table_name` = \'stock_transaction\'
+  AND stock_transaction.`parent_id`=?
+        ', array($id));
+        //$query =$query->row();
+        return $query->result();
+
+    }
+
     function get_remain_oil_each_pre_buy($id,$buy_sell){
         $query=$this->db->query('
 SELECT
@@ -145,6 +178,12 @@ WHERE parent_id IN
 
     }
 
+    function get_where_sum($wheres,$column){
+        $this->db->select_sum($this->$column);
+        $query=$this->db->get_where($this->table, $wheres);
+        $value= $query->row();
+        return $value->$column;
+    }
     function srock_transactions_json($q){
         $this->db->select('stock_transaction.id as id,account.name as name');
         $this->db->like('stock_transaction.id', $q);

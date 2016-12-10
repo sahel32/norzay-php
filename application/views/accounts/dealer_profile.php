@@ -1,12 +1,12 @@
 <link href="<?php //echo asset_url('jeegoopopup/style.css'); ?>" rel="Stylesheet" type="text/css" />
-<link href="<?php echo asset_url('jeegoopopup/skins/basic/style.css'); ?>" rel="Stylesheet" type="text/css" />
-<link href="<?php echo asset_url('jeegoopopup/skins/black/style.css'); ?>" rel="Stylesheet" type="text/css" />
-<link href="<?php echo asset_url('jeegoopopup/skins/blue/style.css'); ?>" rel="Stylesheet" type="text/css" />
-<link href="<?php echo asset_url('jeegoopopup/skins/clean/style.css'); ?>" rel="Stylesheet" type="text/css" />
-<link href="<?php echo asset_url('jeegoopopup/skins/gray/style.css'); ?>" rel="Stylesheet" type="text/css" />
-<link href="<?php echo asset_url('jeegoopopup/skins/round/style.css'); ?>" rel="Stylesheet" type="text/css" />
-
-
+<!--<link href="<?php /*echo asset_url('jeegoopopup/skins/basic/style.css'); */?>" rel="Stylesheet" type="text/css" />
+<link href="<?php /*echo asset_url('jeegoopopup/skins/black/style.css'); */?>" rel="Stylesheet" type="text/css" />
+<link href="<?php /*echo asset_url('jeegoopopup/skins/blue/style.css'); */?>" rel="Stylesheet" type="text/css" />
+<link href="<?php /*echo asset_url('jeegoopopup/skins/clean/style.css'); */?>" rel="Stylesheet" type="text/css" />
+<link href="<?php /*echo asset_url('jeegoopopup/skins/gray/style.css'); */?>" rel="Stylesheet" type="text/css" />
+<link href="<?php /*echo asset_url('jeegoopopup/skins/round/style.css'); */?>" rel="Stylesheet" type="text/css" />
+-->
+<?php $this->load->view('check/ajax_get_check_info'); ?>
 <div id="page-inner">
     <div class="row">
         <div class="col-md-12">
@@ -20,6 +20,7 @@
         <div class="col-md-12 col-sm-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
+
 
                     اطلاعات عمومی
                     <a href="<?php echo site_url('cash/profile_credit_debit/').$this->uri->segment('3')."/".$this->uri->segment('4');?>">
@@ -109,7 +110,11 @@
                                     <td><?php  echo $cash_value->cash;?></td>
                                     <td class="center"><?php
                                         if($cash_value->type=="check"){
-                                           echo "<span style='cursor: pointer' onclick='get_check_info(".$cash_value->id.")'>".$cash_value->type."</span>";
+                                            ?>
+                                            <button data-toggle="modal" data-target="#view-modal" data-id="<?php echo $cash_value->id; ?>" id="getUser" class="btn btn-sm btn-info">
+                                                <i class="glyphicon glyphicon-eye-open"></i> چک</button>
+                                            <?php
+                                          // echo "<span style='cursor: pointer' onclick='get_check_info(".$cash_value->id.")'>".$cash_value->type."</span>";
                                         }else{
                                             echo $cash_value->type;
                                         }
@@ -158,7 +163,7 @@
 
 <script type="text/javascript">
     //<![CDATA[
-    function get_check_info(id){
+/*    function get_check_info(id){
 
         // Open popup on button click.
         //  $('#openpopup').click(function(){
@@ -181,14 +186,14 @@
 
 
 
-        /*if($('#html').is(':checked'))
+        /!*if($('#html').is(':checked'))
          options.html = $('#html_content').val();
-         else */
-        options.url = '<?php echo site_url('check/get_check_info/'); ?>/'+id;
+         else *!/
+        options.url = '<?php //echo site_url('check/get_check_info/'); ?>/'+id;
 
         $.jeegoopopup.open(options);
         //   });
     }
-    //]]>
+    //]]>*/
 </script>
 

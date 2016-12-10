@@ -1,3 +1,4 @@
+<?php $this->load->view('check/ajax_get_check_info'); ?>
 <div id="page-inner">
     <div class="row">
         <div class="col-md-12">
@@ -97,7 +98,17 @@
                                     <td><?php  echo $cash_value->id;?></td>
                                     <td><?php  echo $cash_value->date;?></td>
                                     <td><?php  echo $cash_value->cash;?></td>
-                                    <td class="center"><?php  echo $cash_value->type;?></td>
+                                    <td class="center"><?php
+                                        if($cash_value->type=="check"){
+                                            ?>
+                                            <button data-toggle="modal" data-target="#view-modal" data-id="<?php echo $cash_value->id; ?>" id="getUser" class="btn btn-sm btn-info">
+                                                <i class="glyphicon glyphicon-eye-open"></i> چک</button>
+                                            <?php
+                                            // echo "<span style='cursor: pointer' onclick='get_check_info(".$cash_value->id.")'>".$cash_value->type."</span>";
+                                        }else{
+                                            echo $cash_value->type;
+                                        }
+                                        ?></td>
                                     <td class="center"><?php  echo $cash_value->transaction_type;?></td>
                                     <td class="center">X</td>
                                     <td class="center"><?php  echo $cash_value->desc;?></td>

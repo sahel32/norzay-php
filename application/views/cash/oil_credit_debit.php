@@ -1,3 +1,4 @@
+
 <link href="<?php echo asset_url('jquery-ui-1.10.4/jquery-ui.css'); ?>" rel="stylesheet" type="text/css" />
 
 
@@ -60,7 +61,7 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <form role="form" action="<?php echo site_url('cash/oil_credit_debit'); ?>" method="post" id="debit">
+                        <form role="form" action="<?php echo site_url('cash/oil_credit_debit/'.$this->uri->segment(3)); ?>" method="post" id="debit">
                             <div class="col-md-3 form-group">
                                 <!-- <a href="#new-driver" data-toggle="modal">
                                      <i class="fa fa-plus-circle" data-toggle="tooltip" title="ثبت درایور جدید" data-placement="top"></i>

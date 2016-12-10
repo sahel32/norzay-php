@@ -51,24 +51,48 @@ SELECT
   phone,
   account.id
 FROM
-  (SELECT
-    IFNULL(SUM(cash),0) AS debit
+  (SELECT (debit1+debit2) AS debit FROM (
+SELECT
+    IFNULL(SUM(cash),0)  AS debit1
   FROM
     cash
   WHERE transaction_type = 'debit'
-    AND account_ID = ? AND TYPE=?) AS result,
-  (SELECT
-    IFNULL(SUM(cash),0)  AS credit
+    AND account_ID = ? AND type=?
+) AS t1,
+(SELECT
+  IFNULL(SUM(cash.`cash`),0) AS debit2
+FROM
+  cash,
+  check_option
+WHERE cash.id = check_option.`cash_id`
+  AND cash.`account_id` = ?
+  AND check_option.`type` = ?
+  AND cash.`transaction_type`='debit'
+) AS t2) AS result,
+  (SELECT (credit1+credit2) AS credit FROM (
+SELECT
+    IFNULL(SUM(cash),0)  AS credit1
   FROM
     cash
   WHERE transaction_type = 'credit'
-    AND account_ID = ? AND TYPE=?) AS result1,
+    AND account_ID = ? AND type=?
+) AS t1,
+(SELECT
+  IFNULL(SUM(cash.`cash`),0) AS credit2
+FROM
+  cash,
+  check_option
+WHERE cash.id = check_option.`cash_id`
+  AND cash.`account_id` = ?
+  AND check_option.`type` = ?
+  AND cash.`transaction_type`='credit'
+) AS t2) AS result1,
   account,
   cash
 WHERE cash.`account_id` = account.id
   AND account.`id` = ?
 GROUP BY account.`id`
-        ", array($id,$type,$id,$type,$id));
+        ", array($id,$type,$id,$type,$id,$type,$id,$type,$id));
         return  $query->result();
 
     }
@@ -186,7 +210,18 @@ GROUP BY account.`id`
             }
         }
     }
-
+    function get_where_sum_column($wheres,$column){
+        $this->db->select_sum($this->$column);
+        $query=$this->db->get_where($this->table, $wheres);
+        $value= $query->row();
+        return $value->$column;
+    }
+    function get_where_sum($wheres,$column){
+        $this->db->select_sum($this->$column);
+        $query=$this->db->get_where($this->table, $wheres);
+        $value= $query->result();
+        return $value;
+    }
     function last_row(){
 
         $this->db->select('*');

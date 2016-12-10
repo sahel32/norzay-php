@@ -59,7 +59,7 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <form role="form" action="<?php echo site_url('cash/credit_debit'); ?>" method="post" id="debit">
+                        <form role="form" action="<?php echo site_url('cash/credit_debit/'.$this->uri->segment(3)); ?>" method="post" id="debit">
 
 
                             <div class="col-md-3 form-group">
@@ -126,7 +126,7 @@
 
     $("#type").change(function () {
         if(this.value=="check") {
-            $('#new-driver').modal('toggle');
+           // $('#new-driver').modal('toggle');
         }
     })
 
@@ -142,7 +142,7 @@
                 })
 
             </script>
-            <div class="modal-dialog">
+           <!-- <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close glyphicon glyphicon-remove" data-dismiss="modal"></button>
@@ -172,7 +172,7 @@
                         <button class="btn btn-success" data-dismiss="modal">تائید</button>
                     </div>
                 </div>
-            </div>
+            </div>-->
         </div>
         <!-- End Modal driver -->
 

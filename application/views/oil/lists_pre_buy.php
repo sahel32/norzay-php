@@ -6,7 +6,46 @@
 <link href="<?php echo asset_url('jeegoopopup/skins/gray/style.css'); ?>" rel="Stylesheet" type="text/css" />
 <link href="<?php echo asset_url('jeegoopopup/skins/round/style.css'); ?>" rel="Stylesheet" type="text/css" />
 
+<script type="text/javascript" src="<?php echo asset_url('jeegoopopup/jquery-1.10.2.min.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo asset_url('jeegoopopup/jquery.jeegoopopup.1.0.0.js'); ?>"></script>
 
+
+<script type="text/javascript">
+    //<![CDATA[
+    function popupp(id,remain,buy_sell){
+
+        // Open popup on button click.
+        //  $('#openpopup').click(function(){
+//alert(id)
+        var options = {
+            width: 500,
+            height: 600,
+            center: 'center',
+            fixed: $('#fixed').is(':checked'),
+            skinClass: $('#skin').val(),
+            overlay: 'overlay',
+            overlayColor: $('#color').val(),
+            fadeIn: parseInt($('#fadeIn').val()) || 0,
+            draggable: $('#draggable').is(':checked'),
+            resizable: $('#resizable').is(':checked'),
+            scrolling: $('#scrolling').val(),
+            parentScrolling: $('#parentScrolling').is(':checked'),
+            title: $('#title').val()
+        };
+
+
+
+        /*if($('#html').is(':checked'))
+         options.html = $('#html_content').val();
+         else */
+        options.url = '<?php echo site_url('oil/pre_buy_to_fact_form/popupp'); ?>/'+id+'/'+remain+'/'+buy_sell;
+
+        $.jeegoopopup.open(options);
+        //   });
+    }
+    //]]>
+</script>
+<?php $this->load->view('oil/ajax_pre_to_fact'); ?>
 <div class="row">
                     <div class="col-md-12">
                      <h2><?php echo $main_title; ?></h2>
@@ -76,9 +115,12 @@
                                             <td class="center">
                                                 <a href="<?php echo site_url('account/delete/'.$value->id) ?>"><span class="glyphicon glyphicon-trash"></span></a>
                                                 <a href="<?php echo site_url('account/edit/'.$value->id) ?>"><span class="glyphicon glyphicon-edit"></span></a>
-                                                <a href="<?php echo site_url('account/profile/'.$value->id); ?>"><span class="glyphicon glyphicon-asterisk"></span></a>
-                                                <span id="openpopup" style="cursor: pointer" onclick="popupp(<?php echo $value->id.','.$remain.",'".$buy_sell."'"; ?>)" class="button">set to fact </span>
+                                                <a href="<?php echo site_url('oil/profile/'.$value->id.'/buy'); ?>"><span class="glyphicon glyphicon-asterisk"></span></a>
+                                                <!--<span id="openpopup" style="cursor: pointer" onclick="popupp(<?php /*//echo $value->id.','.$remain.",'".$buy_sell."'"; */?>)" class="button">set to fact </span>
+-->
 
+                                                <button data-toggle="modal" data-target="#view-modal" data-remain="<?php echo $remain;?>" data-id="<?php echo $value->id;?>" id="getUser" class="btn btn-sm btn-info">
+                                                    <i class="glyphicon glyphicon-eye-open"></i> چک</button>
                                             </td>
                                         </tr>
 
@@ -87,7 +129,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            
+
                         </div>
                     </div>
                     <!--End Advanced Tables -->
@@ -108,6 +150,7 @@
     </script>
       <!-- CUSTOM SCRIPTS -->
 
+<<<<<<< HEAD
 <script type="text/javascript" src="<?php echo asset_url('jeegoopopup/jquery-1.10.2.min.js'); ?>"></script>
 <script type="text/javascript" src="<?php echo asset_url('jeegoopopup/jquery.jeegoopopup.1.0.0.js'); ?>"></script>
 
@@ -147,3 +190,5 @@
     }
     //]]>
 </script>
+=======
+>>>>>>> refs/remotes/origin/master

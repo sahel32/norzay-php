@@ -60,7 +60,7 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <form role="form" action="<?php echo site_url('cash/credit_debit'); ?>" method="post" id="debit">
+                        <form role="form" action="<?php echo site_url('cash/profile_credit_debit/'.$account_id.'/'.$this->uri->segment(4)); ?>" method="post" id="debit">
 
 
 
@@ -123,7 +123,7 @@
 
             $("#type").change(function () {
                 if(this.value=="check") {
-                    $('#new-driver').modal('toggle');
+                   // $('#new-driver').modal('toggle');
                 }
             })
 

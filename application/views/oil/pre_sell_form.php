@@ -40,8 +40,7 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <form role="form" action="<?php echo site_url('oil/pre_buy_sell/'.$buy_sell); ?>" method="post" >
-
+                        <form role="form" action="<?php echo site_url('oil/pre_sell'); ?>" method="post" >
                             <div class="col-md-3 form-group">
                                 <label><?php echo $pre_date;?></label>
 

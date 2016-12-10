@@ -375,7 +375,7 @@ class oil extends CI_Controller {
 
 
 	}
-    public function pre_buy_to_fact_form($template="template" , $popupp_pre_buy_sell_id="",$remain='',$buy_sell=''){
+    public function pre_buy_to_fact_form($template="template" , $popupp_pre_buy_sell_id="",$remain=''){
 
 
 		$data = array(
@@ -387,7 +387,7 @@ class oil extends CI_Controller {
 			'pre_date_2' => 'pre sell give date',
 			'stock_label' => 'from stock',
 			'stock_disable'=>'enabled',
-			'buy_sell' => $buy_sell,
+			'buy_sell' => 'buy',
 			'transaction_type'=>'credit',
 			'type'=>'customer',
 			'popupp_pre_buy_sell_id'=>$popupp_pre_buy_sell_id,
@@ -398,44 +398,44 @@ class oil extends CI_Controller {
 
 	$this->form_validation->set_rules('pre_buy_sell_id', null, 'required',
 		array(
-			'required' => 'You have not provided name in name field'
+			'required' => 'ضروری'
 		)
 	);
 	$this->form_validation->set_rules('transit', null, 'required',
 		array(
-			'required' => 'You have not provided name in name field'
+			'required' => 'ضروری'
 		)
 	);
 
 	$this->form_validation->set_rules('barcode', null, 'required',
 		array(
-			'required' => 'You have not provided name in name field'
+			'required' => 'ضروری'
 		)
 	);
 
 	$this->form_validation->set_rules('first_amount', null, 'is_natural|required',
 		array(
-			'required' => 'You have not provided name in name field',
+			'required' => 'ضروری',
 			'is_natural' => 'Please Use Just numberic charecters'
 		)
 	);
 
 	$this->form_validation->set_rules('second_amount', null, 'is_natural|required',
 		array(
-			'required' => 'You have not provided name in name field',
+			'required' => 'ضروری',
 			'is_natural' => 'Please Use Just numberic charecters'
 		)
 	);
 	$this->form_validation->set_rules('extra_amount', null, 'is_natural|required',
 		array(
-			'required' => 'You have not provided name in name field',
+			'required' => 'ضروری',
 			'is_natural' => 'Please Use Just numberic charecters'
 		)
 	);
 	if($this->input->post('extra_amount')!=0){
 		$this->form_validation->set_rules('extra_money', null, 'is_natural|required',
 			array(
-				'required' => 'You have not provided name in name field',
+				'required' => 'ضروری',
 				'is_natural' => 'Please Use Just numberic charecters'
 			)
 		);
@@ -453,11 +453,13 @@ class oil extends CI_Controller {
 		$con= $ci->oil_model->check_exist(array('id'=>$id));
 		return $con;
     }
-	if ($this->form_validation->run() == false) {
-
 		$data['seller_rows'] = $this->account_model->get_where(array('type'=>'seller'));
 		$data['driver_rows'] = $this->account_model->get_where(array('type'=>'driver'));
 		$data['stock_rows'] = $this->stock_model->get_where(array('type'=>'fact'));
+
+
+	if ($this->form_validation->run() == false) {
+
 
 		$this->load->$template('oil/pre_buy_to_fact_form', $data);
 	} else {
@@ -472,7 +474,7 @@ class oil extends CI_Controller {
 			'desc' => $this->db->escape_str($this->input->post('desc')),
 			'unit' => 'ton',
 			'type' => "fact",
-			'buy_sell' =>  $buy_sell,
+			'buy_sell' =>  'buy',
 		);
 
 		$id = $this->oil_model->insert($fact_transaction);
@@ -517,7 +519,11 @@ class oil extends CI_Controller {
 
 			$this->cash_model->insert($extra_cash_information);
 		}
-		$this->load->$template('oil/pre_sell_to_fact_form', $data);
+		if($template=="popupp"){
+			$this->load->$template('oil/pre_buy_to_fact_form', $data);
+		}else{
+			redirect('oil/lists_pre_buy');
+		}
 	}
 
 
@@ -530,8 +536,18 @@ class oil extends CI_Controller {
 		$this->load->template('oil/sell');
 	}
 
-	public function profile($id=""){
-		$this->load->template('oil/profile');
+	public function profile($id="",$buy_sell=""){
+		if($buy_sell=="buy"){
+			$transaction_type='debit';
+		}else{
+			$transaction_type='credit';
+		}
+		$data['oil_row']=$this->oil_model->get_where(array('type' => 'pre', 'buy_sell'=>$buy_sell, 'id'=>$id));
+		$data['oil_details']=$this->oil_model->get_oil_profile(array('id'=>$id));
+		$data['cash_details']=$this->cash_model->get_where(array('table_id'=>$id, 'table_name'=>'stock_transaction'));
+		$data['sum_details']=$this->oil_model->get_sum_profile($id);
+		$data['sum_cash']=$this->cash_model->get_where_sum(array('table_id'=>$id,'transaction_type'=>$transaction_type),'cash');
+		$this->load->template('oil/profile',$data);
 	}
 
 	public function fact_buy(){
