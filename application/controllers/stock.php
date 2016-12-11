@@ -39,7 +39,7 @@ class stock extends CI_Controller {
         )
             );
 
-       $this->form_validation->set_rules('province' , null, 'alpha_int|required',
+   /*    $this->form_validation->set_rules('province' , null, 'alpha_int|required',
             array(
                 'required'      => 'You have not provided name in name field',
                 'alpha_int'         =>'please insert just alghabatic charecters'
@@ -51,7 +51,7 @@ class stock extends CI_Controller {
                 'required'      => 'You have not provided name in name field',
                 'is_natural'         =>'Please Use Just numberic charecters'
         )
-            );
+            );*/
 		
 		function alpha_int($str)
 		{

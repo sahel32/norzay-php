@@ -270,6 +270,7 @@ print_r($cash_information);
         }
         $data['money_type']=$money_type;
         $data['title']="dashboard";
+        $data['account_id']=$account_id;
         $data['date']=$this->shamci_date->get_today_date();
         $this->form_validation->set_rules('amount' , null, 'required',
             array(

@@ -61,10 +61,10 @@
                                 </div>
                                 <div class="col-md-3 form-group">
                                     <label>تاریخ</label>
-                                    <input type="hidden" class="form-control" name="account_id" value="<?php
-                                    $this->load->model('cash_model');
-                                    echo $this->cash_model->get_where_column(array('table_id'=>$popupp_pre_buy_sell_id, 'table_name'=>'stock_transaction'),
-                                        'account_id')
+                                    <input type="text" class="form-control" name="account_id" value="<?php
+                                    $this->load->model('oil_model');
+                                    echo $this->oil_model->get_where_column(array('id'=>$popupp_pre_buy_sell_id),
+                                        'buyer_seller_id')
                                     ?>" />
                                 </div>
 
@@ -72,6 +72,7 @@
                                 <div class="col-md-3 form-group">
                                     <label>درایور (راننده)</label>
                                     <input type="text"  value="<?php echo set_value('name'); ?>" name="name" class="form-control"  />
+                                    <span class="help-inline"><?php echo (form_error('name') ) ? form_error('transit') : "<span class='red'>*</span>"; ?></span>
 
                                 </div>
                                 <div class="col-md-3 form-group">

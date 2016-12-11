@@ -30,12 +30,7 @@ class account extends CI_Controller {
 		$data['account_rows'] = $this->account_model->get_where(array('type'=>$type));
 		 $this->load->template("Accounts/lists", $data);
 	}
-	function balance_check_out($id){
-		$data['title']="dashboard";
-		$data['date']=$this->shamci_date->get_today_date();
-		$data['single_balance_rows']=$this->cash_model->get_balance_credit_debit_single(array('account_id' => $id));
-		$this->load->template("accounts/balance_check_out", $data);
-	}
+
 	public function add(){
 
         $this->form_validation->set_rules('name' , null, 'alpha_int|required',
@@ -92,17 +87,7 @@ class account extends CI_Controller {
 
     public function profile($id=0,$type){
     	  $data['fu_page_title']="Login Form";
-        /*  $data['account_rows']=$this->cash_model->get_balance_credit_debit_single($id);
-          $data['balance_rows']=$this->account_model->get_where(array('id' => $id ,'type' => 'account'));
-		$data['buy_rows']=$this->oil_model->get_where(array('buyer_seller_id' => $id ,'buy_sell' => 'buy', 'type'=> 'pre'));
-		$data['sell_rows']=$this->oil_model->get_where(array('buyer_seller_id' => $id ,'buy_sell' => 'sell', 'type'=> 'pre'));
-		$data['cash_rows']=$this->cash_model->get_where(array('account_id' => $id));*/
-		//$data['debit']=$this->cash_model->sum_where(array('account_id' => $id, 'transaction_type'=>'debit'));
-		//$data['credit']=$this->cash_model->sum_where(array('account_id' => $id, 'transaction_type'=>'credit'));
-		//$data['balance']=$this->cash_model->get_balance($id);
-
-       //	$this->load->template('accounts/profile',$data);
-		
+		$this->session->set_userdata('url',$this->router->fetch_class().'/'.$this->router->fetch_method().'/'.$this->uri->segment(3).'/'.$this->uri->segment(4));
 		if($type=="driver"){
 			$data['single_balance_rows']=$this->cash_model->get_balance_credit_debit_single(array('account_id' => $id));
 			$data['all_debit_credit']=$this->cash_model->get_where(array('account_id' => $id));

@@ -56,7 +56,7 @@
                                 </div>
                                 <div class="col-md-3 form-group">
                                     <label>تاریخ</label>
-                                    <input class="form-control" name="received_date" id="date-picker" />
+                                    <input class="form-control" name="f_date" id="date-picker" />
                                 </div>
 
                                 <div class="col-md-3 form-group">
