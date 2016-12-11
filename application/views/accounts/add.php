@@ -1,13 +1,13 @@
-<div class="row">
+            <div class="row">
                     <div class="col-md-12">
                      <h2>ثبت درایور</h2>   
                         <h5>از این قسمت میتوانید مشخصات درایور را ثبت نمایید. </h5>
                        
                     </div>
-                </div>
+            </div>
                  <!-- /. ROW  -->
-                 <hr />
-                 <div class="row">
+            <hr />
+            <div class="row">
                 <div class="col-md-12">
                     <!-- Form Elements -->
                     <div class="panel panel-default">
@@ -72,35 +72,9 @@
                         </div>
                     </div>
 
-                    <div id="new-customer" class="modal fade" tabindex="-1">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close glyphicon glyphicon-remove" data-dismiss="modal"></button>
-                                    <h3 class="modal-title">ثبت مشتری جدید</h3>
-                                </div>
-                                <div class="modal-body clearfix">
-                                    <form role="form">
-                                        <div class="col-md-3 form-group">
-                                            <label>نام</label>
-                                            <input class="form-control" />
-                                        </div>
-                                        <div class="col-md-3 form-group">
-                                            <label>تخلص</label>
-                                            <input class="form-control" />
-                                        </div>
-                                        <div class="col-md-3 form-group">
-                                            <label>شماره تماس</label>
-                                            <input class="form-control" />
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button class="btn btn-success" data-dismiss="modal">تائید</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                </div>
+            </div>
+
 
 
 
