@@ -30,7 +30,12 @@ class account extends CI_Controller {
 		$data['account_rows'] = $this->account_model->get_where(array('type'=>$type));
 		 $this->load->template("Accounts/lists", $data);
 	}
-
+	function balance_check_out($id){
+		$data['title']="dashboard";
+		$data['date']=$this->shamci_date->get_today_date();
+		$data['single_balance_rows']=$this->cash_model->get_balance_credit_debit_single(array('account_id' => $id));
+		$this->load->template("accounts/balance_check_out", $data);
+	}
 	public function add(){
 
         $this->form_validation->set_rules('name' , null, 'alpha_int|required',

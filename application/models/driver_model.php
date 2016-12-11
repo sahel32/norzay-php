@@ -38,11 +38,12 @@ class driver_model extends CI_Model{
 
     function get_where_oil($wheres){
         //$query = $this->db->get_where('mytable', array('id' => $id), $limit, $offset);
-        $this->db->select("parent_id,buyer_seller_id,driver_transaction.id as id,name,driver_id as buy_sell_id,
+        $this->db->select("parent_id,buyer_seller_id,driver_transaction.id as id,stock_transaction.name,driver_id as buy_sell_id,
         driver_transaction.amount as amount,unit_price,transit,type, car_count,f_date");
         $this->db->from($this->table);
         $this->db->join('stock_transaction','stock_transaction.id=driver_transaction.st_id');
         $this->db->where($wheres);
+        $this->db->where("driver_transaction.amount!=0");
         $query=$this->db->get();
         return $query->result();
     }

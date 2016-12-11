@@ -8,7 +8,7 @@
                 
                     
                     <li>
-                        <a  href="index.html"><i class="fa fa-dashboard fa-3x"></i> داشبورد</a>
+                        <a  href="<?php echo site_url('dashboard/index'); ?> "><i class="fa fa-dashboard fa-3x"></i> داشبورد</a>
                     </li>
                     <li>
                         <a  href="ui.html"><i><img class="sidebar-menu" src="<?php echo asset_url('img/stock.png'); ?>" alt="stock"/></i> گدام</a>

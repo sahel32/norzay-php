@@ -61,7 +61,7 @@
                     <div class="col-md-12">
                         <form role="form" action="<?php echo site_url('cash/credit_debit/'.$this->uri->segment(3)); ?>" method="post" id="debit">
 
-
+                            <input type="hidden" name="date"  value="<?php echo $date;?>" class="form-control">
                             <div class="col-md-3 form-group">
                                 <!-- <a href="#new-driver" data-toggle="modal">
                                      <i class="fa fa-plus-circle" data-toggle="tooltip" title="ثبت درایور جدید" data-placement="top"></i>

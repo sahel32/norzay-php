@@ -90,7 +90,7 @@ class stock extends CI_Controller {
     public function profile($id=0,$type){
     	  $data['fu_page_title']="Login Form";
           $data['stock_rows']=$this->stock_model->get_where(array('id' => $id));
-          		$data['main_title']="stock profile";
+		$data['main_title']="stock profile";
 		$data['sub_title']="stock details";
 		$data['desc']="stick descipttion";
 

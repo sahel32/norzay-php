@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+
 class cash extends CI_Controller {
 
     /**
@@ -20,8 +21,13 @@ class cash extends CI_Controller {
      */
     public function index()
     {
+
+       // $shamci_date=new shamci_date();
+
+      // echo  get_today_date();
+
         $data['title']="dashboard";
-        $this->load->template("Accounts/index", $data);
+        //$this->load->template("Accounts/index", $data);
     }
 
 
@@ -57,6 +63,8 @@ class cash extends CI_Controller {
         }
         $data['money_type']=$money_type;
         $data['title']="dashboard";
+
+        $data['date']=$this->shamci_date->get_today_date();
         $this->form_validation->set_rules('amount' , null, 'required',
             array(
                 'required'      => 'You have not provided name in name field'
@@ -84,11 +92,12 @@ class cash extends CI_Controller {
             $cash_information = array(
                 'cash' => $this->db->escape_str($this->input->post('amount')),
                 'type' => $this->input->post('type'),
+                'date' => $this->input->post('date'),
                 'transaction_type' => $this->input->post('transaction_type'),
                 'account_id' => $this->account_model->get_column(array('name'=>$this->input->post('account_name')),'id')
 
             );
-
+print_r($cash_information);
             $cash_id=  $this->cash_model->insert($cash_information);
             if($this->input->post('type')=="check"){
                 $this->check_type($cash_id,$account_type);
@@ -125,6 +134,7 @@ class cash extends CI_Controller {
         $data['money_type']=$money_type;
         $data['account_id']=$account_id;
         $data['title']="dashboard";
+        $data['date']=$this->shamci_date->get_today_date();
         $this->form_validation->set_rules('amount' , null, 'required',
             array(
                 'required'      => 'You have not provided name in name field'
@@ -147,6 +157,7 @@ class cash extends CI_Controller {
             $cash_information = array(
                 'cash' => $this->db->escape_str($this->input->post('amount')),
                 'type' => $this->input->post('type'),
+                'date' => $this->input->post('date'),
                 'transaction_type' => $this->input->post('transaction_type'),
                 'account_id' => $this->input->post('account_id')
 
@@ -188,6 +199,7 @@ class cash extends CI_Controller {
         }
         $data['money_type']=$money_type;
         $data['title']="dashboard";
+        $data['date']=$this->shamci_date->get_today_date();
         $this->form_validation->set_rules('amount' , null, 'required',
             array(
                 'required'      => 'You have not provided name in name field'
@@ -215,6 +227,7 @@ class cash extends CI_Controller {
             $cash_information = array(
                 'cash' => $this->db->escape_str($this->input->post('amount')),
                 'type' => $this->input->post('type'),
+                'date' => $this->input->post('date'),
                 'transaction_type' => $this->input->post('transaction_type'),
                 'account_id' => $this->oil_model->get_column(array('id'=>$this->db->escape_str($this->input->post('st_id'))),'buyer_seller_id'),
                 'table_id'=>$this->db->escape_str($this->input->post('st_id')),
@@ -257,6 +270,7 @@ class cash extends CI_Controller {
         }
         $data['money_type']=$money_type;
         $data['title']="dashboard";
+        $data['date']=$this->shamci_date->get_today_date();
         $this->form_validation->set_rules('amount' , null, 'required',
             array(
                 'required'      => 'You have not provided name in name field'
@@ -284,6 +298,7 @@ class cash extends CI_Controller {
             $cash_information = array(
                 'cash' => $this->db->escape_str($this->input->post('amount')),
                 'type' => $this->input->post('type'),
+                'date' => $this->input->post('date'),
                 'transaction_type' => $this->input->post('transaction_type'),
                 'account_id' => $this->input->post('account_id'),
                 'table_id'=>$this->db->escape_str($this->input->post('st_id')),
