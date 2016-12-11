@@ -62,7 +62,7 @@
                     <div class="col-md-12">
                         <form role="form" action="<?php echo site_url('cash/profile_oil_credit_debit/'.$account_id.'/'.$this->uri->segment(4)); ?>" method="post" id="debit">
                             <input type="hidden" name="account_id" value="<?php echo $account_id; ?>"  id="birds" class="form-control">
-
+                            <input type="hidden" name="date"  value="<?php echo $date;?>" class="form-control">
 
                             <div class="col-md-3 form-group">
 

@@ -6,6 +6,10 @@
  
 class MY_Loader extends CI_Loader
 {
+    public function __construct() {
+        parent::__construct();
+    }
+
     public function template($template_name, $vars = array(), $return = FALSE)
     {
         $content1 = $this->view('template/header', $vars, $return); // header
@@ -20,7 +24,6 @@ class MY_Loader extends CI_Loader
             return $content4;
             return $content2;
             return $content3;
-
         }
     }
 
@@ -34,7 +37,22 @@ class MY_Loader extends CI_Loader
             return $content1;
             return $content2;
             return $content3;
+        }
+    }
 
+    public function controller($file_name) {
+        $CI = & get_instance();
+        $file_path = APPPATH.'controllers/' . $file_name . '.php';
+        $object_name = $file_name;
+        $class_name = ucfirst($file_name);
+
+        if (file_exists($file_path)) {
+            require $file_path;
+
+            $CI->$object_name = new $class_name();
+        }
+        else {
+            show_error('Unable to load the requested controller class: ' . $class_name);
         }
     }
 }

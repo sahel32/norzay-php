@@ -22,7 +22,6 @@
                                                 <th>کد</th>
                                                 <th>نام گدام</th>
                                                 <th>ادرس</th>
-
                                                 <th>تیل موجودی</th>
                                                 <th>نوع گدام</th>
                                                 <th>تغییرات</th>
@@ -157,7 +156,7 @@
 
                           <div class="panel-body">
                               <div class="table-responsive">
-                                  <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                  <table class="table table-striped table-bordered table-hover" id="dataTables-example1">
                                       <thead>
                                       <tr>
                                           <th>کد</th>
@@ -229,7 +228,6 @@
                                       <tr>
                                           <th>کد</th>
                                           <th>کد پیش خرید</th>
-
                                           <th>نام فروشنده</th>
                                           <th>نوغ تیل</th>
                                           <th>حالت تیل</th>
@@ -241,7 +239,6 @@
                                       </thead>
                                       <tbody>
                                       <?php
-
                                       foreach ($driver_oil_rows as $key => $value) {?>
                                           <tr class="odd gradeX">
                                               <td><?php echo $value->id;?></td>
@@ -285,6 +282,7 @@
               <script>
                   $(document).ready(function () {
                       $('#dataTables-example').dataTable();
+                      $('#dataTables-example1').dataTable();
 
                   });
 

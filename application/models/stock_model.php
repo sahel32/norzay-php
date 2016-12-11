@@ -8,6 +8,7 @@ class stock_model extends CI_Model{
   public $type;
   public $date;
   public $desc;
+    public $oil_type;
 
   public function __construct()
     {
@@ -19,6 +20,7 @@ class stock_model extends CI_Model{
      $this->type="type";
      $this->date="date";
      $this->desc="desc";
+        $this->oil_type="oil_type";
 
     }
 
@@ -35,7 +37,13 @@ class stock_model extends CI_Model{
 
 
     }
+    function get_column($wheres,$column_name){
 
+        //$query = $this->db->get_where('mytable', array('id' => $id), $limit, $offset);
+        $query=$this->db->get_where($this->table, $wheres);
+        $value =$query->row();
+        return $value->$column_name;
+    }
     function get_remain_oil($id,$buy_sell){
         $query=$this->db->query('
         SELECT

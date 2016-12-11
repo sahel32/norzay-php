@@ -35,7 +35,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <form role="form" action="<?php site_url('oil/buy'); ?>" method="post">
+                            <form role="form" action="<?php echo site_url('oil/pre_sell_to_fact_form'); ?>" method="post">
 
                                 <div class="col-md-3 form-group">
                                    
@@ -71,16 +71,8 @@
 
                                 <div class="col-md-3 form-group">
                                     <label>درایور (راننده)</label>
-                                    <select class="form-control" name="driver_id">
-                                        <?php
+                                    <input type="text"  value="<?php echo set_value('name'); ?>" name="name" class="form-control"  />
 
-                                        foreach ($driver_rows as $key => $d_value) {?>
-
-                                            <option value="<?php echo $d_value->id;?>"><?php echo $d_value->name;?></option>
-
-                                        <?php }?>
-
-                                    </select>
                                 </div>
                                 <div class="col-md-3 form-group">
                                     <label>ترانزیت (نمبر موتر)</label>
