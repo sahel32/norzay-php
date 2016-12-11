@@ -50,7 +50,12 @@ class oil_model extends CI_Model{
         $value =$query->row();
         return $value->$column_name;
     }
+    function get_where_column($wheres,$column){
+        $query=$this->db->get_where($this->table, $wheres);
+        $value=$query->row();
+        return $value->$column;
 
+    }
     function get_oil_profile($id){
         $query=$this->db->query('
 SELECT

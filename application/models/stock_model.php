@@ -174,7 +174,7 @@ FROM
     function get_stock_balance_pre_buy($id){
         $query=$this->db->query('
 SELECT
-  (presell - factsell) AS remain
+  (presell - presel) AS remain
 FROM
   (SELECT
     IFNULL(SUM(amount), 0) AS presell
@@ -183,25 +183,8 @@ FROM
   WHERE NULLIF(parent_id, \' \') IS NULL
     AND buy_sell = \'buy\'
     AND TYPE = \'pre\'
-    AND stock_id = ?) AS t,
+    AND stock_id = 14) AS t,
   (SELECT
-    (facsell + presel) AS factsell
-  FROM
-    (SELECT
-      IFNULL(SUM(amount), 0) AS facsell
-    FROM
-      stock_transaction
-    WHERE TYPE = \'fact\'
-      AND buy_sell = \'buy\'
-      AND parent_id IN
-      (SELECT
-        id
-      FROM
-        stock_transaction
-      WHERE buy_sell = \'buy\'
-        AND TYPE = \'pre\'
-        AND stock_id = ?)) AS t7,
-    (SELECT
       IFNULL(SUM(amount), 0) AS presel
     FROM
       stock_transaction
@@ -214,9 +197,8 @@ FROM
         stock_transaction
       WHERE buy_sell = \'buy\'
         AND TYPE = \'pre\'
-        AND stock_id = ?)
-      OR stock = ?) AS t1) AS t1
-  
+        AND stock_id = 14)
+      OR stock = 14) AS t1
         ', array($id,$id,$id,$id));
         $value =$query->row();
         return $value->remain;

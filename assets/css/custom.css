@@ -133,7 +133,35 @@ font-weight: 300;
 text-align: center;
 }
  .main-temp-back .text-temp {
-font-size: 40px;
+font-size: 25px;
+padding-top: 10px;
+}
+.stock{
+    background: #333;
+}
+.safebox{
+    background: #3c763d;
+}
+.reports{
+    background: #AF0000;
+}
+.backup{
+    background: #0078D7;
+}
+.buys{
+    background: #db0630;
+}
+.sells{
+    background: #4d3fb5;
+}
+.accounts{
+    background: #8702A8;
+}
+.debits{
+    background: #b94a00;
+}
+.credits{
+    background: #009688;
 }
 .back-dash {
     padding:20px;
@@ -379,7 +407,10 @@ line-height: 1.428571429;
    .navbar {
  border-radius: 0px; 
 }
-   
+
+    body .modal-resize{
+        width: 900px;
+    }
 }
 
 /*Add more styles by Mortaza*/
@@ -403,4 +434,37 @@ label{
 }
 .entry{
     padding-right: 0;
+}
+.custom-select{
+    margin-top: -7px;
+}
+
+.sidebar-menu{
+    width: 35px;
+    height: 35px;
+}
+.correct{
+    padding: 1px 10px;
+}
+.glyphicon-trash{
+    color: #f90c05;
+}
+.glyphicon-edit{
+    color: #18c318;
+}
+.glyphicon-cog{
+    color: rgb(9, 87, 241);
+}
+.glyphicon-user{
+    color: rgb(43, 62, 81);
+}
+.panel-footer{
+    padding: 10px 15px 30px 15px;
+}
+.fa-plus-circle{
+    padding-right: 5px;
+    color: green;
+}
+.align{
+    text-align: center;
 }

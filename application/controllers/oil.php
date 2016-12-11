@@ -90,7 +90,7 @@ class oil extends CI_Controller {
 			//$data['account_rows'] = $this->account->get_where(array('type' => 'customer'));
 			$data['account_rows'] = $this->account_model->get_where(array('type'=>'customer'));
 
-			$data['balance_rows'] = $this->balance_model->get_where(array('type'=>'pre'));
+			//$data['balance_rows'] = $this->balance_model->get_where(array('type'=>'pre'));
 
 
 			$this->form_validation->set_rules('f_date', null, 'required',
@@ -202,7 +202,7 @@ class oil extends CI_Controller {
 		//$data['account_rows'] = $this->account->get_where(array('type' => 'customer'));
 		$data['account_rows'] = $this->account_model->get_or_where(array('type'=>'customer'),array('type'=>'seller'));
 
-		$data['balance_rows'] = $this->balance_model->get_where(array('type'=>'pre'));
+		//$data['balance_rows'] = $this->balance_model->get_where(array('type'=>'pre'));
 
 
 		$this->form_validation->set_rules('f_date', null, 'required',
@@ -292,7 +292,7 @@ class oil extends CI_Controller {
 		$this->oil_model->get_balance(array('type'=>'pre', 'buy_sell'=>'buy'));
 	}
 
-	public function pre_sell_to_fact_form($template="template" , $popupp_pre_buy_sell_id="",$remain='',$buy_sell=''){ 
+	public function pre_sell_to_fact_form($template="template" , $popupp_pre_buy_sell_id="",$remain='',$buy_sell=''){
 
 
 			$data = array(
@@ -336,7 +336,7 @@ class oil extends CI_Controller {
 				//'desc' => $this->db->escape_str($this->input->post('desc')),
 				'unit' => 'ton',
 				'type' => "fact",
-				'buy_sell' =>  $buy_sell,
+				'buy_sell' =>  'sell',
 			);
 
 			$id = $this->oil_model->insert($fact_transaction);
