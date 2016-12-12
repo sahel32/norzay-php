@@ -6,30 +6,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="93d312fc-130c-436d-b7d6-118f32262ab4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/controllers/balance.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/views/balance/balance_check_out.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/application/views/accounts/balance_check_out.php" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/account.php" afterPath="$PROJECT_DIR$/application/controllers/account.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/cash.php" afterPath="$PROJECT_DIR$/application/controllers/cash.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/oil.php" afterPath="$PROJECT_DIR$/application/controllers/oil.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/stock.php" afterPath="$PROJECT_DIR$/application/controllers/stock.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/balance_model.php" afterPath="$PROJECT_DIR$/application/models/balance_model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/cash_model.php" afterPath="$PROJECT_DIR$/application/models/cash_model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/oil_model.php" afterPath="$PROJECT_DIR$/application/models/oil_model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/stock_model.php" afterPath="$PROJECT_DIR$/application/models/stock_model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/accounts/add.php" afterPath="$PROJECT_DIR$/application/views/accounts/add.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/accounts/customer_profile.php" afterPath="$PROJECT_DIR$/application/views/accounts/customer_profile.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/accounts/dealer_profile.php" afterPath="$PROJECT_DIR$/application/views/accounts/dealer_profile.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/accounts/driver_profile.php" afterPath="$PROJECT_DIR$/application/views/accounts/driver_profile.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/accounts/seller_profile.php" afterPath="$PROJECT_DIR$/application/views/accounts/seller_profile.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/accounts/stuff_profile.php" afterPath="$PROJECT_DIR$/application/views/accounts/stuff_profile.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/cash/credit_debit.php" afterPath="$PROJECT_DIR$/application/views/cash/credit_debit.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/cash/oil_credit_debit.php" afterPath="$PROJECT_DIR$/application/views/cash/oil_credit_debit.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/cash/profile_credit_debit.php" afterPath="$PROJECT_DIR$/application/views/cash/profile_credit_debit.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/cash/profile_oil_credit_debit.php" afterPath="$PROJECT_DIR$/application/views/cash/profile_oil_credit_debit.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/oil/pre_buy_to_fact_form.php" afterPath="$PROJECT_DIR$/application/views/oil/pre_buy_to_fact_form.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/oil/pre_sell_to_fact_form.php" afterPath="$PROJECT_DIR$/application/views/oil/pre_sell_to_fact_form.php" />
     </list>
     <ignored path="norzay-php.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -54,7 +31,7 @@
       <file leaf-file-name="profile_credit_debit.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/views/cash/profile_credit_debit.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="402">
+            <state relative-caret-position="1462">
               <caret line="86" column="73" selection-start-line="86" selection-start-column="73" selection-end-line="86" selection-end-column="73" />
               <folding />
             </state>
@@ -64,7 +41,7 @@
       <file leaf-file-name="oil_credit_debit.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/views/cash/oil_credit_debit.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
+            <state relative-caret-position="1513">
               <caret line="89" column="73" selection-start-line="89" selection-start-column="73" selection-end-line="89" selection-end-column="73" />
               <folding />
             </state>
@@ -74,7 +51,7 @@
       <file leaf-file-name="cash_model.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/models/cash_model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
+            <state relative-caret-position="765">
               <caret line="45" column="16" selection-start-line="45" selection-start-column="16" selection-end-line="45" selection-end-column="16" />
               <folding>
                 <marker date="1481493133387" expanded="true" signature="1082:2105" placeholder="SELECT (debi... IFNULL" />
@@ -93,7 +70,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="oil.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="oil.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/controllers/oil.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="418">
@@ -114,7 +91,7 @@
       <file leaf-file-name="pre_buy_to_fact_form.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/views/oil/pre_buy_to_fact_form.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
+            <state relative-caret-position="986">
               <caret line="58" column="71" selection-start-line="58" selection-start-column="71" selection-end-line="58" selection-end-column="71" />
               <folding />
             </state>
@@ -134,7 +111,7 @@
       <file leaf-file-name="credit_debit.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/views/cash/credit_debit.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
+            <state relative-caret-position="1513">
               <caret line="89" column="73" selection-start-line="89" selection-start-column="73" selection-end-line="89" selection-end-column="73" />
               <folding>
                 <marker date="1481495303961" expanded="true" signature="6145:6153" placeholder="..." />
@@ -143,11 +120,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="stock_model.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="stock_model.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/models/stock_model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="201" column="28" selection-start-line="201" selection-start-column="28" selection-end-line="201" selection-end-column="28" />
+            <state relative-caret-position="-102">
+              <caret line="175" column="0" selection-start-line="175" selection-start-column="0" selection-end-line="200" selection-end-column="25" />
               <folding>
                 <marker date="1481493504082" expanded="true" signature="1165:1424" placeholder="SELECT (buy SUM" />
                 <marker date="1481493504082" expanded="true" signature="1205:1307" placeholder="SELECT SUM(a... stock_transaction" />
@@ -182,7 +159,7 @@
       <file leaf-file-name="lists.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/views/stock/lists.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
+            <state relative-caret-position="969">
               <caret line="57" column="94" selection-start-line="57" selection-start-column="94" selection-end-line="57" selection-end-column="94" />
               <folding />
             </state>
@@ -192,7 +169,7 @@
       <file leaf-file-name="oil_model.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/models/oil_model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1103">
+            <state relative-caret-position="1989">
               <caret line="117" column="4" selection-start-line="117" selection-start-column="4" selection-end-line="117" selection-end-column="4" />
               <folding>
                 <marker date="1481457944437" expanded="true" signature="1655:1828" placeholder="SELECT (buy-... IFNULL" />
@@ -290,7 +267,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
+    <option name="width" value="1378" />
     <option name="height" value="744" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -615,18 +592,19 @@
       <workItem from="1481218424471" duration="12359000" />
       <workItem from="1481301825709" duration="40697000" />
       <workItem from="1481405560907" duration="25754000" />
+      <workItem from="1481563528130" duration="228000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="314639000" />
+    <option name="totallyTimeSpent" value="314867000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1378" height="744" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1954612" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19603524" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329653" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -777,7 +755,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="551">
           <caret line="116" column="37" selection-start-line="116" selection-start-column="37" selection-end-line="116" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -800,7 +777,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-425">
           <caret line="42" column="106" selection-start-line="42" selection-start-column="106" selection-end-line="42" selection-end-column="106" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -808,7 +784,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="572">
           <caret line="37" column="4" selection-start-line="37" selection-start-column="4" selection-end-line="37" selection-end-column="4" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -816,7 +791,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="20" column="25" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -824,9 +798,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" column="73" selection-start-line="10" selection-start-column="73" selection-end-line="10" selection-end-column="73" />
-          <folding>
-            <marker date="1481413622008" expanded="true" signature="615:649" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -834,9 +805,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1265">
           <caret line="225" column="0" selection-start-line="225" selection-start-column="0" selection-end-line="225" selection-end-column="0" />
-          <folding>
-            <element signature="n#table#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#4;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -844,7 +812,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="952">
           <caret line="56" column="138" selection-start-line="56" selection-start-column="138" selection-end-line="56" selection-end-column="138" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -852,7 +819,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2584">
           <caret line="152" column="23" selection-start-line="152" selection-start-column="23" selection-end-line="152" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -860,7 +826,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="25" column="54" selection-start-line="25" selection-start-column="54" selection-end-line="25" selection-end-column="54" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -868,7 +833,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="337">
           <caret line="37" column="138" selection-start-line="37" selection-start-column="118" selection-end-line="37" selection-end-column="138" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -876,18 +840,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="27" column="31" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
-          <folding>
-            <marker date="1481447729156" expanded="true" signature="1155:2179" placeholder="SELECT (debi... debit1" />
-            <marker date="1481447729156" expanded="true" signature="1259:1651" placeholder="SELECT (debi... IFNULL" />
-            <marker date="1481447729156" expanded="true" signature="1298:1424" placeholder="SELECT IFNUL... cash" />
-            <marker date="1481447729156" expanded="true" signature="1435:1643" placeholder="SELECT IFNUL... cash" />
-            <marker date="1481447729156" expanded="true" signature="1667:2066" placeholder="SELECT (cred... IFNULL" />
-            <marker date="1481447729156" expanded="true" signature="1709:1837" placeholder="SELECT IFNUL... cash" />
-            <marker date="1481447729156" expanded="true" signature="1848:2058" placeholder="SELECT IFNUL... cash" />
-            <marker date="1481447729156" expanded="true" signature="2372:2831" placeholder="SELECT (debi... IFNULL" />
-            <marker date="1481447729156" expanded="true" signature="2474:2588" placeholder="SELECT IFNUL... cash" />
-            <marker date="1481447729156" expanded="true" signature="2604:2718" placeholder="SELECT IFNUL... cash" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -895,7 +847,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="117" column="108" selection-start-line="117" selection-start-column="108" selection-end-line="117" selection-end-column="108" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -903,7 +854,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="361">
           <caret line="38" column="106" selection-start-line="38" selection-start-column="106" selection-end-line="38" selection-end-column="106" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -911,7 +861,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="302">
           <caret line="45" column="54" selection-start-line="45" selection-start-column="54" selection-end-line="45" selection-end-column="54" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -919,7 +868,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="49" column="70" selection-start-line="49" selection-start-column="70" selection-end-line="49" selection-end-column="95" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -927,7 +875,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="62" column="36" selection-start-line="62" selection-start-column="36" selection-end-line="62" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -935,7 +882,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="56" column="95" selection-start-line="56" selection-start-column="95" selection-end-line="56" selection-end-column="95" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -943,7 +889,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
           <caret line="126" column="95" selection-start-line="126" selection-start-column="95" selection-end-line="126" selection-end-column="95" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -951,10 +896,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="59" column="95" selection-start-line="59" selection-start-column="95" selection-end-line="59" selection-end-column="95" />
-          <folding>
-            <marker date="1481457330353" expanded="true" signature="6238:6253" placeholder="..." />
-            <marker date="1481457330353" expanded="true" signature="6790:6860" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -962,7 +903,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="51" column="95" selection-start-line="51" selection-start-column="95" selection-end-line="51" selection-end-column="95" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -970,9 +910,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="89" column="158" selection-start-line="89" selection-start-column="158" selection-end-line="89" selection-end-column="158" />
-          <folding>
-            <element signature="n#add#0;n#account#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -980,11 +917,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="302">
           <caret line="41" column="5" selection-start-line="41" selection-start-column="3" selection-end-line="53" selection-end-column="16" />
-          <folding>
-            <element signature="n#lists#0;n#stock#0;n#!!top" expanded="false" />
-            <marker date="1481456189533" expanded="false" signature="1318:1487" placeholder="..." />
-            <marker date="1481456189533" expanded="false" signature="1630:1795" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -992,7 +924,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="243">
           <caret line="78" column="97" selection-start-line="78" selection-start-column="97" selection-end-line="78" selection-end-column="97" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1000,12 +931,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
           <caret line="272" column="40" selection-start-line="272" selection-start-column="40" selection-end-line="272" selection-end-column="40" />
-          <folding>
-            <element signature="n#lists#0;n#cash#0;n#!!top" expanded="false" />
-            <element signature="n#credit_debit#0;n#cash#0;n#!!top" expanded="false" />
-            <element signature="n#profile_credit_debit#0;n#cash#0;n#!!top" expanded="false" />
-            <element signature="n#oil_credit_debit#0;n#cash#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1013,13 +938,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1630">
           <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/application/models/cash_model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
+        <state relative-caret-position="765">
           <caret line="45" column="16" selection-start-line="45" selection-start-column="16" selection-end-line="45" selection-end-column="16" />
           <folding>
             <marker date="1481493133387" expanded="true" signature="1082:2105" placeholder="SELECT (debi... IFNULL" />
@@ -1039,7 +963,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/models/oil_model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1103">
+        <state relative-caret-position="1989">
           <caret line="117" column="4" selection-start-line="117" selection-start-column="4" selection-end-line="117" selection-end-column="4" />
           <folding>
             <marker date="1481457944437" expanded="true" signature="1655:1828" placeholder="SELECT (buy-... IFNULL" />
@@ -1063,16 +987,88 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/views/stock/lists.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
+        <state relative-caret-position="969">
           <caret line="57" column="94" selection-start-line="57" selection-start-column="94" selection-end-line="57" selection-end-column="94" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/cash/profile_oil_credit_debit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="82" column="34" selection-start-line="82" selection-start-column="34" selection-end-line="83" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/cash/profile_credit_debit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1462">
+          <caret line="86" column="73" selection-start-line="86" selection-start-column="73" selection-end-line="86" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/cash/oil_credit_debit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1513">
+          <caret line="89" column="73" selection-start-line="89" selection-start-column="73" selection-end-line="89" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/cash/credit_debit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1513">
+          <caret line="89" column="73" selection-start-line="89" selection-start-column="73" selection-end-line="89" selection-end-column="73" />
+          <folding>
+            <marker date="1481495303961" expanded="true" signature="6145:6153" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/oil/pre_sell_to_fact_form.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="63" column="53" selection-start-line="63" selection-start-column="53" selection-end-line="63" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/oil/pre_buy_to_fact_form.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="986">
+          <caret line="58" column="71" selection-start-line="58" selection-start-column="71" selection-end-line="58" selection-end-column="71" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/models/shamci_date.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="27" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/oil.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="518" column="62" selection-start-line="518" selection-start-column="62" selection-end-line="518" selection-end-column="62" />
+          <folding>
+            <element signature="n#lists_pre_sell#0;n#oil#0;n#!!top" expanded="false" />
+            <element signature="n#lists_pre_buy#0;n#oil#0;n#!!top" expanded="false" />
+            <element signature="n#pre_sell#0;n#oil#0;n#!!top" expanded="false" />
+            <element signature="n#pre_buy_sell_balance#0;n#oil#0;n#!!top" expanded="false" />
+            <element signature="n#pre_sell_to_fact_form#0;n#oil#0;n#!!top" expanded="false" />
+            <element signature="n#sell#0;n#oil#0;n#!!top" expanded="false" />
+            <element signature="n#fact_buy#0;n#oil#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/application/models/stock_model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="201" column="28" selection-start-line="201" selection-start-column="28" selection-end-line="201" selection-end-column="28" />
+        <state relative-caret-position="-102">
+          <caret line="175" column="0" selection-start-line="175" selection-start-column="0" selection-end-line="200" selection-end-column="25" />
           <folding>
             <marker date="1481493504082" expanded="true" signature="1165:1424" placeholder="SELECT (buy SUM" />
             <marker date="1481493504082" expanded="true" signature="1205:1307" placeholder="SELECT SUM(a... stock_transaction" />
@@ -1099,80 +1095,6 @@
             <marker date="1481493504082" expanded="true" signature="4124:4309" placeholder="SELECT IFNUL... stock_transaction" />
             <marker date="1481493504082" expanded="true" signature="4320:4641" placeholder="SELECT IFNUL... stock_transaction" />
             <marker date="1481493504082" expanded="true" signature="4484:4621" placeholder="SELECT id FR... stock_transaction" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/cash/profile_oil_credit_debit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="317">
-          <caret line="82" column="34" selection-start-line="82" selection-start-column="34" selection-end-line="83" selection-end-column="73" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/cash/profile_credit_debit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="86" column="73" selection-start-line="86" selection-start-column="73" selection-end-line="86" selection-end-column="73" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/cash/oil_credit_debit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="89" column="73" selection-start-line="89" selection-start-column="73" selection-end-line="89" selection-end-column="73" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/cash/credit_debit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="89" column="73" selection-start-line="89" selection-start-column="73" selection-end-line="89" selection-end-column="73" />
-          <folding>
-            <marker date="1481495303961" expanded="true" signature="6145:6153" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/oil/pre_sell_to_fact_form.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="63" column="53" selection-start-line="63" selection-start-column="53" selection-end-line="63" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/oil/pre_buy_to_fact_form.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="58" column="71" selection-start-line="58" selection-start-column="71" selection-end-line="58" selection-end-column="71" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/models/shamci_date.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="27" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/oil.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="518" column="62" selection-start-line="518" selection-start-column="62" selection-end-line="518" selection-end-column="62" />
-          <folding>
-            <element signature="n#lists_pre_sell#0;n#oil#0;n#!!top" expanded="false" />
-            <element signature="n#lists_pre_buy#0;n#oil#0;n#!!top" expanded="false" />
-            <element signature="n#pre_sell#0;n#oil#0;n#!!top" expanded="false" />
-            <element signature="n#pre_buy_sell_balance#0;n#oil#0;n#!!top" expanded="false" />
-            <element signature="n#pre_sell_to_fact_form#0;n#oil#0;n#!!top" expanded="false" />
-            <element signature="n#sell#0;n#oil#0;n#!!top" expanded="false" />
-            <element signature="n#fact_buy#0;n#oil#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
