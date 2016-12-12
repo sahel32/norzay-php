@@ -293,7 +293,10 @@ class oil extends CI_Controller {
 	}
 
 	public function pre_sell_to_fact_form($template="template" , $popupp_pre_buy_sell_id="",$remain='',$buy_sell=''){
+<<<<<<< HEAD
 
+=======
+>>>>>>> refs/remotes/origin/master
 
 			$data = array(
 				'main_title' => "pre sell",
@@ -351,7 +354,8 @@ class oil extends CI_Controller {
 					'transaction_type' =>'debit',
 					'table_id'=>$id,
 					'account_id'=>$this->db->escape_str($this->input->post('account_id')),
-					'table_name'=>'stock_transaction'
+					'table_name'=>'stock_transaction',
+					'date' => $this->shamci_date->get_today_date()
 
 				);
 
@@ -378,7 +382,7 @@ class oil extends CI_Controller {
 	}
     public function pre_buy_to_fact_form($template="template" , $popupp_pre_buy_sell_id="",$remain=''){
 
-
+		echo $this->shamci_date->get_today_date();
 		$data = array(
 			'main_title' => "pre sell",
 			'sub_title' => "pre sell sub title",
@@ -466,7 +470,7 @@ class oil extends CI_Controller {
 	} else {
 		$fact_transaction = array(
 			'parent_id' => $this->input->post('pre_buy_sell_id'),
-			'f_date' => $this->input->post('received_date'),
+			'f_date' => $this->input->post('f_date'),
 			'buyer_seller_id' =>$this->input->post('account_id'),
 			'barcode' =>  $this->db->escape_str($this->input->post('barcode')),
 			'amount' =>  $this->db->escape_str($this->input->post('first_amount')),
@@ -490,7 +494,8 @@ class oil extends CI_Controller {
 				'transaction_type' =>'credit',
 				'table_id'=>$id,
 				'account_id'=>$this->db->escape_str($this->input->post('account_id')),
-				'table_name'=>'stock_transaction'
+				'table_name'=>'stock_transaction',
+				'date' => $this->shamci_date->get_today_date()
 
 			);
 
@@ -514,7 +519,8 @@ class oil extends CI_Controller {
 				'transaction_type' => 'credit',
 				'table_id' => $d_id,
 				'account_id' => $this->db->escape_str($this->input->post('driver_id')),
-				'table_name' => 'driver_transaction'
+				'table_name' => 'driver_transaction',
+				'date' => $this->shamci_date->get_today_date()
 
 			);
 

@@ -87,7 +87,11 @@ class account extends CI_Controller {
 
     public function profile($id=0,$type){
     	  $data['fu_page_title']="Login Form";
+<<<<<<< HEAD
 		
+=======
+		$this->session->set_userdata('url',$this->router->fetch_class().'/'.$this->router->fetch_method().'/'.$this->uri->segment(3).'/'.$this->uri->segment(4));
+>>>>>>> refs/remotes/origin/master
 		if($type=="driver"){
 			$data['single_balance_rows']=$this->cash_model->get_balance_credit_debit_single(array('account_id' => $id));
 			$data['all_debit_credit']=$this->cash_model->get_where(array('account_id' => $id));

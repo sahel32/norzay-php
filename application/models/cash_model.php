@@ -43,7 +43,7 @@ class cash_model extends CI_Model{
     function get_balance_credit_debit_mylty_money($id,$type){
         $query=$this->db->query("
 SELECT
-  (debit - credit) AS balance,
+  ( credit-debit) AS balance,
   credit,
   debit,
   NAME,
@@ -51,7 +51,7 @@ SELECT
   phone,
   account.id
 FROM
-  (SELECT (debit1+debit2) AS debit FROM (
+  (SELECT (debit1+debit2) AS credit FROM (
 SELECT
     IFNULL(SUM(cash),0)  AS debit1
   FROM
@@ -69,7 +69,7 @@ WHERE cash.id = check_option.`cash_id`
   AND check_option.`type` = ?
   AND cash.`transaction_type`='debit'
 ) AS t2) AS result,
-  (SELECT (credit1+credit2) AS credit FROM (
+  (SELECT (credit1+credit2) AS debit FROM (
 SELECT
     IFNULL(SUM(cash),0)  AS credit1
   FROM
@@ -101,7 +101,7 @@ GROUP BY account.`id`
     function get_balance_credit_debit_single($id){
         $query=$this->db->query("
 SELECT
-  (debit-credit) AS balance,
+  (credit-debit) AS balance,
   credit,
   debit,
   name,
@@ -110,13 +110,13 @@ SELECT
   account.id
 FROM
   (SELECT
-    IFNULL(SUM(cash),0) AS credit
+    IFNULL(SUM(cash),0) AS debit
   FROM
     cash
   WHERE transaction_type = 'debit'
     AND account_ID = ?) AS result,
   (SELECT
-    IFNULL(SUM(cash),0) AS debit
+    IFNULL(SUM(cash),0) AS credit
   FROM
     cash
   WHERE transaction_type = 'credit'
