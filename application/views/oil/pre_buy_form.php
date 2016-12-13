@@ -63,7 +63,11 @@
                                                 <option value="desail">دیزل</option>
                                             </select>
                                         </div>-->
+                                        <div class="col-md-3 form-group">
+                                            <label>فروشنده دست اول</label>
 
+                                            <input type="text"   name="first_hand" class="form-control"/>
+                                        </div>
                                         <div class="col-md-3 form-group">
                                             <label><?php echo $account_label;?></label>
                                             <select class="form-control" name="account_id">

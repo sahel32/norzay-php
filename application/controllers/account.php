@@ -89,6 +89,7 @@ class account extends CI_Controller {
     	  $data['fu_page_title']="Login Form";
 		$this->session->set_userdata('url',$this->router->fetch_class().'/'.$this->router->fetch_method().'/'.$this->uri->segment(3).'/'.$this->uri->segment(4));
 		if($type=="driver"){
+			$data['account_rows'] = $this->account_model->get_where(array('id' => $id));
 			$data['single_balance_rows']=$this->cash_model->get_balance_credit_debit_single(array('account_id' => $id));
 			$data['all_debit_credit']=$this->cash_model->get_where(array('account_id' => $id));
 			$data['driver_cash_rows']=$this->cash_model->get_where(array('account_id' => $id, 'table_name'=>'driver_transaction'));
@@ -107,12 +108,14 @@ class account extends CI_Controller {
 		}
 
 		if($type=="seller"){
+			$data['account_rows'] = $this->account_model->get_where(array('id' => $id));
 			$data['single_balance_rows']=$this->cash_model->get_balance_credit_debit_single(array('account_id' => $id));
 			$data['all_debit_credit']=$this->cash_model->get_where(array('account_id' => $id));
 			$data['buy_rows']=$this->oil_model->get_where(array('buyer_seller_id' => $id ,'buy_sell' => 'buy', 'type'=> 'pre'));
 			$this->load->template('accounts/seller_profile',$data);
 		}
 		if($type=="customer"){
+			$data['account_rows'] = $this->account_model->get_where(array('id' => $id));
 			$data['cash_rows']=$this->cash_model->get_where(array('account_id' => $id));
 			$data['single_balance_rows']=$this->cash_model->get_balance_credit_debit_single(array('account_id' => $id));
 			$data['all_debit_credit']=$this->cash_model->get_where(array('account_id' => $id));
@@ -124,12 +127,14 @@ class account extends CI_Controller {
 		}
 
 		if($type=="stuff"){
+			$data['account_rows'] = $this->account_model->get_where(array('id' => $id));
 			$data['single_balance_rows']=$this->cash_model->get_balance_credit_debit_single(array('account_id' => $id));
 			$data['all_debit_credit']=$this->cash_model->get_where(array('account_id' => $id));
 			$this->load->template('accounts/stuff_profile',$data);
 		}
 
 		if($type=="dealer"){
+			$data['account_rows'] = $this->account_model->get_where(array('id' => $id));
 			$data['single_balance_rows']=$this->cash_model->get_balance_credit_debit_single(array('account_id' => $id));
 			$data['all_debit_credit']=$this->cash_model->get_where(array('account_id' => $id));
 			$this->load->template('accounts/dealer_profile',$data);

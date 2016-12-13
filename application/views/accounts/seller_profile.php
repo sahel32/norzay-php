@@ -39,24 +39,26 @@
                             </thead>
                             <tbody>
                             <?php
-
-                            foreach ($single_balance_rows as $key => $value) {?>
+                            foreach ($account_rows as $key => $value) {
+                                $this->load->model('cash_model');
+                                $single_balance_rows=$this->cash_model->get_balance_credit_debit_single(array('account_id' => $value->id));
+                                ?>
                                 <tr class="odd gradeX">
                                     <td><?php echo $value->id;?></td>
                                     <td><?php echo $value->name;?></td>
                                     <td><?php echo $value->lname;?></td>
                                     <td><?php echo $value->phone;?></td>
-                                    <td class="center"><?php echo $value->debit;?></td>
-                                    <td class="center"><?php echo $value->credit;?></td>
-                                    <td class="center"><?php echo $value->balance;?></td>
-
+                                    <?php    foreach ($single_balance_rows as $bkey => $bvalue) {?><?php }?>
+                                    <td class="center"><?php echo (isset($bvalue->debit))? $bvalue->debit : "";?></td>
+                                    <td class="center"><?php echo (isset($bvalue->credit))? $bvalue->credit : "";?></td>
+                                    <td class="center"><?php echo (isset($bvalue->balance))? $bvalue->balance : "";?></td>
                                     <td class="center">
                                         <a href="<?php echo site_url('account/delete/'.$value->id) ?>"><span class="glyphicon glyphicon-trash"></span></a>
                                         <a href="<?php echo site_url('account/edit/'.$value->id) ?>"><span class="glyphicon glyphicon-edit"></span></a>
-                                        <a href="<?php echo site_url('account/profile/'.$value->id); ?>"><span class="glyphicon glyphicon-asterisk"></span></a>
+                                        <a href="<?php echo site_url('balance/balance_check_out/'.$value->id); ?>"><span class="glyphicon glyphicon-asterisk"></span></a>
                                     </td>
                                 </tr>
-                            <?php }?>
+                            <?php }  ?>
                             </tbody>
                         </table>
                     </div>
@@ -94,8 +96,7 @@
                                 <th>مقدار پول</th>
                                 <th>نوع پول</th>
                                 <th>نوع دریافت / پرداخت پول</th>
-                                <th>بیلانس (الباقی)</th>
-                                <th>شرح و تفصیلات</th>
+
                                 <th>تغییرات</th>
                             </tr>
                             </thead>
@@ -115,12 +116,21 @@
                                             <?php
                                             // echo "<span style='cursor: pointer' onclick='get_check_info(".$cash_value->id.")'>".$cash_value->type."</span>";
                                         }else{
-                                            echo $cash_value->type;
+                                           // echo $cash_value->type;
+                                            echo "پول نقد";
                                         }
                                         ?></td>
-                                    <td class="center"><?php  echo $cash_value->transaction_type;?></td>
-                                    <td class="center">X</td>
-                                    <td class="center"><?php  echo $cash_value->desc;?></td>
+                                    <td class="center"><?php
+                                        switch ($cash_value->transaction_type){
+                                            case "credit";
+                                                echo "رسیدگی";
+                                                break;
+                                            case "debit";
+                                                echo "بردگی";
+                                                break;
+                                        }
+                                        ;?></td>
+
                                     <td class="center">
                                         <a href="<?php echo site_url('account/delete/'.$value->id) ?>"><span class="glyphicon glyphicon-trash"></span></a>
                                         <a href="<?php echo site_url('account/edit/'.$value->id) ?>"><span class="glyphicon glyphicon-edit"></span></a>
@@ -150,13 +160,14 @@
                                     <thead>
                                     <tr>
                                         <th>کد</th>
-                                        <th>تاریخ</th>
-                                        <th>تاریخ تحویل</th>
+                                        <th>تاریخ پیش فروش</th>
+                                        <th>تاریخ تقریبی تحویل</th>
+                                        <th>نام مشتری</th>
+                                        <th>نوغ تیل</th>
+                                        <th>تناژ</th>
                                         <th>تعداد موتر</th>
-                                        <th>مقدار تیل (تناژ)</th>
-                                        <th>نوع تیل</th>
-                                        <th>فی تن</th>
-                                        <th>موارد بیشتر</th>
+                                        <th>فی</th>
+                                        <th>تغییرات</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -164,13 +175,31 @@
                                     foreach ($buy_rows as $key => $value) {?>
 
                                         <tr class="odd gradeX">
-                                            <td><?php echo $value->id; ?></td>
-                                            <td><?php echo $value->f_date; ?></td>
-                                            <td><?php echo $value->s_date; ?></td>
-                                            <td class="center"><?php echo $value->car_count; ?></td>
-                                            <td class="center"><?php echo $value->amount; ?></td>
-                                            <td class="center"><?php echo $value->name; ?></td>
-                                            <td class="center"><?php echo $value->unit_price; ?></td>
+                                            <td><?php echo $value->id;?></td>
+                                            <td><?php echo $value->f_date;?></td>
+                                            <td><?php echo $value->s_date;?></td>
+                                            <td class="center"><?php
+                                                $this->load->model('account_model');
+                                                echo $this->account_model->get_where_column(array('id'=>$value->buyer_seller_id),'name');
+                                                echo " - ";
+                                                echo $this->account_model->get_where_column(array('id'=>$value->buyer_seller_id),'lname');
+                                                ?></td>
+                                            <td class="center"><?php
+                                                $this->load->model('stock_model');
+                                                echo $this->stock_model->get_where_column(array('id'=>$value->stock_id),'oil_type');
+                                                ?></td>
+                                            <td class="center">
+                                                <?php
+
+                                                if($value->car_count!='0') {
+                                                    echo $value->car_count*$value->amount;
+                                                }else{
+                                                    echo $remain=$value->amount;
+                                                }
+                                                ?>
+                                            </td>
+                                            <td class="center"><?php echo $value->car_count;?></td>
+                                            <td class="center"><?php echo $value->unit_price;?></td>
                                             <td class="center">
                                                 <a href="<?php echo site_url('account/delete/'.$value->id); ?>"><span class="glyphicon glyphicon-trash"></span></a>
                                                 <a href="#"><span class="glyphicon glyphicon-edit"></span></a>
@@ -180,33 +209,6 @@
                                     <?php  }?>
                                     </tbody>
                                 </table>
-                            </div>
-
-                            <div class="tab-pane fade" id="moreinfo2">
-                                <div class="table-responsive">
-                                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                        <thead>
-                                        <tr>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr class="odd gradeX">
-                                            <td class="center">4</td>
-                                            <td>Trident</td>
-                                            <td>Internet Explorer 4.0</td>
-                                            <td>Win 95+</td>
-                                            <td class="center">4</td>
-                                            <td class="center">X</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
                             </div>
 
                         </div>
