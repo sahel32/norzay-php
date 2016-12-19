@@ -39,7 +39,11 @@ class balance extends CI_Controller {
 
         $data['date']=$this->shamci_date->get_today_date();
         $data['single_balance_rows']=$this->cash_model->get_balance_credit_debit_single(array('account_id' => $id));
+<<<<<<< HEAD
+
+=======
         $data['id']=$id;
+>>>>>>> refs/remotes/origin/master
         if($this->form_validation->run()==false){
 
             $data['signup_form']="active";
@@ -56,11 +60,18 @@ class balance extends CI_Controller {
 
             );
 
+<<<<<<< HEAD
+            $id=$this->balance_model->insert($cantact_info);
+
+            $data['fu_page_title']="Login Form";
+            redirect('account/profile/'.$id.'/'.$this->input->post('type'));
+=======
             $account_id=$this->balance_model->insert($cantact_info);
 
             $data['fu_page_title']="Login Form";
 
            redirect($_SESSION['url']);
+>>>>>>> refs/remotes/origin/master
             // $this->profile($id);
         }
 
