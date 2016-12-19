@@ -15,16 +15,7 @@
         //-----------------------------------
     });
 </script>
-<div id="page-inner">
-    <div class="row">
-        <div class="col-md-12">
-            <h2>خرید</h2>
-            <h5>از این قسمت میتوانید تیل خریداری شده را وارد نمایید. </h5>
 
-        </div>
-    </div>
-    <!-- /. ROW  -->
-    <hr />
     <div class="row">
         <div class="col-md-12">
             <!-- Form Elements -->
@@ -44,10 +35,14 @@
                                         <span class="help-inline"><?php echo (form_error('pre_buy_sell_id') ) ? form_error('pre_buy_sell_id') : "<span class='red'>*</span>"; ?></span>
                                     <?php  }else{
                                         echo $popupp_pre_buy_sell_id;
+
+                                        echo "<input type='hidden' value='$popupp_pre_buy_sell_id' name='pre_buy_sell_id' >";
+
                                         echo "<input type='text'  value='$popupp_pre_buy_sell_id' name='pre_buy_sell_id' >";
+
                                     }?>
                                 </div>
-                                <div class="col-md-3 form-group">
+                                <div class="col-md-9 form-group">
                                     <label>مقدار موجود</label>
                                     <?php
                                     echo $remain;
@@ -125,7 +120,7 @@
 
                                     </select>
                                 </div>
-                                <div class="col-md-6 form-group">
+                                <div class="col-md-3 form-group">
                                     <label>شرح و تفصیلات</label>
                                     <textarea name="desc" class="form-control" rows="1" data-toggle="tooltip" title="نکات بیشتر را میتوانید در این قسمت ذکر کنید." data-placement="top"></textarea>
                                 </div>
@@ -138,8 +133,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- /. PAGE INNER  -->
 
         <script>
             $(document).ready(function() {

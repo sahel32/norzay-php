@@ -183,7 +183,7 @@ FROM
   WHERE NULLIF(parent_id, \' \') IS NULL
     AND buy_sell = \'buy\'
     AND TYPE = \'pre\'
-    AND stock_id = ?) AS t,
+    AND stock_id = 14) AS t,
   (SELECT
       IFNULL(SUM(amount), 0) AS presel
     FROM
@@ -197,9 +197,15 @@ FROM
         stock_transaction
       WHERE buy_sell = \'buy\'
         AND TYPE = \'pre\'
+<<<<<<< HEAD
+        AND stock_id = 14)
+      OR stock = 14) AS t1
+        ', array($id,$id,$id,$id));
+=======
         AND stock_id = ?)
       OR stock = ?) AS t1
         ', array($id,$id,$id));
+>>>>>>> refs/remotes/origin/master
         $value =$query->row();
         return $value->remain;
     }
