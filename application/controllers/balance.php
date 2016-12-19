@@ -41,12 +41,19 @@ class balance extends CI_Controller {
         $data['date']=$this->shamci_date->get_today_date();
         $data['single_balance_rows']=$this->cash_model->get_balance_credit_debit_single(array('account_id' => $id));
 <<<<<<< HEAD
+<<<<<<< HEAD
         $data['id']=$id;
 =======
 
         $data['id']=$id;
 
 >>>>>>> refs/remotes/origin/kazem-php
+=======
+
+
+        $data['id']=$id;
+
+>>>>>>> origin/Mortaza-PHP
         if($this->form_validation->run()==false){
 
             $data['signup_form']="active";
@@ -63,6 +70,7 @@ class balance extends CI_Controller {
             );
 
 <<<<<<< HEAD
+<<<<<<< HEAD
             $account_id=$this->balance_model->insert($cantact_info);
 
             $data['fu_page_title']="Login Form";
@@ -71,6 +79,9 @@ class balance extends CI_Controller {
             // $this->profile($id);
         }
 =======
+=======
+
+>>>>>>> origin/Mortaza-PHP
 
             $balance_id=$this->balance_model->insert($balance_info);
 
@@ -83,7 +94,11 @@ class balance extends CI_Controller {
                     'account_id' => $id,
                     'table_id'=>$balance_id,
                     'table_name'=>'balance'
+<<<<<<< HEAD
 >>>>>>> refs/remotes/origin/kazem-php
+=======
+
+>>>>>>> origin/Mortaza-PHP
 
                 );
 
