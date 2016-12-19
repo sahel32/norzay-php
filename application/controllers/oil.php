@@ -293,10 +293,6 @@ class oil extends CI_Controller {
 	}
 
 	public function pre_sell_to_fact_form($template="template" , $popupp_pre_buy_sell_id="",$remain='',$buy_sell=''){
-<<<<<<< HEAD
-
-=======
->>>>>>> refs/remotes/origin/master
 
 			$data = array(
 				'main_title' => "pre sell",

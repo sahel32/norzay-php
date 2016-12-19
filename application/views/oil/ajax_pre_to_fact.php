@@ -1,11 +1,11 @@
 <div id="view-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog modal-resize">
+    <div class="modal-dialog">
         <div class="modal-content">
 
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="glyphicon glyphicon-remove"></i></button>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                 <h4 class="modal-title">
-                    تبدیل پیش خرید به تیل حقیقی
+                    <i class="glyphicon glyphicon-user"></i> User Profile
                 </h4>
             </div>
 

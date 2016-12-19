@@ -5,9 +5,7 @@
     <bookmark url="file://$PROJECT_DIR$/application/views/cash/credit_debit.php" description="&lt;script type=&quot;text/javascript&quot; src=&quot;&lt;?php echo ass..." line="6" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="93d312fc-130c-436d-b7d6-118f32262ab4" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="93d312fc-130c-436d-b7d6-118f32262ab4" name="Default" comment="" />
     <ignored path="norzay-php.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -123,8 +121,8 @@
       <file leaf-file-name="stock_model.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/models/stock_model.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-102">
-              <caret line="175" column="0" selection-start-line="175" selection-start-column="0" selection-end-line="200" selection-end-column="25" />
+            <state relative-caret-position="255">
+              <caret line="194" column="10" selection-start-line="194" selection-start-column="10" selection-end-line="194" selection-end-column="10" />
               <folding>
                 <marker date="1481493504082" expanded="true" signature="1165:1424" placeholder="SELECT (buy SUM" />
                 <marker date="1481493504082" expanded="true" signature="1205:1307" placeholder="SELECT SUM(a... stock_transaction" />
@@ -592,15 +590,15 @@
       <workItem from="1481218424471" duration="12359000" />
       <workItem from="1481301825709" duration="40697000" />
       <workItem from="1481405560907" duration="25754000" />
-      <workItem from="1481563528130" duration="228000" />
+      <workItem from="1481563528130" duration="1141000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="314867000" />
+    <option name="totallyTimeSpent" value="315780000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1378" height="744" extended-state="1" />
+    <frame x="-8" y="-8" width="1378" height="744" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1067,8 +1065,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/models/stock_model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-102">
-          <caret line="175" column="0" selection-start-line="175" selection-start-column="0" selection-end-line="200" selection-end-column="25" />
+        <state relative-caret-position="255">
+          <caret line="194" column="10" selection-start-line="194" selection-start-column="10" selection-end-line="194" selection-end-column="10" />
           <folding>
             <marker date="1481493504082" expanded="true" signature="1165:1424" placeholder="SELECT (buy SUM" />
             <marker date="1481493504082" expanded="true" signature="1205:1307" placeholder="SELECT SUM(a... stock_transaction" />
