@@ -58,7 +58,7 @@ class stock extends CI_Controller {
 			$ci =& get_instance();
 			$str = (strtolower($ci->config->item('charset')) != 'utf-8') ? utf8_encode($str) : $str;
 
-			return ( ! preg_match("/^[[:alpha:]- چجحخهعغفقثصضشسیبلاتنمکگپظطزرذدئو_.]+$/", $str)) ? FALSE : TRUE;
+			return ( ! preg_match("/^[[:alpha:]- 1234567890qwertyuiopasdfghjklzxcvbnmچجحخهعغفقثصضشسیبلاتنمکگپظطزرذدئو_.]+$/", $str)) ? FALSE : TRUE;
 		}
 
         if($this->form_validation->run()==false){
@@ -70,11 +70,8 @@ class stock extends CI_Controller {
         $cantact_info=array(
             'name'=>$this->db->escape_str($this->input->post('name')),
             'province'=>$this->db->escape_str($this->input->post('province')),
-            'phone'=>$this->db->escape_str($this->input->post('phone')),
-            'address'=>$this->db->escape_str($this->input->post('address')),
 			'type'=>'fact',
-			'oil_type'=>$this->input->post('oil_type'),
-            'desc'=>$this->db->escape_str($this->input->post('desc'))
+			'oil_type'=>$this->input->post('oil_type')
             );
 
        $id=$this->stock_model->insert($cantact_info);

@@ -40,7 +40,7 @@
                             <th>کد</th>
                             <th>تاریخ پیش فروش</th>
                             <th>تاریخ تقریبی تحویل</th>
-                            <th>نام فروشنده</th>
+                            <th>نام مشتری</th>
                             <th>نوغ تیل</th>
                             <th>تناژ</th>
                             <th>تعداد موتر</th>
@@ -58,19 +58,25 @@
                                 <td><?php echo $value->s_date;?></td>
                                 <td class="center"><?php
                                     $this->load->model('account_model');
-                                    echo $this->account_model->get_name(array('id'=>$value->buyer_seller_id));
+                                    echo $this->account_model->get_where_column(array('id'=>$value->buyer_seller_id),'name');
+                                    echo " - ";
+                                    echo $this->account_model->get_where_column(array('id'=>$value->buyer_seller_id),'lname');
                                     ?></td>
-                                <td class="center"><?php echo $value->name;?></td>
+                                <td class="center"><?php
+                                    $this->load->model('stock_model');
+                                    echo $this->stock_model->get_where_column(array('id'=>$value->stock_id),'oil_type');
+                                    ?></td>
                                 <td class="center">
                                     <?php
-                                    $this->load->model('oil_model');
-                                    if($value->type=='pre') {
-                                        echo $remain = $this->oil_model->get_remain_oil_each_pre_buy($value->id, $buy_sell);
+
+                                    if($value->car_count!='0') {
+                                        echo $value->car_count*$value->amount;
                                     }else{
                                         echo $remain=$value->amount;
                                     }
                                     ?>
                                 </td>
+
                                 <td class="center"><?php echo $value->car_count;?></td>
                                 <td class="center"><?php echo $value->unit_price;?></td>
                                 <td class="center">

@@ -26,23 +26,23 @@
                                 <th>تخلص</th>
                                 <th>شماره تماس</th>
                                 <th>بردگی</th>
-                                <th>رسیدگی</th>
-                                <th>بیلانس (الباقی)</th>
+
                                 <th>تغییرات</th>
                             </tr>
                             </thead>
                             <tbody>
                             <?php
-
-                            foreach ($single_balance_rows as $key => $value) {?>
+                            foreach ($account_rows as $key => $value) {
+                                $this->load->model('cash_model');
+                                $single_balance_rows=$this->cash_model->get_balance_credit_debit_single(array('account_id' => $value->id));
+                                ?>
                                 <tr class="odd gradeX">
                                     <td><?php echo $value->id;?></td>
                                     <td><?php echo $value->name;?></td>
                                     <td><?php echo $value->lname;?></td>
                                     <td><?php echo $value->phone;?></td>
-                                    <td class="center"><?php echo $value->debit;?></td>
-                                    <td class="center"><?php echo $value->credit;?></td>
-                                    <td class="center"><?php echo $value->balance;?></td>
+                                    <?php    foreach ($single_balance_rows as $bkey => $bvalue) {?><?php }?>
+                                    <td class="center"><?php echo (isset($bvalue->debit))? $bvalue->debit : "";?></td>
 
                                     <td class="center">
                                         <a href="<?php echo site_url('account/delete/'.$value->id) ?>"><span class="glyphicon glyphicon-trash"></span></a>
@@ -50,7 +50,7 @@
                                         <a href="<?php echo site_url('balance/balance_check_out/'.$value->id); ?>"><span class="glyphicon glyphicon-asterisk"></span></a>
                                     </td>
                                 </tr>
-                            <?php }?>
+                            <?php }  ?>
                             </tbody>
                         </table>
                     </div>
@@ -85,8 +85,7 @@
                                 <th>مقدار پول</th>
                                 <th>نوع پول</th>
                                 <th>نوع دریافت / پرداخت پول</th>
-                                <th>بیلانس (الباقی)</th>
-                                <th>شرح و تفصیلات</th>
+
                                 <th>تغییرات</th>
                             </tr>
                             </thead>
@@ -106,16 +105,24 @@
                                             <?php
                                             // echo "<span style='cursor: pointer' onclick='get_check_info(".$cash_value->id.")'>".$cash_value->type."</span>";
                                         }else{
-                                            echo $cash_value->type;
+                                            // echo $cash_value->type;
+                                            echo "پول نقد";
                                         }
                                         ?></td>
-                                    <td class="center"><?php  echo $cash_value->transaction_type;?></td>
-                                    <td class="center">X</td>
-                                    <td class="center"><?php  echo $cash_value->desc;?></td>
+                                    <td class="center"><?php
+                                        switch ($cash_value->transaction_type){
+                                            case "credit";
+                                                echo "رسیدگی";
+                                                break;
+                                            case "debit";
+                                                echo "بردگی";
+                                                break;
+                                        }
+                                        ;?></td>
                                     <td class="center">
                                         <a href="<?php echo site_url('account/delete/'.$value->id) ?>"><span class="glyphicon glyphicon-trash"></span></a>
                                         <a href="<?php echo site_url('account/edit/'.$value->id) ?>"><span class="glyphicon glyphicon-edit"></span></a>
-                                        <a href="<?php echo site_url('account/profile/'.$value->id); ?>"><span class="glyphicon glyphicon-asterisk"></span></a>
+                                        <a href="<?php echo site_url('balance/balance_check_out/'.$value->id); ?>"><span class="glyphicon glyphicon-asterisk"></span></a>
                                     </td>
                                 </tr>
                             <?php  }?>
@@ -146,7 +153,9 @@
                                     <tr>
                                         <th>تاریخ</th>
                                         <th>مقدار تیل (تناژ)</th>
+                                        <th>مشتری</th>
                                         <th>نوع تیل</th>
+                                        <th>اسم گدام</th>
                                         <th>فروشنده دست اول</th>
 
                                         <th>پلت موتر</th>
@@ -160,9 +169,19 @@
                                         <tr class="odd gradeX">
                                             <td><?php echo $value->f_date;?></td>
                                             <td><?php echo $value->amount;?></td>
-                                            <td><?php echo $value->name;?></td>
-                                            <td><?php echo $value->buyer_seller_id;?></td>
+                                            <td class="center"><?php
+                                                $this->load->model('account_model');
+                                                echo $this->account_model->get_where_column(array('id'=>$value->buyer_seller_id),'name');
+                                                echo " - ";
+                                                echo $this->account_model->get_where_column(array('id'=>$value->buyer_seller_id),'lname');
+                                                ?></td>
+                                            <td class="center"><?php
+                                                $this->load->model('stock_model');
 
+                                                echo $this->stock_model->get_where_column(array('id'=>$value->stock_id),'oil_type');
+                                                ?></td>
+                                            <td class="center">
+                                            <td class="center"><?php echo $value->first_hand;?></td>
                                             <td class="center"><?php echo $value->transit;?></td>
                                             <td class="center">
                                                 <a href="<?php echo site_url('account/delete/'.$value->id) ?>"><span class="glyphicon glyphicon-trash"></span></a>

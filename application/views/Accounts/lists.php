@@ -40,6 +40,7 @@
                                             <th>کد</th>
                                             <th>نام</th>
                                             <th>تخلص</th>
+                                            <th>تلفن</th>
                                             <th>بردگی</th>
                                             <th>رسیدگی</th>
                                             <th>بیلانس (الباقی)</th>
@@ -48,22 +49,27 @@
                                     </thead>
                                     <tbody>
                                     <?php
-                                    foreach ($account_rows as $key => $value) {?>
-
+                                    foreach ($account_rows as $key => $value) {
+                                        $this->load->model('cash_model');
+                                        $single_balance_rows=$this->cash_model->get_balance_credit_debit_single(array('account_id' => $value->id));
+                                       ?>
                                         <tr class="odd gradeX">
                                             <td><?php echo $value->id;?></td>
                                             <td><?php echo $value->name;?></td>
                                             <td><?php echo $value->lname;?></td>
-                                            <td class="center">4</td>
-                                            <td class="center">X</td>
-                                            <td class="center">4</td>
+                                            <td><?php echo $value->phone;?></td>
+                                <?php    foreach ($single_balance_rows as $bkey => $bvalue) {?><?php }?>
+                                            <td class="center"><?php echo (isset($bvalue->debit))? $bvalue->debit : "";?></td>
+                                            <td class="center"><?php echo (isset($bvalue->credit))? $bvalue->credit : "";?></td>
+                                            <td class="center"><?php echo (isset($bvalue->balance))? $bvalue->balance : "";?></td>
+
                                             <td class="center">
-                                                <a href="#"><span class="glyphicon glyphicon-trash"></span></a>
-                                                <a href="#"><span class="glyphicon glyphicon-edit"></span></a>
+                                                <a href="<?php echo site_url('account/delete/'.$value->id) ?>"><span class="glyphicon glyphicon-trash"></span></a>
+                                                <a href="<?php echo site_url('account/edit/'.$value->id) ?>"><span class="glyphicon glyphicon-edit"></span></a>
                                                 <a href="<?php echo site_url('account/profile/'.$value->id.'/'.$value->type); ?>"><span class="glyphicon glyphicon-asterisk"></span></a>
                                             </td>
                                         </tr>
-                                   <?php  }?>
+                                    <?php }  ?>
 
                                     </tbody>
                                 </table>

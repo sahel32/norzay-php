@@ -40,11 +40,19 @@
                                 <div class="col-md-3 form-group">
                                     <label>کد پیش خرید</label>
                                     <?php if ($popupp_pre_buy_sell_id==""){ ?>
-                                        <input type="text"  value="<?php echo set_value('pre_buy_sell_id'); ?>" name="pre_buy_sell_id" class="form-control"  />
+                                        <input type="hidden"  value="<?php echo set_value('pre_buy_sell_id'); ?>" name="pre_buy_sell_id" class="form-control"  />
                                         <span class="help-inline"><?php echo (form_error('pre_buy_sell_id') ) ? form_error('pre_buy_sell_id') : "<span class='red'>*</span>"; ?></span>
                                     <?php  }else{
                                         echo $popupp_pre_buy_sell_id;
+<<<<<<< HEAD
                                         echo "<input type='hidden'  value='$popupp_pre_buy_sell_id' name='pre_buy_sell_id' >";
+=======
+
+                                        echo "<input type='hidden' value='$popupp_pre_buy_sell_id' name='pre_buy_sell_id' >";
+
+                                        echo "<input type='text'  value='$popupp_pre_buy_sell_id' name='pre_buy_sell_id' >";
+
+>>>>>>> origin/Mortaza-PHP
                                     }?>
                                 </div>
                                 <div class="col-md-3 form-group">
@@ -61,17 +69,9 @@
 
                                 <div class="col-md-3 form-group">
                                     <label>فروشنده دست اول</label>
-                                    <select class="form-control" name="account_id">
-                                        <?php
-
-                                        foreach ($seller_rows as $key => $s_value) {?>
-
-                                            <option value="<?php echo $s_value->id;?>"><?php echo $s_value->name;?></option>
-
-                                        <?php }?>
-
-                                    </select>
+                                    <?php echo $first_hand; ?>
                                 </div>
+                                <input class="form-control" type="hidden" value="<?php echo $account_id;?>" name="account_id">
                                 <div class="col-md-3 form-group">
                                     <label>درایور (راننده)</label>
                                     <select class="form-control" name="driver_id">
