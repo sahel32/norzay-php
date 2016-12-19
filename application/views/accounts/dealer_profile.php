@@ -23,8 +23,10 @@
 
 
                     اطلاعات عمومی
-                    <a href="<?php echo site_url('cash/profile_credit_debit/').$this->uri->segment('3')."/".$this->uri->segment('4');?>">
+                    <div class="btn-group pull-left">
+                        <a href="<?php echo site_url('cash/profile_credit_debit/').$this->uri->segment('3')."/".$this->uri->segment('4');?>">
                         پرداخت/دریافت</a>
+                        </div>
                 </div>
                 <div class="panel-body">
                     <div class="table-responsive">
@@ -43,24 +45,26 @@
                             </thead>
                             <tbody>
                             <?php
-
-                            foreach ($single_balance_rows as $key => $value) {?>
+                            foreach ($account_rows as $key => $value) {
+                                $this->load->model('cash_model');
+                                $single_balance_rows=$this->cash_model->get_balance_credit_debit_single(array('account_id' => $value->id));
+                                ?>
                                 <tr class="odd gradeX">
                                     <td><?php echo $value->id;?></td>
                                     <td><?php echo $value->name;?></td>
                                     <td><?php echo $value->lname;?></td>
                                     <td><?php echo $value->phone;?></td>
-                                    <td class="center"><?php echo $value->debit;?></td>
-                                    <td class="center"><?php echo $value->credit;?></td>
-                                    <td class="center"><?php echo $value->balance;?></td>
-
+                                    <?php    foreach ($single_balance_rows as $bkey => $bvalue) {?><?php }?>
+                                    <td class="center"><?php echo (isset($bvalue->debit))? $bvalue->debit : "";?></td>
+                                    <td class="center"><?php echo (isset($bvalue->credit))? $bvalue->credit : "";?></td>
+                                    <td class="center"><?php echo (isset($bvalue->balance))? $bvalue->balance : "";?></td>
                                     <td class="center">
                                         <a href="<?php echo site_url('account/delete/'.$value->id) ?>"><span class="glyphicon glyphicon-trash"></span></a>
                                         <a href="<?php echo site_url('account/edit/'.$value->id) ?>"><span class="glyphicon glyphicon-edit"></span></a>
                                         <a href="<?php echo site_url('balance/balance_check_out/'.$value->id); ?>"><span class="glyphicon glyphicon-asterisk"></span></a>
                                     </td>
                                 </tr>
-                            <?php }?>
+                            <?php }  ?>
                             </tbody>
                         </table>
                     </div>
@@ -96,7 +100,7 @@
                                 <th>نوع پول</th>
                                 <th>نوع دریافت / پرداخت پول</th>
 
-                                <th>شرح و تفصیلات</th>
+
                                 <th>تغییرات</th>
                             </tr>
                             </thead>
@@ -114,18 +118,27 @@
                                             <button data-toggle="modal" data-target="#view-modal" data-id="<?php echo $cash_value->id; ?>" id="getUser" class="btn btn-sm btn-info">
                                                 <i class="glyphicon glyphicon-eye-open"></i> چک</button>
                                             <?php
-                                          // echo "<span style='cursor: pointer' onclick='get_check_info(".$cash_value->id.")'>".$cash_value->type."</span>";
+                                            // echo "<span style='cursor: pointer' onclick='get_check_info(".$cash_value->id.")'>".$cash_value->type."</span>";
                                         }else{
-                                            echo $cash_value->type;
+                                            // echo $cash_value->type;
+                                            echo "پول نقد";
                                         }
                                         ?></td>
-                                    <td class="center"><?php  echo $cash_value->transaction_type;?></td>
+                                    <td class="center"><?php
+                                        switch ($cash_value->transaction_type){
+                                            case "credit";
+                                                echo "رسیدگی";
+                                                break;
+                                            case "debit";
+                                                echo "بردگی";
+                                                break;
+                                        }
+                                        ;?></td>
 
-                                    <td class="center"><?php  echo $cash_value->desc;?></td>
                                     <td class="center">
                                         <a href="<?php echo site_url('account/delete/'.$value->id) ?>"><span class="glyphicon glyphicon-trash"></span></a>
                                         <a href="<?php echo site_url('account/edit/'.$value->id) ?>"><span class="glyphicon glyphicon-edit"></span></a>
-                                        <a href="<?php echo site_url('account/profile/'.$value->id); ?>"><span class="glyphicon glyphicon-asterisk"></span></a>
+                                        <a href="<?php echo site_url('balance/balance_check_out/'.$value->id); ?>"><span class="glyphicon glyphicon-asterisk"></span></a>
                                     </td>
                                 </tr>
                             <?php  }?>

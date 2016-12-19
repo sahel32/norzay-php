@@ -38,14 +38,7 @@
                                 
                                         </div>
 
-                                        <div class="col-md-3 form-group">
 
-                                            <label>phone :</label>
-                                       
-                                            <input type="text"  value="<?php echo set_value('phone'); ?>"name="phone" class="form-control" data-trigger="hover"/>
-                                            <span class="help-inline"><?php echo (form_error('phone') ) ? form_error('phone') :""; ?></span>
-                                
-                                        </div>
                                         <div class="col-md-3 form-group">
                                             <label>نوع گدام</label>
                                             <select class="form-control" name="oil_type">
@@ -59,21 +52,7 @@
 
                                             </select>
                                         </div>
-                                        <div class="col-md-3 form-group">
-
-                                            <label>address:</label>
                                        
-                                            <textarea  name="address"></textarea>
-                                            
-                                
-                                        </div>
-
-                                         <div class="col-md-3 form-group">
-
-                                            <label>desc :</label>
-                                       
-                                            <textarea name="desc" class="form-control"></textarea>
-                                        </div>
                                         
                                         <div class="col-md-3 gaps">
                                         <button type="submit" class="btn btn-default pull-left">تائید</button>

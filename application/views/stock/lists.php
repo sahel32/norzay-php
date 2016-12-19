@@ -20,10 +20,11 @@
                                             <tr>
                                                 <th>کد</th>
                                                 <th>نام</th>
-                                                <th>تخلص</th>
+                                                <th>ولایت</th>
 
                                                 <th>تیل موجود</th>
                                                 <th>نوع گدام</th>
+                                                <th>نوع تیل</th>
                                                 <th>تغییرات</th>
                                             </tr>
                                         </thead>
@@ -59,7 +60,20 @@
                                                 $sufix="pre";
                                                 ?></td>
                                                 <?php }?>
-                                                <td class="center"><?php echo $value->type;?></td>
+                                                <td class="center"><?php
+                                                    switch ($value->type){
+                                                        case "buy";
+                                                            echo "پیش خرید";
+                                                            break;
+                                                        case "sell";
+                                                            echo "پیش فروش";
+                                                            break;
+                                                        default;
+                                                            echo "حقیقی";
+                                                    }
+
+                                                    ?></td>
+                                                <td class="center"><?php echo $value->oil_type;?></td>
                                                 <td class="center">
                                                     <a href="#"><span class="glyphicon glyphicon-trash"></span></a>
                                                     <a href="#"><span class="glyphicon glyphicon-edit"></span></a>

@@ -258,6 +258,7 @@ class oil extends CI_Controller {
 				'unit_price' => $this->db->escape_str($this->input->post('unit_price')),
 				'stock_id' => $this->input->post('stock'),
 				'car_count' => $this->db->escape_str($this->input->post('car_count')),
+				'first_hand' => $this->db->escape_str($this->input->post('first_hand')),
 				'buy_sell' => $data['buy_sell'],
 				'desc' => $this->db->escape_str($this->input->post('desc')),
 				'amount' => $amount,
@@ -399,7 +400,8 @@ class oil extends CI_Controller {
 			'remain'=>$remain
 		);
 
-
+		$data['account_id']=$this->oil_model->get_where_column(array('id'=>$popupp_pre_buy_sell_id),'buyer_seller_id');
+		$data['first_hand']=$this->oil_model->get_where_column(array('id'=>$popupp_pre_buy_sell_id),'first_hand');
 
 	$this->form_validation->set_rules('pre_buy_sell_id', null, 'required',
 		array(
@@ -487,7 +489,7 @@ class oil extends CI_Controller {
 		$pre_transaction=$this->oil_model->get_where(array('id'=>$this->input->post('pre_buy_sell_id')));
 		foreach ($pre_transaction as $key => $value){
 
-			$cash=$this->db->escape_str($this->input->post('second_amount')) * $value->unit_price;
+			$cash=$this->db->escape_str($this->input->post('first_amount')) * $value->unit_price;
 			$cash_information = array(
 				'cash' =>  $cash,
 				'type' => 'usa',
