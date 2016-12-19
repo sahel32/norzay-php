@@ -407,10 +407,7 @@ line-height: 1.428571429;
    .navbar {
  border-radius: 0px; 
 }
-
-    body .modal-resize{
-        width: 900px;
-    }
+   
 }
 
 /*Add more styles by Mortaza*/
@@ -442,29 +439,4 @@ label{
 .sidebar-menu{
     width: 35px;
     height: 35px;
-}
-.correct{
-    padding: 1px 10px;
-}
-.glyphicon-trash{
-    color: #f90c05;
-}
-.glyphicon-edit{
-    color: #18c318;
-}
-.glyphicon-cog{
-    color: rgb(9, 87, 241);
-}
-.glyphicon-user{
-    color: rgb(43, 62, 81);
-}
-.panel-footer{
-    padding: 10px 15px 30px 15px;
-}
-.fa-plus-circle{
-    padding-right: 5px;
-    color: green;
-}
-.align{
-    text-align: center;
 }

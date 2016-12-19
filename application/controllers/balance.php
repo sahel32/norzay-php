@@ -41,6 +41,7 @@ class balance extends CI_Controller {
         $data['date']=$this->shamci_date->get_today_date();
         $data['single_balance_rows']=$this->cash_model->get_balance_credit_debit_single(array('account_id' => $id));
 
+
         $data['id']=$id;
 
         if($this->form_validation->run()==false){
@@ -59,6 +60,7 @@ class balance extends CI_Controller {
             );
 
 
+
             $balance_id=$this->balance_model->insert($balance_info);
 
             if($this->db->escape_str($this->input->post('balance'))>0){
@@ -70,6 +72,7 @@ class balance extends CI_Controller {
                     'account_id' => $id,
                     'table_id'=>$balance_id,
                     'table_name'=>'balance'
+
 
                 );
 

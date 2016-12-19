@@ -5,18 +5,7 @@
     <bookmark url="file://$PROJECT_DIR$/application/views/cash/credit_debit.php" description="&lt;script type=&quot;text/javascript&quot; src=&quot;&lt;?php echo ass..." line="6" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="93d312fc-130c-436d-b7d6-118f32262ab4" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/account.php" afterPath="$PROJECT_DIR$/application/controllers/account.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/balance.php" afterPath="$PROJECT_DIR$/application/controllers/balance.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/oil.php" afterPath="$PROJECT_DIR$/application/controllers/oil.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/models/stock_model.php" afterPath="$PROJECT_DIR$/application/models/stock_model.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/accounts/stuff_profile.php" afterPath="$PROJECT_DIR$/application/views/accounts/stuff_profile.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/balance/balance_check_out.php" afterPath="$PROJECT_DIR$/application/views/balance/balance_check_out.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/oil/ajax_pre_to_fact.php" afterPath="$PROJECT_DIR$/application/views/oil/ajax_pre_to_fact.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/oil/pre_buy_to_fact_form.php" afterPath="$PROJECT_DIR$/application/views/oil/pre_buy_to_fact_form.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/custom.css" afterPath="$PROJECT_DIR$/assets/css/custom.css" />
-    </list>
+
     <ignored path="norzay-php.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -142,9 +131,12 @@
       <file leaf-file-name="calendar.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/js/datepicker/scripts/calendar.js">
           <provider selected="true" editor-type-id="text-editor">
+
             <state relative-caret-position="0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+
               <folding />
+
             </state>
           </provider>
         </entry>
@@ -456,19 +448,23 @@
       <workItem from="1481218424471" duration="12359000" />
       <workItem from="1481301825709" duration="40697000" />
       <workItem from="1481405560907" duration="25754000" />
+
+      <workItem from="1481563528130" duration="1141000" />
+
       <workItem from="1481563528130" duration="5828000" />
       <workItem from="1481641707100" duration="9803000" />
-      <workItem from="1481966025445" duration="8256000" />
-      <workItem from="1482085152696" duration="3221000" />
-      <workItem from="1482176825858" duration="373000" />
+
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+
     <option name="totallyTimeSpent" value="342120000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1378" height="744" extended-state="1" />
+
+
     <editor active="true" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -843,6 +839,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/application/models/cash_model.php">
       <provider selected="true" editor-type-id="text-editor">
+
         <state relative-caret-position="1156">
           <caret line="123" column="32" selection-start-line="123" selection-start-column="32" selection-end-line="123" selection-end-column="32" />
           <folding>
@@ -868,6 +865,7 @@
             <marker date="1482085538897" expanded="true" signature="2576:2711" placeholder="SELECT IFNUL... cash" />
             <marker date="1482085538897" expanded="true" signature="2605:2691" placeholder="SELECT SUM(c... cash" />
           </folding>
+
         </state>
       </provider>
     </entry>
@@ -937,14 +935,7 @@
         <state relative-caret-position="357">
           <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/balance/balance_check_out.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding />
+    
         </state>
       </provider>
     </entry>
