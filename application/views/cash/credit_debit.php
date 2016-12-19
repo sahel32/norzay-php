@@ -67,7 +67,9 @@
                                      <i class="fa fa-plus-circle" data-toggle="tooltip" title="ثبت درایور جدید" data-placement="top"></i>
                                  </a>-->
                                 <label>اسم شخص گیرنده یا دهند </label>
-                                <input type="text" name="account_name"  id="birds" class="form-control">
+                                <input type="text" id="birds"  value="<?php echo set_value('account_name'); ?>"name="account_name" class="form-control" data-trigger="hover"/>
+                                <span class="help-inline"><?php echo (form_error('account_name') ) ? form_error('account_name') : "<span class='red'>*</span>"; ?></span>
+
                             </div>
 
                             <div class="col-md-3 form-group">

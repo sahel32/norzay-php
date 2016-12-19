@@ -36,6 +36,16 @@ class balance_model extends CI_Model{
 
     }
     //get all rows of table
+    function get_balance_date($wheres){
+        $this->db->select('*');
+        $this->db->from($this->table);
+        $this->db->where($wheres);
+        $this->db->limit(1);
+        $this->db->order_by($this->id, "desc");
+        $query=$this->db->get();
+        $value=$query->row();
+        return $value->date;
+    }
     function get(){
         //  $this->db->order_by($this->id,'desc');
         $query=$this->db->get($this->table);
