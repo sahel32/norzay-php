@@ -33,9 +33,7 @@
                                 <th>نام</th>
                                 <th>تخلص</th>
                                 <th>شماره تماس</th>
-                                <th>بردگی</th>
-                                <th>رسیدگی</th>
-                                <th>بیلانس (الباقی)</th>
+
                                 <th>تغییرات</th>
                             </tr>
                             </thead>
@@ -48,9 +46,7 @@
                                     <td><?php echo $value->name;?></td>
                                     <td><?php echo $value->lname;?></td>
                                     <td><?php echo $value->phone;?></td>
-                                    <td class="center"><?php echo $value->debit;?></td>
-                                    <td class="center"><?php echo $value->credit;?></td>
-                                    <td class="center"><?php echo $value->balance;?></td>
+
 
                                     <td class="center">
                                         <a href="<?php echo site_url('account/delete/'.$value->id) ?>"><span class="glyphicon glyphicon-trash"></span></a>
@@ -95,14 +91,42 @@
                                 $this->load->model('cash_model');
 
                                 if($type_value->type!="check"){
-                                $all=$this->cash_model->get_balance_credit_debit_mylty_money(11,$type_value->type);
+                                $all=$this->cash_model->get_balance_credit_debit_mylty_money($type_value->account_id,$type_value->type);
                             foreach ($all as $key => $value) {
                                 ?>
 
                                 <tr class="odd gradeX">
                                     <td><?php echo $value->id;?></td>
 
-                                    <td><?php echo $type_value->type;?></td>
+                                    <td>
+                                        <?php
+                                        if($type_value->type=="check"){
+                                            ?>
+                                            <button data-toggle="modal" data-target="#view-modal" data-id="<?php echo $type_value->id; ?>" id="getUser" class="btn btn-sm btn-info">
+                                                <i class="glyphicon glyphicon-eye-open"></i> چک</button>
+                                            <?php
+                                            // echo "<span style='cursor: pointer' onclick='get_check_info(".$cash_value->id.")'>".$cash_value->type."</span>";
+                                        }else{
+                                            switch ($type_value->type){
+                                                case "usa";
+                                                    echo "دالر";
+                                                    break;
+                                                case "af";
+                                                    echo "افغانی";
+                                                    break;
+                                                case "ir";
+                                                    echo "تومان";
+                                                    break;
+                                                case "eur";
+                                                    echo "یرو";
+                                                    break;
+                                                default:
+                                                    echo "عرض های دیکه ";
+                                            }
+
+                                        }
+                                        ?></td>
+                                    </td>
 
                                     <td class="center"><?php echo $value->debit;?></td>
                                     <td class="center"><?php echo $value->credit;?></td>
@@ -148,8 +172,7 @@
                                 <th>مقدار پول</th>
                                 <th>نوع پول</th>
                                 <th>نوع دریافت / پرداخت پول</th>
-                                <th>بیلانس (الباقی)</th>
-                                <th>شرح و تفصیلات</th>
+
                                 <th>تغییرات</th>
                             </tr>
                             </thead>
@@ -169,12 +192,35 @@
                                             <?php
                                             // echo "<span style='cursor: pointer' onclick='get_check_info(".$cash_value->id.")'>".$cash_value->type."</span>";
                                         }else{
-                                            echo $cash_value->type;
+                                            switch ($cash_value->type){
+                                                case "usa";
+                                                    echo "دالر";
+                                                    break;
+                                                case "af";
+                                                    echo "افغانی";
+                                                    break;
+                                                case "ir";
+                                                    echo "تومان";
+                                                    break;
+                                                case "eur";
+                                                    echo "یرو";
+                                                    break;
+                                                default:
+                                                    echo "عرض های دیکه ";
+                                            }
                                         }
                                         ?></td>
-                                    <td class="center"><?php  echo $cash_value->transaction_type;?></td>
-                                    <td class="center">X</td>
-                                    <td class="center"><?php  echo $cash_value->desc;?></td>
+                                    <td class="center"><?php
+                                        switch ($cash_value->transaction_type){
+                                            case "credit";
+                                                echo "رسیدگی";
+                                                break;
+                                            case "debit";
+                                                echo "بردگی";
+                                                break;
+                                        }
+                                        ;?></td>
+
                                     <td class="center">
                                         <a href="<?php echo site_url('account/delete/'.$value->id) ?>"><span class="glyphicon glyphicon-trash"></span></a>
                                         <a href="<?php echo site_url('account/edit/'.$value->id) ?>"><span class="glyphicon glyphicon-edit"></span></a>

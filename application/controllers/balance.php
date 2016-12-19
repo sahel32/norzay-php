@@ -31,6 +31,7 @@ class balance extends CI_Controller {
         $this->load->template("Accounts/lists", $data);
     }
     function balance_check_out($id){
+        
         $this->form_validation->set_rules('date' , null, 'required',
             array(
                 'required'      => 'You have not provided name in name field'
@@ -39,23 +40,29 @@ class balance extends CI_Controller {
 
         $data['date']=$this->shamci_date->get_today_date();
         $data['single_balance_rows']=$this->cash_model->get_balance_credit_debit_single(array('account_id' => $id));
+<<<<<<< HEAD
         $data['id']=$id;
+=======
+
+        $data['id']=$id;
+
+>>>>>>> refs/remotes/origin/kazem-php
         if($this->form_validation->run()==false){
 
             $data['signup_form']="active";
             $this->load->template("balance/balance_check_out", $data);
         }else{
 
-            $cantact_info=array(
+            $balance_info=array(
                 'debit_buy'=>$this->db->escape_str($this->input->post('debit')),
                 'credit_sell'=>$this->db->escape_str($this->input->post('credit')),
                 'date'=>$this->db->escape_str($this->input->post('date')),
                 'table_name'=>'account',
                 'balance'=>$this->db->escape_str($this->input->post('balance')),
-                'table_id'=>$this->db->escape_str($this->input->post('table_id')),
-
+                'table_id'=>$id
             );
 
+<<<<<<< HEAD
             $account_id=$this->balance_model->insert($cantact_info);
 
             $data['fu_page_title']="Login Form";
@@ -63,61 +70,54 @@ class balance extends CI_Controller {
            redirect($_SESSION['url']);
             // $this->profile($id);
         }
+=======
 
-    }
-    public function add(){
+            $balance_id=$this->balance_model->insert($balance_info);
 
-        $this->form_validation->set_rules('name' , null, 'alpha_int|required',
-            array(
-                'required'      => 'You have not provided name in name field',
-                'alpha_int'         =>'please insert just alghabatic charecters'
-            )
-        );
-        $this->form_validation->set_rules('lname' , null, 'alpha_int|required',
-            array(
-                'required'      => 'You have not provided name in name field',
-                'alpha_int'         =>'please insert just alghabatic charecters'
-            )
-        );
+            if($this->db->escape_str($this->input->post('balance'))>0){
+                $cash_information = array(
+                    'cash' => $this->db->escape_str($this->input->post('balance')),
+                    'type' => $this->input->post('type'),
+                    'date' => $this->db->escape_str($this->input->post('date')),
+                    'transaction_type' => 'credit',
+                    'account_id' => $id,
+                    'table_id'=>$balance_id,
+                    'table_name'=>'balance'
+>>>>>>> refs/remotes/origin/kazem-php
 
-        $this->form_validation->set_rules('phone' , null, 'is_natural|required|regex_match[/^[0-9]{10}$/]',
-            array(
-                'required'      => 'You have not provided name in name field',
-                'is_natural'         =>'Please Use Just numberic charecters'
-            )
-        );
+                );
 
-        function alpha_int($str)
-        {
-            $ci =& get_instance();
-            $str = (strtolower($ci->config->item('charset')) != 'utf-8') ? utf8_encode($str) : $str;
+            }else{
+                $cash_information = array(
+                    'cash' => $this->db->escape_str($this->input->post('balance')),
+                    'type' => $this->input->post('type'),
+                    'date' => $this->db->escape_str($this->input->post('date')),
+                    'transaction_type' => 'debit',
+                    'account_id' => $id,
+                    'table_id'=>$balance_id,
+                    'table_name'=>'balance'
 
-            return ( ! preg_match("/^[[:alpha:]- چجحخهعغفقثصضشسیبلاتنمکگپظطزرذدئو_.]+$/", $str)) ? FALSE : TRUE;
-        }
+                );
+            }
+                $cash_id=  $this->cash_model->insert($cash_information);
 
-        $data['account_rows']=$this->account_model->group_by(array(),'type');
-        if($this->form_validation->run()==false){
-
-            $data['signup_form']="active";
-            $this->load->template('accounts/add',$data);
-        }else{
-
-            $cantact_info=array(
-                'name'=>$this->db->escape_str($this->input->post('name')),
-                'lname'=>$this->db->escape_str($this->input->post('lname')),
-                'type'=>$this->db->escape_str($this->input->post('type')),
-                'phone'=>$this->db->escape_str($this->input->post('phone'))
-            );
-
-            $id=$this->account_model->insert($cantact_info);
+            $id=$this->balance_model->insert($cantact_info);
 
             $data['fu_page_title']="Login Form";
             redirect('account/profile/'.$id.'/'.$this->input->post('type'));
+
+            $account_id=$this->balance_model->insert($cantact_info);
+
+
+            $data['fu_page_title']="Login Form";
+
+           redirect($_SESSION['url']);
+
             // $this->profile($id);
         }
 
-
     }
+
 
     public function profile($id=0,$type){
         $data['fu_page_title']="Login Form";

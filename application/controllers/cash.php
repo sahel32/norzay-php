@@ -70,12 +70,12 @@ class cash extends CI_Controller {
                 'required'      => 'You have not provided name in name field'
             )
         );
-        /*        $this->form_validation->set_rules('account_name' , null, 'alpha_int|required',
+                $this->form_validation->set_rules('account_name' , null, 'alpha_int|required',
                     array(
                         'required'      => 'You have not provided name in name field',
                         'alpha_int'         =>'please insert just alghabatic charecters'
                     )
-                );*/
+                );
         function alpha_int($str)
         {
             $ci =& get_instance();
@@ -94,10 +94,9 @@ class cash extends CI_Controller {
                 'type' => $this->input->post('type'),
                 'date' => $this->input->post('date'),
                 'transaction_type' => $this->input->post('transaction_type'),
-                'account_id' => $this->account_model->get_column(array('name'=>$this->input->post('account_name')),'id')
+                'account_id' => $this->account_model->get_where_column(array('name'=>$this->input->post('account_name')),'id')
 
             );
-print_r($cash_information);
             $cash_id=  $this->cash_model->insert($cash_information);
             if($this->input->post('type')=="check"){
                 $this->check_type($cash_id,$account_type);
