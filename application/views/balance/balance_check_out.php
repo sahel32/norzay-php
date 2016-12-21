@@ -36,7 +36,21 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <form role="form" action="<?php echo site_url('balance/balance_check_out'); ?>" method="post">
+<<<<<<< HEAD
+<<<<<<< HEAD
+                            <form role="form" action="<?php echo site_url('balance/balance_check_out/'.$id); ?>" method="post">
+=======
+=======
+
+>>>>>>> origin/Mortaza-PHP
+
+                            <form role="form" action="<?php echo site_url('balance/balance_check_out/'.$id ); ?>" method="post">
+
+
+<<<<<<< HEAD
+>>>>>>> refs/remotes/origin/kazem-php
+=======
+>>>>>>> origin/Mortaza-PHP
                                 <?php
 
                                 foreach ($single_balance_rows as $key => $value) {?>
